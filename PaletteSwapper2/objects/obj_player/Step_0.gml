@@ -22,10 +22,7 @@ hsp = dir * spd;
 //Context dependent movement options
 if (onGround) //on ground
 {
-	if (keyJump)
-	{
-		vsp = -jumpSpd;	
-	}
+	coyoteTime = coyoteTimeMax;
 }
 else if (inWater) //in water
 {
@@ -34,6 +31,19 @@ else if (inWater) //in water
 else //airborne
 {
 	vsp += grav; //add gravity to player's vertical speed
+}
+
+//Coyote time (TODO: reorganize? idk i tried my best - evan)
+if (coyoteTime > 0)
+{
+    coyoteTime--;
+}
+if (onGround || coyoteTime > 0)
+{
+    if (keyJump)
+	{
+		vsp = -jumpSpd;	
+	}
 }
 
 #endregion

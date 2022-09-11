@@ -5,6 +5,7 @@
 spd = 3;
 jumpSpd = 6;
 grav = 0.25;
+coyoteTimeMax = 15;
 
 //Mutables
 hsp = 0;
@@ -13,6 +14,7 @@ dir = 0;
 combo = 0;
 maxCombo = 3;
 numLives = 4;
+coyoteTime = 0;
 
 //Boolean states
 
