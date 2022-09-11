@@ -34,6 +34,7 @@ if (onGround) //on ground
 		spd = atkMovSpd;
 		isAttackingGround = true;
 	}
+	coyoteTime = coyoteTimeMax;
 }
 else if (inWater) //in water
 {
@@ -47,6 +48,19 @@ else //airborne
 	{
 		spd = atkMovSpd;
 		isAttackingAir = true;
+	}
+}
+
+//Coyote time (TODO: reorganize? idk i tried my best - evan)
+if (coyoteTime > 0)
+{
+    coyoteTime--;
+}
+if (onGround || coyoteTime > 0)
+{
+    if (keyJump)
+	{
+		vsp = -jumpSpd;	
 	}
 }
 

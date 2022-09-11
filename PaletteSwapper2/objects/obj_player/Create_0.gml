@@ -7,6 +7,7 @@ jumpSpd = 6;
 grav = 0.25;
 movSpd = spd;
 atkMovSpd = spd / 2; // This is the speed at which the player moves while in the attacking state.
+coyoteTimeMax = 15;
 
 //Mutables
 hsp = 0;
@@ -15,6 +16,7 @@ dir = 0;
 combo = 0;
 maxCombo = 3;
 numLives = 4;
+coyoteTime = 0;
 
 //Boolean states
 isAttackingGround = false;
