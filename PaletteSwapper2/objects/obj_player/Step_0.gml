@@ -14,6 +14,7 @@ keyBrush = keyboard_check_pressed(ord("X"));
 keyAction = keyboard_check_pressed(ord("C"));
 keyRotateL = keyboard_check_pressed(ord("A"));
 keyRotateR = keyboard_check_pressed(ord("S"));
+keyReset = keyboard_check_pressed(ord("R"));
 #endregion
 
 #region MOVEMENT
@@ -92,4 +93,11 @@ y += vsp;
 #endregion
 
 #region ANIMATION
+#endregion
+
+#region DEBUG
+if (keyReset)
+{
+	room_restart();
+}
 #endregion

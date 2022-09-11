@@ -7,7 +7,7 @@ jumpSpd = 6;
 grav = 0.25;
 movSpd = spd;
 atkMovSpd = spd / 2; // This is the speed at which the player moves while in the attacking state.
-coyoteTimeMax = 15;
+coyoteTimeMax = 6;
 
 //Mutables
 hsp = 0;
