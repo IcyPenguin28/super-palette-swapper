@@ -52,14 +52,27 @@ else //airborne
 	}
 }
 
-//Coyote time (TODO: reorganize? idk i tried my best - evan)
+//Coyote time
 if (coyoteTime > 0)
 {
     coyoteTime--;
 }
+
+//Jump input buffering
+if (keyJump)
+{
+    jumpFrames = 0;
+}
+
+if (jumpFrames < jumpFramesMax)
+{
+    jumpFrames++;
+}
+
+//Jump
 if (onGround || coyoteTime > 0)
 {
-    if (keyJump)
+    if (jumpFrames < jumpFramesMax)
 	{
 		vsp = -jumpSpd;	
 	}
