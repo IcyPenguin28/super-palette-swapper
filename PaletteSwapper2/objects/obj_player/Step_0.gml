@@ -1,0 +1,67 @@
+/// @description Insert description here
+// You can write your code in this editor
+
+onGround = place_meeting(x,y+1,obj_solid);
+inWater = place_meeting(x,y,obj_water);
+
+#region CONTROLS
+keyLeft = keyboard_check(vk_left);
+keyRight = keyboard_check(vk_right);
+keyUp = keyboard_check(vk_up);
+keyDown = keyboard_check(vk_down);
+keyJump = keyboard_check_pressed(ord("Z"));
+keyAction = keyboard_check_pressed(ord("X"));
+keyRotateL = keyboard_check_pressed(ord("A"));
+keyRotateR = keyboard_check_pressed(ord("S"));
+#endregion
+
+#region MOVEMENT
+dir = keyRight - keyLeft;
+hsp = dir * spd;
+
+//Context dependent movement options
+if (onGround) //on ground
+{
+	if (keyJump)
+	{
+		vsp = -jumpSpd;	
+	}
+}
+else if (inWater) //in water
+{
+	
+}
+else //airborne
+{
+	vsp += grav; //add gravity to player's vertical speed
+}
+
+#endregion
+
+#region COLLISION
+//Horizontal
+if (place_meeting(x+hsp,y,obj_solid))
+{
+	while (!place_meeting(x+sign(hsp),y,obj_solid))
+	{
+		x += sign(hsp);	
+	}
+	hsp = 0;
+}
+x += hsp;
+
+//Vertical
+if (place_meeting(x,y+vsp,obj_solid))
+{
+	while (!place_meeting(x,y+sign(vsp),obj_solid))
+	{
+		y += sign(vsp);	
+	}
+	vsp = 0;
+}
+y += vsp;
+
+#endregion
+
+#region ANIMATION
+#endregion
