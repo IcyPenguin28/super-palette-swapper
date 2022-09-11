@@ -1,11 +1,13 @@
 {
   "resources": [
+    {"id":{"name":"spr_paintdrop","path":"sprites/spr_paintdrop/spr_paintdrop.yy",},"order":5,},
     {"id":{"name":"spr_oneup","path":"sprites/spr_oneup/spr_oneup.yy",},"order":4,},
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},"order":1,},
     {"id":{"name":"obj_palette","path":"objects/obj_palette/obj_palette.yy",},"order":4,},
     {"id":{"name":"spr_solid","path":"sprites/spr_solid/spr_solid.yy",},"order":0,},
     {"id":{"name":"spr_water","path":"sprites/spr_water/spr_water.yy",},"order":2,},
     {"id":{"name":"obj_water","path":"objects/obj_water/obj_water.yy",},"order":2,},
+    {"id":{"name":"obj_paintdrop","path":"objects/obj_paintdrop/obj_paintdrop.yy",},"order":6,},
     {"id":{"name":"spr_andy_swipe_ground","path":"sprites/spr_andy_swipe_ground/spr_andy_swipe_ground.yy",},"order":4,},
     {"id":{"name":"spr_andy_jump","path":"sprites/spr_andy_jump/spr_andy_jump.yy",},"order":1,},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},"order":3,},
