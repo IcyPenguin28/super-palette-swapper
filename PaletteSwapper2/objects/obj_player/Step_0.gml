@@ -10,7 +10,8 @@ keyRight = keyboard_check(vk_right);
 keyUp = keyboard_check(vk_up);
 keyDown = keyboard_check(vk_down);
 keyJump = keyboard_check_pressed(ord("Z"));
-keyAction = keyboard_check_pressed(ord("X"));
+keyBrush = keyboard_check_pressed(ord("X"));
+keyAction = keyboard_check_pressed(ord("C"));
 keyRotateL = keyboard_check_pressed(ord("A"));
 keyRotateR = keyboard_check_pressed(ord("S"));
 #endregion
@@ -26,6 +27,13 @@ if (onGround) //on ground
 	{
 		vsp = -jumpSpd;	
 	}
+	
+	// Ground Combat
+	if (keyBrush)
+	{
+		spd = atkMovSpd;
+		isAttackingGround = true;
+	}
 }
 else if (inWater) //in water
 {
@@ -34,6 +42,12 @@ else if (inWater) //in water
 else //airborne
 {
 	vsp += grav; //add gravity to player's vertical speed
+	// Aerial Combat
+	if (keyBrush)
+	{
+		spd = atkMovSpd;
+		isAttackingAir = true;
+	}
 }
 
 #endregion

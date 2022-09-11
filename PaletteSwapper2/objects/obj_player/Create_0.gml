@@ -5,6 +5,8 @@
 spd = 3;
 jumpSpd = 6;
 grav = 0.25;
+movSpd = spd;
+atkMovSpd = spd / 2; // This is the speed at which the player moves while in the attacking state.
 
 //Mutables
 hsp = 0;
@@ -15,6 +17,8 @@ maxCombo = 3;
 numLives = 4;
 
 //Boolean states
+isAttackingGround = false;
+isAttackingAir = false;
 
 //Animations
 idleSprite = spr_andy_idle;
