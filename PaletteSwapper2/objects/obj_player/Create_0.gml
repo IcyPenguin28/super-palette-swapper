@@ -24,6 +24,8 @@ myCol = colors.empty;
 //Boolean states
 isAttackingGround = false;
 isAttackingAir = false;
+hasPaintBucket = false;
+isDashing = false;
 
 //Animations
 idleSprite = spr_andy_idle;

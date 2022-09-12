@@ -2,9 +2,9 @@
 // You can write your code in this editor
 
 //Constants
-wRes = 384;
-hRes = 216;
-resScale = 4;
+wRes = 640;
+hRes = 360;
+resScale = 2;
 panSpd = 0.1;
 
 //Create camera

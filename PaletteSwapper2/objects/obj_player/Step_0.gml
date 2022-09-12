@@ -105,6 +105,28 @@ y += vsp;
 
 #endregion
 
+#region COLOR POWERS
+switch (myCol)
+{
+	case colors.red:
+		break;
+	case colors.orange:
+		break;
+	case colors.yellow:
+		break;
+	case colors.green:
+		break;
+	case colors.cyan:
+		break;
+	case colors.blue:
+		break;
+	case colors.indigo:
+		break;
+	case colors.purple:
+		break;
+}
+#endregion
+
 #region ANIMATION
 #endregion
 
