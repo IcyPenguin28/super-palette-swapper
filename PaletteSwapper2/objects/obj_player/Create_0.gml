@@ -22,7 +22,7 @@ maxCombo = 3;
 numLives = 4;
 coyoteTime = 0;
 jumpFrames = 5;
-myCol = colors.empty;
+myCol = colors.white;
 
 //Timers
 dashstep = 0;

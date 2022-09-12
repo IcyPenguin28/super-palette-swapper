@@ -53,7 +53,7 @@ if array_has_value(colorList, colors.purple)
 	draw_circle_color(xx - padding, yy - padding, rad, c_purple, c_purple, false);
 }
 
-if array_has_value(colorList, colors.empty)
+if array_has_value(colorList, colors.white)
 {
 	draw_circle_color(xx, yy, rad, c_white, c_black, true);
 }
