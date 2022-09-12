@@ -1,11 +1,16 @@
 /// @description Insert description here
 // You can write your code in this editor
-var xx = 48;
-var yy = 48;
+
+// Draw Setup
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+//Palette variables
 draw_set_circle_precision(32);
 draw_circle_color(xx, yy, 32, c_white, c_white, false);
 
-var padding = 20;
+//Paint variables
+padding = 18;
 var rad = 6;
 
 #region DRAW AVAILABLE COLORS
@@ -53,9 +58,4 @@ if array_has_value(colorList, colors.empty)
 {
 	draw_circle_color(xx, yy, rad, c_white, c_black, true);
 }
-#endregion
-
-#region DRAW SELECTION RING
-// Commented out until I find a better alternative
-//draw_circle_color(xx, yy,rad, make_color_rgb(252, 223, 3),make_color_rgb(252, 223, 3), true);
 #endregion
