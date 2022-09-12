@@ -1,8 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-depth = -9999;
-
 enum colors
 {
 	empty,
@@ -35,7 +33,20 @@ array_set(colorList, 8, colors.purple);
 // Create cursor
 xx = 48;
 yy = 64;
+padding = 18;
 instance_create_depth(xx, yy, -10000, obj_palette_cursor);
+
+colorCoords = [
+	[xx, yy],						// empty
+	[xx, yy - padding],				//red
+	[xx + padding, yy - padding],	//orange
+	[xx + padding, yy],				//yellow
+	[xx + padding, yy + padding],	//green
+	[xx, yy + padding],				//cyan
+	[xx - padding, yy + padding],	//blue
+	[xx - padding, yy],				//indigo
+	[xx - padding, yy - padding]	//purple
+];
 
 function move_palette_cursor(tx, ty)
 {

@@ -10,7 +10,6 @@ draw_set_circle_precision(32);
 draw_circle_color(xx, yy, 32, c_white, c_white, false);
 
 //Paint variables
-padding = 18;
 var rad = 6;
 
 #region DRAW AVAILABLE COLORS

@@ -19,7 +19,10 @@ keyReset = keyboard_check_pressed(ord("R"));
 
 #region MOVEMENT
 dir = keyRight - keyLeft;
-hsp = dir * spd;
+if (!isDashing)
+{
+	hsp = dir * spd;
+}
 
 //Context dependent movement options
 if (onGround) //on ground
@@ -105,10 +108,42 @@ y += vsp;
 
 #endregion
 
+#region TIMERS
+if dashstep > 0 
+{
+	dashstep --;
+	
+	if dashstep == 0 // Countdown is complete
+	{
+		canDash = true;
+		isDashing = false;
+	}
+}
+#endregion
+
 #region COLOR POWERS
 switch (myCol)
 {
 	case colors.red:
+		if (canDash && keyAction)
+		{
+			canDash = false;
+			isDashing = true;
+			dashstep = dashTime;
+			if (dir != 0)
+			{
+				dashDir = dir;	
+			}
+			else
+			{
+				dashDir = sign(image_xscale);	
+			}
+		}
+		if (isDashing)
+		{
+			vsp = 0;
+			hsp = dashSpd * dashDir;
+		}
 		break;
 	case colors.orange:
 		break;
