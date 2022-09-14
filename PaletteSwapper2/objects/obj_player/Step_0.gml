@@ -159,7 +159,8 @@ switch (myCol)
 	case colors.orange:
 		if (canShoot && keyBrush)
 		{
-			with instance_create_layer(x + sign(image_xscale) * 32, y, "Instances", obj_paintbullet)
+			shootstep = shootTime;
+			with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbullet)
 			{
 				dir = sign(other.image_xscale);
 			}
@@ -176,6 +177,24 @@ switch (myCol)
 		break;
 	// BLUE
 	case colors.blue:
+		if (canShoot & keyBrush && !keyDown) //Place
+		{
+			shootstep = shootTime;
+			with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbomb)
+			{
+				dir = sign(other.image_xscale);
+			}
+		}
+		if (keyDown && keyBrush) //Detonate
+			{
+				if instance_exists(obj_paintbomb)
+				{
+					with (obj_paintbomb)
+					{
+						instance_destroy();
+					}
+				}
+			}
 		break;
 	// INDIGO
 	case colors.indigo:

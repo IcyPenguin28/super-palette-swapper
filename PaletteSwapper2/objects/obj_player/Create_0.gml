@@ -27,7 +27,8 @@ myCol = colors.white;
 dashstep = 0;
 dashTime = 20;
 shootstep = 0;
-shootTime = 20;
+shootTime = 5;
+bombTime = 20;
 
 //Boolean states
 isAttackingGround = false;
