@@ -7,11 +7,10 @@ jumpSpd = 6; // Determines the jump height of the player.
 grav = 0.25; // The higher this value, the faster the player falls. Neg vals means upside down gravity.
 movSpd = spd; // This is used to return to the base movement speed after something changes the player's speed.
 atkMovSpd = spd / 2; // This is the speed at which the player moves while in the attacking state.
-dashstep = 0;
-dashTime = 20;
 dashSpd = spd * 2;
 coyoteTimeMax = 6;
 jumpFramesMax = 5;
+maxPaintBullets = 3;
 
 //Mutables
 hsp = 0;
@@ -26,6 +25,9 @@ myCol = colors.white;
 
 //Timers
 dashstep = 0;
+dashTime = 20;
+shootstep = 0;
+shootTime = 20;
 
 //Boolean states
 isAttackingGround = false;
@@ -33,6 +35,7 @@ isAttackingAir = false;
 hasPaintBucket = false;
 canDash = true;
 isDashing = false;
+canShoot = true;
 
 //Animations
 idleSprite = spr_andy_idle;

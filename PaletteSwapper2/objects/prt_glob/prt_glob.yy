@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_andy_idle",
-    "path": "sprites/spr_andy_idle/spr_andy_idle.yy",
+    "name": "spr_paintglob_orange",
+    "path": "sprites/spr_paintglob_orange/spr_paintglob_orange.yy",
   },
   "solid": false,
   "visible": true,
@@ -23,16 +23,15 @@
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":7,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "Parents (DO NOT PLACE)",
+    "path": "folders/Objects/Parents (DO NOT PLACE).yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_player",
+  "name": "prt_glob",
   "tags": [],
   "resourceType": "GMObject",
 }

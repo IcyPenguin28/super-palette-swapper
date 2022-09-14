@@ -1,9 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-onGround = place_meeting(x,y+1,obj_solid);
-inWater = place_meeting(x,y,obj_water);
-
 #region CONTROLS
 keyLeft = keyboard_check(vk_left);
 keyRight = keyboard_check(vk_right);
@@ -16,6 +13,11 @@ keyRotateL = keyboard_check_pressed(ord("A"));
 keyRotateR = keyboard_check_pressed(ord("S"));
 keyReset = keyboard_check_pressed(ord("R"));
 #endregion
+
+onGround = place_meeting(x,y+1,obj_solid);
+inWater = place_meeting(x,y,obj_water);
+canShoot = (instance_number(obj_paintbullet) < maxPaintBullets &&
+			shootstep == 0)
 
 #region MOVEMENT
 dir = keyRight - keyLeft;
@@ -109,6 +111,7 @@ y += vsp;
 #endregion
 
 #region TIMERS
+// Dash Timer
 if dashstep > 0 
 {
 	dashstep --;
@@ -119,11 +122,18 @@ if dashstep > 0
 		isDashing = false;
 	}
 }
+
+// Shoot Timer
+if shootstep > 0 
+{
+	shootstep --;
+}
 #endregion
 
 #region COLOR POWERS
 switch (myCol)
 {
+	// RED
 	case colors.red:
 		if (canDash && keyAction)
 		{
@@ -145,18 +155,32 @@ switch (myCol)
 			hsp = dashSpd * dashDir;
 		}
 		break;
+	// ORANGE
 	case colors.orange:
+		if (canShoot && keyBrush)
+		{
+			with instance_create_layer(x + sign(image_xscale) * 32, y, "Instances", obj_paintbullet)
+			{
+				dir = sign(other.image_xscale);
+			}
+		}
 		break;
+	// YELLOW
 	case colors.yellow:
 		break;
+	// GREEN
 	case colors.green:
 		break;
+	// CYAN
 	case colors.cyan:
 		break;
+	// BLUE
 	case colors.blue:
 		break;
+	// INDIGO
 	case colors.indigo:
 		break;
+	// PURPLE
 	case colors.purple:
 		break;
 }

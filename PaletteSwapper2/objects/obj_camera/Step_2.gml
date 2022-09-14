@@ -1,10 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
-var camX = camera_get_view_x(cam);
-var camY = camera_get_view_y(cam);
+camX = camera_get_view_x(cam);
+camY = camera_get_view_y(cam);
 
-var camW = camera_get_view_width(cam);
-var camH = camera_get_view_height(cam);
+camW = camera_get_view_width(cam);
+camH = camera_get_view_height(cam);
 
 var targetX = obj_player.x - (wRes/2);
 var targetY = obj_player.y - (hRes/2);
