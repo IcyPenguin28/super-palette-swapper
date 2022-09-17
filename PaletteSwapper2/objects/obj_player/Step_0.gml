@@ -30,18 +30,6 @@ if (!isDashing)
 //Context dependent movement options
 if (onGround) //on ground
 {
-	if (keyJump)
-	{
-		if sign(grav) == -1
-		{
-			vsp = jumpSpd;
-		}
-		else
-		{
-			vsp = -jumpSpd;
-		}
-	}
-	
 	// Ground Combat
 	if (keyBrush)
 	{
@@ -52,7 +40,7 @@ if (onGround) //on ground
 }
 else if (inWater) //in water
 {
-	
+
 }
 else //airborne
 {
@@ -83,11 +71,15 @@ if (jumpFrames < jumpFramesMax)
 }
 
 //Jump
-if (onGround || coyoteTime > 0)
+if ((onGround || coyoteTime > 0) && jumpFrames < jumpFramesMax)
 {
-    if (jumpFrames < jumpFramesMax)
+	if sign(grav) == -1
 	{
-		vsp = -jumpSpd;	
+		vsp = jumpSpd;
+	}
+	else
+	{
+		vsp = -jumpSpd;
 	}
 }
 
@@ -99,7 +91,7 @@ if (place_meeting(x+hsp,y,obj_solid))
 {
 	while (!place_meeting(x+sign(hsp),y,obj_solid))
 	{
-		x += sign(hsp);	
+		x += sign(hsp);
 	}
 	hsp = 0;
 }
@@ -110,7 +102,7 @@ if (place_meeting(x,y+vsp,obj_solid))
 {
 	while (!place_meeting(x,y+sign(vsp),obj_solid))
 	{
-		y += sign(vsp);	
+		y += sign(vsp);
 	}
 	vsp = 0;
 }
@@ -120,10 +112,10 @@ y += vsp;
 
 #region TIMERS
 // Dash Timer
-if dashstep > 0 
+if dashstep > 0
 {
 	dashstep --;
-	
+
 	if dashstep == 0 // Countdown is complete
 	{
 		canDash = true;
@@ -132,7 +124,7 @@ if dashstep > 0
 }
 
 // Shoot Timer
-if shootstep > 0 
+if shootstep > 0
 {
 	shootstep --;
 }
@@ -150,11 +142,11 @@ switch (myCol)
 			dashstep = dashTime;
 			if (dir != 0)
 			{
-				dashDir = dir;	
+				dashDir = dir;
 			}
 			else
 			{
-				dashDir = sign(image_xscale);	
+				dashDir = sign(image_xscale);
 			}
 		}
 		if (isDashing)
