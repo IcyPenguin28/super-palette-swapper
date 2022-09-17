@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "spr_andy_idle",
-    "path": "sprites/spr_andy_idle/spr_andy_idle.yy",
+    "name": "spr_paintglob_yellow",
+    "path": "sprites/spr_paintglob_yellow/spr_paintglob_yellow.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_entity",
-    "path": "objects/obj_entity/obj_entity.yy",
+    "name": "prt_glob",
+    "path": "objects/prt_glob/prt_glob.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -24,18 +24,18 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":7,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":1,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"obj_entity","path":"objects/obj_entity/obj_entity.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "DO NOT PLACE",
+    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_player",
+  "name": "obj_paintglob_yellow",
   "tags": [],
   "resourceType": "GMObject",
 }

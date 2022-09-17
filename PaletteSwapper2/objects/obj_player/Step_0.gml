@@ -14,7 +14,8 @@ keyRotateR = keyboard_check_pressed(ord("S"));
 keyReset = keyboard_check_pressed(ord("R"));
 #endregion
 
-onGround = place_meeting(x,y+1,obj_solid);
+onGround = (place_meeting(x,y+1,obj_solid) && sign(grav) == 1 ||
+			place_meeting(x,y-1,obj_solid) && sign(grav) == -1);
 inWater = place_meeting(x,y,obj_water);
 canShoot = (instance_number(obj_paintbullet) < maxPaintBullets && shootstep == 0);
 canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0);
@@ -31,7 +32,14 @@ if (onGround) //on ground
 {
 	if (keyJump)
 	{
-		vsp = -jumpSpd;	
+		if sign(grav) == -1
+		{
+			vsp = jumpSpd;
+		}
+		else
+		{
+			vsp = -jumpSpd;
+		}
 	}
 	
 	// Ground Combat
@@ -163,11 +171,21 @@ switch (myCol)
 			with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbullet)
 			{
 				dir = sign(other.image_xscale);
+				grav = sign(other.grav) * grav;
 			}
 		}
 		break;
 	// YELLOW
 	case colors.yellow:
+	if (canShoot && keyBrush)
+		{
+			shootstep = shootTime;
+			with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintglob_yellow)
+			{
+				dir = sign(other.image_xscale);
+				grav = sign(other.grav) * grav;
+			}
+		}
 		break;
 	// GREEN
 	case colors.green:
@@ -183,6 +201,7 @@ switch (myCol)
 			with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbomb)
 			{
 				dir = sign(other.image_xscale);
+				grav = sign(other.grav) * grav;
 			}
 		}
 		if (keyDown && keyBrush) //Detonate
@@ -206,6 +225,7 @@ switch (myCol)
 #endregion
 
 #region ANIMATION
+image_yscale = sign(grav);
 #endregion
 
 #region DEBUG

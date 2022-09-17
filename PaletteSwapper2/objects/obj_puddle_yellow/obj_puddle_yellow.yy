@@ -1,16 +1,13 @@
 {
   "spriteId": {
-    "name": "spr_andy_idle",
-    "path": "sprites/spr_andy_idle/spr_andy_idle.yy",
+    "name": "spr_puddle_yellow",
+    "path": "sprites/spr_puddle_yellow/spr_puddle_yellow.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_entity",
-    "path": "objects/obj_entity/obj_entity.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -24,18 +21,17 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":4,"collisionObjectId":{"name":"obj_entity","path":"objects/obj_entity/obj_entity.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":7,"eventType":7,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "DO NOT PLACE",
+    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_player",
+  "name": "obj_puddle_yellow",
   "tags": [],
   "resourceType": "GMObject",
 }

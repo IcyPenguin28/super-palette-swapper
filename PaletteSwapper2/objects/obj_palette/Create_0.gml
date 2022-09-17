@@ -24,7 +24,7 @@ activeSlot = 0;
 array_set(colorList, 0, colors.white);
 array_set(colorList, 1, colors.red);
 array_set(colorList, 2, colors.orange);
-//array_set(colorList, 3, colors.yellow);
+array_set(colorList, 3, colors.yellow);
 //array_set(colorList, 4, colors.green);
 //array_set(colorList, 5, colors.cyan);
 array_set(colorList, 6, colors.blue);
