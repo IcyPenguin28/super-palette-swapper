@@ -11,6 +11,7 @@ dashSpd = spd * 2;
 coyoteTimeMax = 6;
 jumpFramesMax = 5;
 maxPaintBullets = 3;
+maxBombs = 2;
 
 //Mutables
 hsp = 0;

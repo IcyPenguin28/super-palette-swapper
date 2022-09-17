@@ -16,8 +16,8 @@ keyReset = keyboard_check_pressed(ord("R"));
 
 onGround = place_meeting(x,y+1,obj_solid);
 inWater = place_meeting(x,y,obj_water);
-canShoot = (instance_number(obj_paintbullet) < maxPaintBullets &&
-			shootstep == 0)
+canShoot = (instance_number(obj_paintbullet) < maxPaintBullets && shootstep == 0);
+canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0);
 
 #region MOVEMENT
 dir = keyRight - keyLeft;
@@ -177,9 +177,9 @@ switch (myCol)
 		break;
 	// BLUE
 	case colors.blue:
-		if (canShoot & keyBrush && !keyDown) //Place
+		if (canBomb & keyBrush && !keyDown) //Place
 		{
-			shootstep = shootTime;
+			shootstep = bombTime;
 			with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbomb)
 			{
 				dir = sign(other.image_xscale);
