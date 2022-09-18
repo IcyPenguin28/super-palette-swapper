@@ -24,7 +24,7 @@ canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0);
 dir = keyRight - keyLeft;
 if (!isDashing)
 {
-	hsp = dir * spd;
+	hsp = lerp(hsp, dir * spd, gAccel);
 }
 
 //Context dependent movement options
@@ -217,6 +217,10 @@ switch (myCol)
 #endregion
 
 #region ANIMATION
+if (dir != 0)
+{
+	image_xscale = sign(dir);
+}
 image_yscale = sign(grav);
 #endregion
 
