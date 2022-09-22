@@ -2,23 +2,50 @@
 // You can write your code in this editor
 
 #region CONTROLS
-keyLeft = keyboard_check(vk_left);
-keyRight = keyboard_check(vk_right);
-keyUp = keyboard_check(vk_up);
-keyDown = keyboard_check(vk_down);
-keyJump = keyboard_check_pressed(ord("Z"));
-keyBrush = keyboard_check_pressed(ord("X"));
-keyAction = keyboard_check_pressed(ord("C"));
-keyRotateL = keyboard_check_pressed(ord("A"));
-keyRotateR = keyboard_check_pressed(ord("S"));
-keyReset = keyboard_check_pressed(ord("R"));
+var gp = global.gp_device;
+if gp != -1
+{
+	keyLeft = keyboard_check(vk_left) ||
+		abs(min(0,gamepad_axis_value(gp, gp_axislh)));
+	keyRight = keyboard_check(vk_right) ||
+		max(0,gamepad_axis_value(gp, gp_axislh));
+	keyUp = keyboard_check(vk_up) ||
+		abs(min(0,gamepad_axis_value(gp, gp_axislv)));
+	keyDown = keyboard_check(vk_down) ||
+		max(0,gamepad_axis_value(gp, gp_axislv));
+	keyJump = keyboard_check_pressed(ord("Z")) ||
+		gamepad_button_check_pressed(gp, gp_face1);
+	keyBrush = keyboard_check_pressed(ord("X")) ||
+		gamepad_button_check_pressed(gp, gp_face3) ||
+		gamepad_button_check_pressed(gp, gp_face4);
+	keyAction = keyboard_check_pressed(ord("C")) ||
+		gamepad_button_check_pressed(gp, gp_face2);
+
+	keyReset = keyboard_check_pressed(ord("R"));
+}
+else
+{
+	keyLeft = keyboard_check(vk_left);
+	keyRight = keyboard_check(vk_right);
+	keyUp = keyboard_check(vk_up);
+	keyDown = keyboard_check(vk_down);
+	keyJump = keyboard_check_pressed(ord("Z"));
+	keyBrush = keyboard_check_pressed(ord("X"));
+	keyAction = keyboard_check_pressed(ord("C"));
+		
+	keyRotateL = keyboard_check_pressed(ord("A"));
+	keyRotateR = keyboard_check_pressed(ord("S"));
+	keyReset = keyboard_check_pressed(ord("R"));
+}
 #endregion
 
+#region UPDATING STATES
 onGround = (place_meeting(x,y+1,obj_solid) && sign(grav) == 1 ||
 			place_meeting(x,y-1,obj_solid) && sign(grav) == -1);
 inWater = place_meeting(x,y,obj_water);
 canShoot = (instance_number(obj_paintbullet) < maxPaintBullets && shootstep == 0);
 canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0);
+#endregion
 
 #region MOVEMENT
 dir = keyRight - keyLeft;

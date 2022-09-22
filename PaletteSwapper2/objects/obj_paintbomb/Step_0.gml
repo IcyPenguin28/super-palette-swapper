@@ -3,7 +3,8 @@
 hsp = spd * dir;
 vsp += grav;
 
-onGround = place_meeting(x, y+1, obj_solid);
+onGround = (place_meeting(x, y+1, obj_solid) && sign(grav) == 1 ||
+			place_meeting(x, y-1, obj_solid) && sign(grav) == -1);
 
 //Vertical collision
 if (place_meeting(x,y+vsp,obj_solid))
