@@ -9,5 +9,11 @@ onGround = (place_meeting(x,y+1,obj_solid) && sign(grav) == 1 ||
 
 if onGround
 {
+	// TODO: Check for ceiling code here
+	// if there is a ceiling above the point of impact, then...
+	with (instance_create_layer(x, y, "Instances", obj_puddle_yellow))
+	{
+		image_yscale = sign(other.grav);
+	}
 	instance_destroy();
 }

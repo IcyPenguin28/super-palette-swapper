@@ -12,7 +12,7 @@ coyoteTimeMax = 6; // This is the number of frames coyote time lasts for
 jumpFramesMax = 5; // This is the number of frames jump input buffering lasts for
 maxPaintBullets = 3; // This is the number of orange bullets that can be on the screen at once
 maxBombs = 2; // This is the number of bombs that can be on the screen at once
-gAccel = 0.2; // This is the rate at which the player speeds up/slows down when on normal ground
+gAccel = 0.15; // This is the rate at which the player speeds up/slows down when on normal ground
 maxCombo = 3; // This is the number of hits the player can string together at once
 
 //Mutables

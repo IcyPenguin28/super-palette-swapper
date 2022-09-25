@@ -15,6 +15,8 @@ if gp != -1
 		max(0,gamepad_axis_value(gp, gp_axislv));
 	keyJump = keyboard_check_pressed(ord("Z")) ||
 		gamepad_button_check_pressed(gp, gp_face1);
+	keyJumpHeld = keyboard_check(ord("Z")) ||
+		gamepad_button_check(gp, gp_face1);
 	keyBrush = keyboard_check_pressed(ord("X")) ||
 		gamepad_button_check_pressed(gp, gp_face3) ||
 		gamepad_button_check_pressed(gp, gp_face4);
@@ -30,11 +32,10 @@ else
 	keyUp = keyboard_check(vk_up);
 	keyDown = keyboard_check(vk_down);
 	keyJump = keyboard_check_pressed(ord("Z"));
+	keyJumpHeld = keyboard_check(ord("Z"));
 	keyBrush = keyboard_check_pressed(ord("X"));
 	keyAction = keyboard_check_pressed(ord("C"));
-		
-	keyRotateL = keyboard_check_pressed(ord("A"));
-	keyRotateR = keyboard_check_pressed(ord("S"));
+	
 	keyReset = keyboard_check_pressed(ord("R"));
 }
 #endregion
@@ -45,6 +46,14 @@ onGround = (place_meeting(x,y+1,obj_solid) && sign(grav) == 1 ||
 inWater = place_meeting(x,y,obj_water);
 canShoot = (instance_number(obj_paintbullet) < maxPaintBullets && shootstep == 0);
 canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0);
+
+if onGround
+{
+	if dashstep == 0
+	{
+		canDash = true;
+	}
+}
 #endregion
 
 #region MOVEMENT
@@ -98,7 +107,7 @@ if (jumpFrames < jumpFramesMax)
 }
 
 //Jump
-if ((onGround || coyoteTime > 0) && jumpFrames < jumpFramesMax)
+if ((onGround || coyoteTime > 0) && jumpFrames < jumpFramesMax && !isDashing)
 {
 	if sign(grav) == -1
 	{
@@ -107,6 +116,22 @@ if ((onGround || coyoteTime > 0) && jumpFrames < jumpFramesMax)
 	else
 	{
 		vsp = -jumpSpd;
+	}
+}
+
+// Variable Jump Height
+if sign(grav) == 1
+{
+	if (vsp < 0 && !keyJumpHeld)
+	{
+		vsp = max(vsp, -jumpSpd/3);
+	}
+}
+else
+{
+	if (vsp > 0 && !keyJumpHeld)
+	{
+		vsp = min(vsp, jumpSpd/3);
 	}
 }
 
@@ -145,8 +170,11 @@ if dashstep > 0
 
 	if dashstep == 0 // Countdown is complete
 	{
-		canDash = true;
 		isDashing = false;
+		if onGround
+		{
+			canDash = true;
+		}
 	}
 }
 

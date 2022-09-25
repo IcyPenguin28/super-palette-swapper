@@ -6,6 +6,6 @@ event_inherited();
 
 // Redefine necessary vars
 spd = 10;
-grav = 0.3;
+grav = 0;
 
 // Define child-exclusive vars
