@@ -162,6 +162,13 @@ y += vsp;
 
 #endregion
 
+#region DYING
+if hp <= 0
+{
+	instance_destroy();
+}
+#endregion
+
 #region TIMERS
 // Dash Timer
 if dashstep > 0
@@ -182,6 +189,17 @@ if dashstep > 0
 if shootstep > 0
 {
 	shootstep --;
+}
+
+//I-Frame Timer
+if iFrames > 0
+{
+	image_alpha = iFrames % 2;
+	iFrames --;
+}
+else
+{
+	image_alpha = 1;
 }
 #endregion
 

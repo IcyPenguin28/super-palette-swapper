@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Breezepuff",
+    "path": "folders/Sprites/Enemies/Breezepuff.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_breezepuff_projectile",

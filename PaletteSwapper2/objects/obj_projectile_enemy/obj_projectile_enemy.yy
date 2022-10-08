@@ -5,8 +5,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "obj_enemy",
-    "path": "objects/obj_enemy/obj_enemy.yy",
+    "name": "prt_glob",
+    "path": "objects/prt_glob/prt_glob.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -28,7 +28,7 @@
     "path": "folders/Objects/Parents (DO NOT PLACE).yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_entity",
+  "name": "obj_projectile_enemy",
   "tags": [],
   "resourceType": "GMObject",
 }

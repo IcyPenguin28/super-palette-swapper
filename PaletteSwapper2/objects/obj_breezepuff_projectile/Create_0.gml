@@ -7,6 +7,7 @@ event_inherited();
 // Redefine necessary vars
 spd = 4;
 grav = 0;
+atk = 1;
 
 // Define child-exclusive vars
 secondsAlive = 1;

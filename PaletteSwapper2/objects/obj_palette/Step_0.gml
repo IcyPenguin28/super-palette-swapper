@@ -134,7 +134,6 @@ if (array_has_value(colorList, colors.white) && keyW)
 #endregion
 
 #region ROTATE THROUGH COLORS
-// TODO: Continously loop through activeSlot until coming to a color that is actually in the palette
 if keyRotateL
 {
 	do
@@ -172,4 +171,7 @@ if keyRotateR
 move_palette_cursor(colorCoords[activeSlot][0], colorCoords[activeSlot][1]);
 
 // Set player's color to the one highlighted by the palette
-obj_player.myCol = colorList[activeSlot];
+if instance_exists(obj_player)
+{
+	obj_player.myCol = colorList[activeSlot];
+}

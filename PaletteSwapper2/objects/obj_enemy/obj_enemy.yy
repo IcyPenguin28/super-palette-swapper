@@ -4,10 +4,7 @@
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_enemy",
-    "path": "objects/obj_enemy/obj_enemy.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -28,7 +25,7 @@
     "path": "folders/Objects/Parents (DO NOT PLACE).yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_entity",
+  "name": "obj_enemy",
   "tags": [],
   "resourceType": "GMObject",
 }

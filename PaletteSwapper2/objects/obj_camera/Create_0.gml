@@ -11,8 +11,11 @@ panSpd = 0.1;
 view_enabled = true;
 view_visible[0] = true;
 
-cam = camera_create_view(0,0,wRes,hRes,0,obj_player);
-view_set_camera(0,cam);
+if instance_exists(obj_player)
+{
+	cam = camera_create_view(0,0,wRes,hRes,0,obj_player);
+	view_set_camera(0,cam);
+}
 
 window_set_size(wRes*resScale,hRes*resScale);
 surface_resize(application_surface,wRes*resScale,hRes*resScale);

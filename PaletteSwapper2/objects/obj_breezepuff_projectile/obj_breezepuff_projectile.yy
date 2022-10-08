@@ -8,8 +8,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "prt_glob",
-    "path": "objects/prt_glob/prt_glob.yy",
+    "name": "obj_projectile_enemy",
+    "path": "objects/obj_projectile_enemy/obj_projectile_enemy.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -32,8 +32,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "DO NOT PLACE",
-    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
+    "name": "Enemies",
+    "path": "folders/Objects/Enemies.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_breezepuff_projectile",

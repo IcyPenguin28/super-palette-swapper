@@ -6,8 +6,16 @@ camY = camera_get_view_y(cam);
 camW = camera_get_view_width(cam);
 camH = camera_get_view_height(cam);
 
-var targetX = obj_player.x - (wRes/2);
-var targetY = obj_player.y - (hRes/2);
+if instance_exists(obj_player)
+{
+	var targetX = obj_player.x - (wRes/2);
+	var targetY = obj_player.y - (hRes/2);
+}
+else
+{
+	var targetX = camX;
+	var targetY = camY;
+}
 
 targetX = clamp(targetX,0,room_width-wRes);
 targetY = clamp(targetY,0,room_width-hRes);

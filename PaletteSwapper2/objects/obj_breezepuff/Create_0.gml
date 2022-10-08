@@ -6,6 +6,7 @@ dashSpd = 20;
 gAccel = 0.1;
 aAccel = 0.1;
 jumpSpd = 3;
+atk = 1;
 
 hsp = 0;
 vsp = 0;
