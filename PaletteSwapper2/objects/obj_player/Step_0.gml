@@ -296,10 +296,3 @@ if (dir != 0)
 }
 image_yscale = sign(grav);
 #endregion
-
-#region DEBUG
-if (keyReset)
-{
-	room_restart();
-}
-#endregion
