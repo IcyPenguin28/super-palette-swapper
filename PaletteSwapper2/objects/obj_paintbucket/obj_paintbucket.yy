@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_paintbucket",
+    "path": "sprites/spr_paintbucket/spr_paintbucket.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

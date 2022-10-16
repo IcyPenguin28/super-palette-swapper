@@ -26,7 +26,7 @@ numLives = 4; // This is the number of lives the player currently has
 coyoteTime = 0;
 jumpFrames = 5;
 myCol = colors.white; // This tracks which color the player currently has active.
-maxHp = 3; // This is the number of hits the player can take before dying. Some attacks may deal more than 1 HP
+maxHp = 4; // This is the number of hits the player can take before dying. Some attacks may deal more than 1 HP
 hp = maxHp; // This tracks the player's current HP value.
 iFrames = 0;
 
