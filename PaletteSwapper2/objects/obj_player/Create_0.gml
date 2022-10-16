@@ -15,6 +15,7 @@ maxBombs = 2; // This is the number of bombs that can be on the screen at once
 gAccel = 0.15; // This is the rate at which the player speeds up/slows down when on normal ground
 maxCombo = 3; // This is the number of hits the player can string together at once
 maxIFrames = room_speed * 1; // Changing the int literal changes the number of seconds iframes are active.
+hitStopFactor = 10; // The higher this number, the slower hitstop will last for
 
 //Mutables
 hsp = 0; // This is the player's instantaneous horizontal velocity
@@ -44,6 +45,8 @@ hasPaintBucket = false;
 canDash = true;
 isDashing = false;
 canShoot = true;
+hitStop = false;
+hasPaintBucket = false;
 
 //Animations
 idleSprite = spr_andy_idle;

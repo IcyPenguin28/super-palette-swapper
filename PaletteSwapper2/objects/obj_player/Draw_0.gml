@@ -1,8 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (iFrames == 0)
-{
-	hp -= other.atk;
-	iFrames = maxIFrames;
-	hitStop = true;
-}
+draw_self();
+
+
+pal_swap_set(spr_andy_palette,myCol - 1,false);

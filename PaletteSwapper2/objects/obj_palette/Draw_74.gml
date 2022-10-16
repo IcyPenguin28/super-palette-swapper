@@ -4,6 +4,7 @@
 // Draw Setup
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
+pal_swap_reset();
 
 //Palette variables
 draw_set_circle_precision(32);

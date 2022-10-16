@@ -1,8 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (iFrames == 0)
+hasPaintBucket = true;
+with (other)
 {
-	hp -= other.atk;
-	iFrames = maxIFrames;
-	hitStop = true;
+	instance_destroy();
 }

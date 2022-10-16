@@ -165,6 +165,7 @@ y += vsp;
 #region DYING
 if hp <= 0
 {
+	hitStop = false;
 	instance_destroy();
 }
 #endregion
@@ -200,6 +201,21 @@ if iFrames > 0
 else
 {
 	image_alpha = 1;
+}
+
+// Hitstop Timer
+if hitStop
+{
+	room_speed /= hitStopFactor;
+	hitStop = false;
+}
+else
+{
+	var targetRmSpd = 60;
+	if room_speed != targetRmSpd
+	{
+		room_speed *= hitStopFactor;
+	}
 }
 #endregion
 
