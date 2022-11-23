@@ -80,7 +80,10 @@ else if (inWater) //in water
 }
 else //airborne
 {
-	vsp += grav; //add gravity to player's vertical speed
+	if (!isDashing)
+	{
+		vsp += grav; //add gravity to player's vertical speed
+	}
 	// Aerial Combat
 	if (keyBrush)
 	{

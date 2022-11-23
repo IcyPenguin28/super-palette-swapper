@@ -29,6 +29,8 @@ myCol = colors.white; // This tracks which color the player currently has active
 maxHp = 4; // This is the number of hits the player can take before dying. Some attacks may deal more than 1 HP
 hp = maxHp; // This tracks the player's current HP value.
 iFrames = 0;
+collectedBigDrops = [false, false, false]; // Bool array that holds the value for which big paintdrops in the stage have been collected.
+numPaintdrops = 0; // Represents the number of paintdrops the player has collected in the current stage
 
 //Timers
 dashstep = 0;

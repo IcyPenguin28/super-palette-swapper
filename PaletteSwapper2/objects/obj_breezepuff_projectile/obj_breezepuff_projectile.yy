@@ -32,8 +32,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Enemies",
-    "path": "folders/Objects/Enemies.yy",
+    "name": "DO NOT PLACE",
+    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_breezepuff_projectile",
