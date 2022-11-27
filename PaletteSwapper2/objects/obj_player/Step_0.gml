@@ -67,10 +67,15 @@ if (!isDashing)
 if (onGround) //on ground
 {
 	// Ground Combat
-	if (keyBrush)
+	if (keyBrush && !isAttackingGround && !isAttackingAir)
 	{
 		spd = atkMovSpd;
 		isAttackingGround = true;
+		image_index = 0;
+	}
+	else if (keyBrush && isAttackingGround && !isAttackingAir)
+	{
+		changeAttackState = true;	
 	}
 	coyoteTime = coyoteTimeMax;
 }
@@ -313,5 +318,30 @@ if (dir != 0)
 {
 	image_xscale = sign(dir);
 }
+
 image_yscale = sign(grav);
+
+if isAttackingGround
+{
+	switch (attackState)
+	{
+		case 0:
+			sprite_index = spr_andy_attack_ground_0;
+			break;
+		case 1:
+			sprite_index = spr_andy_attack_ground_1;
+			break;
+		case 2:
+			sprite_index = spr_andy_attack_ground_2;
+			break;
+	}
+}
+else if isDashing
+{
+	sprite_index = spr_andy_dash;
+}
+else
+{
+	sprite_index = spr_andy_idle;
+}
 #endregion

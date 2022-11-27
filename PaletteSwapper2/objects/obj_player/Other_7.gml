@@ -3,8 +3,27 @@
 
 if (isAttackingGround)
 {
-	isAttackingGround = false;
-	spd = movSpd;
+	if (changeAttackState)
+	{
+		show_debug_message("yeah!");
+		if (attackState < 2)
+		{
+			attackState ++;
+		}
+		else
+		{
+			attackState = 0;
+		}
+		changeAttackState = false;
+	}
+	else
+	{
+		attackState = 0;
+		isAttackingGround = false;
+		spd = movSpd;
+		sprite_index = spr_andy_idle;
+		image_index = 0;
+	}
 }
 
 if (isAttackingAir)

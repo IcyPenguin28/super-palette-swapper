@@ -31,6 +31,7 @@ hp = maxHp; // This tracks the player's current HP value.
 iFrames = 0;
 collectedBigDrops = [false, false, false]; // Bool array that holds the value for which big paintdrops in the stage have been collected.
 numPaintdrops = 0; // Represents the number of paintdrops the player has collected in the current stage
+attackState = 0; // This is the index of where the player is in the 3 hit combo
 
 //Timers
 dashstep = 0;
@@ -42,6 +43,7 @@ bombTime = 20;
 //Boolean states
 isAttackingGround = false;
 isAttackingAir = false;
+changeAttackState = false;
 isHurt = false;
 hasPaintBucket = false;
 canDash = true;
