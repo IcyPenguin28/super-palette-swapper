@@ -1,13 +1,13 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "spr_kill_effect",
+    "path": "sprites/spr_kill_effect/spr_kill_effect.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "obj_attack_player",
-    "path": "objects/obj_attack_player/obj_attack_player.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -26,11 +26,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "DO NOT PLACE",
+    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_attacktrail",
+  "name": "obj_killeffect",
   "tags": [],
   "resourceType": "GMObject",
 }
