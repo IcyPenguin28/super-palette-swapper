@@ -327,12 +327,36 @@ if isAttackingGround
 	{
 		case 0:
 			sprite_index = spr_andy_attack_ground_0;
+			if (!instance_exists(obj_attacktrail))
+			{
+				with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
+				{
+					image_xscale = other.image_xscale;
+					sprite_index = spr_andy_attack_ground_0_trail;
+				}
+			}
 			break;
 		case 1:
 			sprite_index = spr_andy_attack_ground_1;
+			if (!instance_exists(obj_attacktrail))
+			{
+				with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
+				{
+					image_xscale = other.image_xscale;
+					sprite_index = spr_andy_attack_ground_1_trail;
+				}
+			}
 			break;
 		case 2:
 			sprite_index = spr_andy_attack_ground_2;
+			if (!instance_exists(obj_attacktrail))
+			{
+				with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
+				{
+					image_xscale = other.image_xscale;
+					sprite_index = spr_andy_attack_ground_2_trail;
+				}
+			}
 			break;
 	}
 }

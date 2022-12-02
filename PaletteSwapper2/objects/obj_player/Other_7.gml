@@ -5,7 +5,6 @@ if (isAttackingGround)
 {
 	if (changeAttackState)
 	{
-		show_debug_message("yeah!");
 		if (attackState < 2)
 		{
 			attackState ++;
