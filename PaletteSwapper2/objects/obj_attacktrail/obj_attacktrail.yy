@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "DO NOT PLACE",
+    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
   },
   "resourceVersion": "1.0",
   "name": "obj_attacktrail",

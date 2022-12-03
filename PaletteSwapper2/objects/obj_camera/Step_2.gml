@@ -13,8 +13,12 @@ if instance_exists(obj_player)
 }
 else
 {
-	var targetX = camX;
-	var targetY = camY;
+	if !instance_exists(obj_camera_target)
+	{
+		instance_create_layer(camX, camY, "Instances", obj_camera_target);
+	}
+	var targetX = obj_camera_target.x - (wRes/2);
+	var targetY = obj_camera_target.y - (hRes/2);
 }
 
 targetX = clamp(targetX,0,room_width-wRes);
