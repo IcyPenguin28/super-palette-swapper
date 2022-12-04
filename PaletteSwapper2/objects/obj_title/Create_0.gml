@@ -3,3 +3,5 @@
 soundplayed = false;
 inMenu = false;
 menuMusicTriggered = false;
+
+image_speed = 0.05;

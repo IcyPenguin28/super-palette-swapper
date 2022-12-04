@@ -7,6 +7,7 @@ if keyboard_check_pressed(vk_space) || keyboard_check_pressed(ord("Z"))
 	{
 		audio_play_sound(snd_menuselection_final, 0, false);
 		soundplayed = true;
+		image_speed = 0.4;
 	}
 }
 
