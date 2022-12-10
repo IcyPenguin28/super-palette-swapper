@@ -21,7 +21,6 @@ hitStopFactor = 10; // The higher this number, the slower hitstop will last for
 hsp = 0; // This is the player's instantaneous horizontal velocity
 vsp = 0; // This is the player's instantaneous vertical velocity
 dir = 0; // Can be either -1, 0, or 1. Determines the direction the player is facing.
-combo = 0; // Tracks which stage of the 3-hit combo the player is on
 numLives = 4; // This is the number of lives the player currently has
 coyoteTime = 0;
 jumpFrames = 5;

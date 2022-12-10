@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_title",
-    "path": "sprites/spr_title/spr_title.yy",
+    "name": "spr_title_keyboard",
+    "path": "sprites/spr_title_keyboard/spr_title_keyboard.yy",
   },
   "solid": false,
   "visible": true,
