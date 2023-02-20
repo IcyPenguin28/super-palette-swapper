@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 global.gp_device = gamepad_detect_device();
-show_debug_message(gamepad_get_description(global.gp_device))
+// show_debug_message(gamepad_get_description(global.gp_device))
 global.gp_desc = gamepad_get_description(global.gp_device);
 
 #region DEBUG

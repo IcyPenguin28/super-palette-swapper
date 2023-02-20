@@ -1,8 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-var spr = spr_bigpaintdrop_indicator;
-var xx = sprite_get_width(spr)/2;
-var yy = 128;
 var p = obj_player;
 
 if instance_exists(p)

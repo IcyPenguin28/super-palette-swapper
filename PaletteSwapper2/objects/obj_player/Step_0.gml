@@ -57,6 +57,12 @@ if onGround
 #endregion
 
 #region MOVEMENT
+if !canMove
+{
+	keyRight = 0;
+	keyLeft = 0;
+}
+
 dir = keyRight - keyLeft;
 if (!isDashing)
 {
@@ -67,13 +73,13 @@ if (!isDashing)
 if (onGround) //on ground
 {
 	// Ground Combat
-	if (keyBrush && !isAttackingGround && !isAttackingAir)
+	if (canAttack && keyBrush && !isAttackingGround && !isAttackingAir)
 	{
 		spd = atkMovSpd;
 		isAttackingGround = true;
 		image_index = 0;
 	}
-	else if (keyBrush && isAttackingGround && !isAttackingAir)
+	else if (canAttack && isAttackingGround && !isAttackingAir)
 	{
 		changeAttackState = true;	
 	}
@@ -104,7 +110,7 @@ if (coyoteTime > 0)
 }
 
 //Jump input buffering
-if (keyJump)
+if (keyJump && canJump)
 {
     jumpFrames = 0;
 }

@@ -113,8 +113,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "PaletteSwapper2",
-    "path": "PaletteSwapper2.yyp",
+    "name": "Projectiles",
+    "path": "folders/Sprites/Projectiles.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_explosion",

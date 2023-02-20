@@ -27,7 +27,7 @@ if (audio_is_playing(mus_mainmenu))
 	y = lerp(y, 900, 0.1);
 }
 
-if round(y) == 900
+if round(y) == 900 && round(obj_camera_target.x) == room_width / 2
 {
 	canInteract = true;
 }
@@ -68,9 +68,14 @@ if canInteract
 		switch (menuPos)
 		{
 			case mainmenu.newgame:
-				room_goto(rm_introstage);
+				obj_savemenu.canInteract = true;
+				obj_camera_target.x += room_width /  3;
+				self.canInteract = false;
 				break;
 			case mainmenu.loadgame:
+				obj_savemenu.canInteract = true;
+				obj_camera_target.x += room_width /  3;
+				self.canInteract = false;
 				break;
 			case mainmenu.options:
 				break;

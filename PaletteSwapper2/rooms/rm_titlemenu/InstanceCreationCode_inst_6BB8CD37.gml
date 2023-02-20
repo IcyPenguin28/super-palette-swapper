@@ -1,0 +1,1 @@
+myFile = "save1.ini"

@@ -1,0 +1,1 @@
+myFile = "save2.ini"

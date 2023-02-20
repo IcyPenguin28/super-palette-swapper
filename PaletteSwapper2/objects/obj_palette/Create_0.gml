@@ -35,7 +35,7 @@ array_set(colorList, 6, colors.blue);
 xx = 48;
 yy = 64;
 padding = 18;
-instance_create_depth(xx, yy, -10000, obj_palette_cursor);
+cursor = instance_create_depth(xx, yy, -10000, obj_palette_cursor);
 
 colorCoords = [
 	[xx, yy],						// empty

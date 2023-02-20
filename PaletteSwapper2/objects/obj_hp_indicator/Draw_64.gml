@@ -1,9 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-var xx = 600;
-var yy = 48;
-
 if instance_exists(obj_player)
 {
 	var _hp = obj_player.hp;

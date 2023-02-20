@@ -46,11 +46,11 @@ if confirmButton
 	}
 }
 
-if (!audio_is_playing(snd_menuselection_final) && soundplayed)
+if (!audio_is_playing(snd_menuselection_final) && soundplayed && !inMenu)
 {
 	with (obj_camera_target)
 	{
-		x = lerp(x, 320, 0.1);
+		x = lerp(x, room_width / 2, 0.1);
 		y = lerp(y, 1080, 0.1);
 	}
 }

@@ -7,18 +7,20 @@ hRes = 360;
 resScale = 2;
 panSpd = 0.1;
 
+playerCam = camera_create_view(0,0,wRes,hRes,0,obj_player);
+targetCam = camera_create_view(0,0,wRes,hRes,0,obj_camera_target);
+
 //Create camera
 view_enabled = true;
 view_visible[0] = true;
 
 if instance_exists(obj_player)
 {
-	cam = camera_create_view(0,0,wRes,hRes,0,obj_player);
+	cam = playerCam;
 }
 else
 {
-	cam = camera_create_view(0,0,wRes,hRes,0,obj_camera_target);
-	
+	cam = targetCam;	
 }
 view_set_camera(0,cam);
 
