@@ -22,7 +22,7 @@ if gp != -1
 		gamepad_button_check_pressed(gp, gp_face4);
 	keyAction = keyboard_check_pressed(ord("C")) ||
 		gamepad_button_check_pressed(gp, gp_face2);
-
+	
 	keyReset = keyboard_check_pressed(ord("R"));
 }
 else
@@ -92,15 +92,29 @@ else if (inWater) //in water
 }
 else //airborne
 {
+	var _gravw = grav;	// Working Gravity. Real value unchanged
+	
+	// Slow descent if attacking in air
+	if (isAttackingAir)
+	{
+		_gravw *= airAttackDescent;
+	}
+	
 	if (!isDashing)
 	{
-		vsp += grav; //add gravity to player's vertical speed
+		vsp += _gravw; //add gravity to player's vertical speed
 	}
+	
 	// Aerial Combat
-	if (keyBrush)
+	if (canAttack && keyBrush && !isAttackingGround && !isAttackingAir)
 	{
 		spd = atkMovSpd;
 		isAttackingAir = true;
+		image_index = 0;
+	}
+	else if (canAttack && keyBrush && !isAttackingGround && isAttackingAir)
+	{
+		changeAttackState = true;	
 	}
 }
 
@@ -165,15 +179,25 @@ if (place_meeting(x+hsp,y,obj_solid))
 x += hsp;
 
 //Vertical
-if (place_meeting(x,y+vsp,obj_solid))
+var _vspw = vsp;	// Working Speed
+
+// Slow speed if attacking in air
+if (isAttackingAir)
 {
-	while (!place_meeting(x,y+sign(vsp),obj_solid))
-	{
-		y += sign(vsp);
-	}
-	vsp = 0;
+	_vspw *= airAttackDescent;
 }
-y += vsp;
+
+if (place_meeting(x,y+_vspw,obj_solid))
+{
+	while (!place_meeting(x,y+sign(_vspw),obj_solid))
+	{
+		y += sign(_vspw);
+	}
+	
+	_vspw = 0;
+	vsp = 0;	// Reset original value too
+}
+y += _vspw;
 
 #endregion
 

@@ -20,6 +20,7 @@ maxCombo = 3; // This is the number of hits the player can string together at on
 maxIFrames = room_speed * 1; // Changing the int literal changes the number of seconds iframes are active.
 hitStopFactor = 10; // The higher this number, the slower hitstop will last for
 depth = -1;
+airAttackDescent = 0.5; // Multiplied to gravity and vertical speed when attacking in the air
 
 //Mutables
 hsp = 0; // This is the player's instantaneous horizontal velocity
