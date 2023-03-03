@@ -196,6 +196,7 @@
     {"id":{"name":"spr_andy_attack_ground_1","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},"order":7,},
     {"id":{"name":"snd_menuselection","path":"sounds/snd_menuselection/snd_menuselection.yy",},"order":2,},
     {"id":{"name":"spr_puddle_yellow","path":"sprites/spr_puddle_yellow/spr_puddle_yellow.yy",},"order":3,},
+    {"id":{"name":"draw_text_block","path":"scripts/draw_text_block/draw_text_block.yy",},"order":6,},
     {"id":{"name":"shd_pal_html_surface","path":"shaders/shd_pal_html_surface/shd_pal_html_surface.yy",},"order":1,},
     {"id":{"name":"obj_oneup","path":"objects/obj_oneup/obj_oneup.yy",},"order":0,},
     {"id":{"name":"obj_canvas","path":"objects/obj_canvas/obj_canvas.yy",},"order":4,},

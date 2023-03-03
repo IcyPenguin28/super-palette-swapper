@@ -155,6 +155,7 @@
     {"name":"spr_andy_attack_ground_1","order":7,"path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},
     {"name":"snd_menuselection","order":2,"path":"sounds/snd_menuselection/snd_menuselection.yy",},
     {"name":"spr_puddle_yellow","order":3,"path":"sprites/spr_puddle_yellow/spr_puddle_yellow.yy",},
+    {"name":"draw_text_block","order":6,"path":"scripts/draw_text_block/draw_text_block.yy",},
     {"name":"shd_pal_html_surface","order":1,"path":"shaders/shd_pal_html_surface/shd_pal_html_surface.yy",},
     {"name":"obj_canvas","order":4,"path":"objects/obj_canvas/obj_canvas.yy",},
     {"name":"obj_mainmenu","order":8,"path":"objects/obj_mainmenu/obj_mainmenu.yy",},

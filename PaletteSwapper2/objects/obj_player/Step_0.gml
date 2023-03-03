@@ -79,10 +79,11 @@ if (onGround) //on ground
 		isAttackingGround = true;
 		image_index = 0;
 	}
-	else if (canAttack && isAttackingGround && !isAttackingAir)
+	else if (canAttack && keyBrush && isAttackingGround && !isAttackingAir)
 	{
 		changeAttackState = true;	
 	}
+	
 	coyoteTime = coyoteTimeMax;
 }
 else if (inWater) //in water
@@ -176,7 +177,7 @@ y += vsp;
 
 #endregion
 
-#region DYING
+#region DYING LOL
 if hp <= 0
 {
 	hitStop = false;
@@ -327,8 +328,10 @@ if (dir != 0)
 
 image_yscale = sign(grav);
 
-if isAttackingGround
+// Attacking 
+if (isAttackingGround || isAttackingAir) // (Split later for Ground vs. Air)
 {
+	// Set sprite based on attack state.
 	switch (attackState)
 	{
 		case 0:

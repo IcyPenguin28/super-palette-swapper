@@ -10,6 +10,7 @@
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_projectile_enemy","path":"objects/obj_projectile_enemy/obj_projectile_enemy.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_paintbucket","path":"objects/obj_paintbucket/obj_paintbucket.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],

@@ -1,6 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+// Debug
+debug = 1;
+
 //Constants
 spd = 3; // This is the player's base movement speed;
 jumpSpd = 6; // Determines the jump height of the player.
@@ -41,19 +44,22 @@ shootTime = 5;
 bombTime = 20;
 
 //Boolean states
-isAttackingGround = false;
-isAttackingAir = false;
-changeAttackState = false;
+isAttackingGround = false;	// Attack animation is in progress
+isAttackingAir = false;	// Air attack animation is in progress
+changeAttackState = false;	// Update attack state on Animation End
+
 isHurt = false;
 hasPaintBucket = false;
+
 canMove = true;
 canDash = true;
 canAttack = true;
 canJump = true;
-isDashing = false;
 canShoot = true;
 hitStop = false;
-hasPaintBucket = false;
+isDashing = false;
 
 //Animations
 idleSprite = spr_andy_idle;
+
+
