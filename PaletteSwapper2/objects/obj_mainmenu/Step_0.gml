@@ -22,14 +22,21 @@ else
 		gamepad_button_check_pressed(gp, gp_face1);
 }
 
+var _ytarget = 900;	// Final position of obj_mainmenu
+var _interacttarget = _ytarget + 100;	// Position where player can interact, just before stopping.
+
 if (audio_is_playing(mus_mainmenu))
 {
-	y = lerp(y, 900, 0.1);
+	y = lerp(y, _ytarget, 0.1);
 }
 
-if round(y) == 900 && round(obj_camera_target.x) == room_width / 2
+if ( instance_exists(obj_camera_target) )
 {
-	canInteract = true;
+	// Interact once banner has reached a certain point
+	if ( round(y) >= _interacttarget && (round(obj_camera_target.x) == room_width / 2) )
+	{
+		canInteract = true;
+	}
 }
 
 image_index = menuPos;
