@@ -81,6 +81,7 @@
     {"id":{"name":"spr_andy_attack_ground_0_trail","path":"sprites/spr_andy_attack_ground_0_trail/spr_andy_attack_ground_0_trail.yy",},"order":6,},
     {"id":{"name":"mus_sunsetstreet","path":"sounds/mus_sunsetstreet/mus_sunsetstreet.yy",},"order":5,},
     {"id":{"name":"rm_worldmap","path":"rooms/rm_worldmap/rm_worldmap.yy",},"order":4,},
+    {"id":{"name":"approach_value","path":"scripts/approach_value/approach_value.yy",},"order":7,},
     {"id":{"name":"spr_andy_dialogue_inquisitive","path":"sprites/spr_andy_dialogue_inquisitive/spr_andy_dialogue_inquisitive.yy",},"order":4,},
     {"id":{"name":"spr_oneup","path":"sprites/spr_oneup/spr_oneup.yy",},"order":1,},
     {"id":{"name":"obj_paintbomb","path":"objects/obj_paintbomb/obj_paintbomb.yy",},"order":1,},
