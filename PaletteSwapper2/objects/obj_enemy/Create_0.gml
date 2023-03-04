@@ -18,3 +18,9 @@ hsp = 0;
 vsp = 0;
 dir = 1;
 inAttack = false;
+
+knockbackDamp = 0;
+knockbackSide = 0;	// +1/-1
+
+lastprojectile = noone;	// Last instance that enemy has been hit by. Reset this to allow re-hits.
+

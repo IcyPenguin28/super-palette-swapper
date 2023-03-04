@@ -63,6 +63,17 @@ if (onGround && state == state_breezepuff.attack)
 
 #region COLLISION
 //Horizontal
+
+// Slow down hsp when over limit
+if (hsp > hspmax)
+{
+	hsp = lerp(hsp, hspmax, hspdamp);
+}
+else if (hsp < -hspmax)
+{
+	hsp = lerp(hsp, -hspmax, hspdamp);
+}
+
 if (place_meeting(x+hsp,y,obj_solid))
 {
 	while (!place_meeting(x+sign(hsp),y,obj_solid))
