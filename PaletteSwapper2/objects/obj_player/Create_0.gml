@@ -1,6 +1,24 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+event_inherited();
+
+enum ST_Player
+{
+	zero = 0,
+	
+	neutral,
+	walk,
+	
+	attack1,
+	attack2,
+	attack3,
+	
+	attackAir1,
+	attackAir2,
+	attackAir3,
+}
+
 // Debug
 debug = 1;
 
@@ -26,16 +44,17 @@ airAttackDescent = 0.5; // Multiplied to gravity and vertical speed when attacki
 hsp = 0; // This is the player's instantaneous horizontal velocity
 vsp = 0; // This is the player's instantaneous vertical velocity
 dir = 0; // Can be either -1, 0, or 1. Determines the direction the player is facing.
+lockdir = false;
 numLives = 4; // This is the number of lives the player currently has
 coyoteTime = 0;
 jumpFrames = 5;
-myCol = colors.white; // This tracks which color the player currently has active.
+myCol = PlayerPaintColors.white; // This tracks which color the player currently has active.
 maxHp = 4; // This is the number of hits the player can take before dying. Some attacks may deal more than 1 HP
 hp = maxHp; // This tracks the player's current HP value.
 iFrames = 0;
 collectedBigDrops = [false, false, false]; // Bool array that holds the value for which big paintdrops in the stage have been collected.
 numPaintdrops = 0; // Represents the number of paintdrops the player has collected in the current stage
-attackState = 0; // This is the index of where the player is in the 3 hit combo
+attackState = -1; // This is the index of where the player is in the 3 hit combo
 
 //Timers
 dashstep = 0;
@@ -63,4 +82,10 @@ isDashing = false;
 //Animations
 idleSprite = spr_andy_idle;
 
+spriteanimator = new SpriteAnimator();
+//spriteanimator.Layer(0).SetCallback(OnAnimationEnd);
+spriteanimator.CopyAnimations_Struct(SPRITEANIMMAP[$ "andy"]);
 
+image_speed = 0;
+
+SetState(ST_Player.neutral);
