@@ -4,7 +4,7 @@
   "name": "spr_andy_attack_ground_1",
   "bbox_bottom": 31,
   "bbox_left": 3,
-  "bbox_right": 28,
+  "bbox_right": 31,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -14,8 +14,8 @@
   "For3D": false,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ef66e2bc-9499-45f9-a552-dba25e9d9606",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"cfacc98e-8a79-4ba6-9ae7-7333e717fe81",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7012366a-90e9-4bd0-a2d9-c4937d852a22",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"8122f912-a4e0-4e82-a0a5-387718c6b95e",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"27494fe2-bf71-4448-9896-4a01becfc846",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"80e1e68d-52fa-4da7-b7f2-d2189e574e36",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c2df7ac2-2fb5-49dd-9a9f-acac3a8890d3",},
   ],
@@ -59,8 +59,8 @@
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"ef66e2bc-9499-45f9-a552-dba25e9d9606","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},},},"Disabled":false,"id":"3fa774e4-d7c3-4106-88f0-9b7798aba45d","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"cfacc98e-8a79-4ba6-9ae7-7333e717fe81","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},},},"Disabled":false,"id":"dacaf50f-7a1f-4ae4-aca2-fec1b6ef8b52","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"7012366a-90e9-4bd0-a2d9-c4937d852a22","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},},},"Disabled":false,"id":"4ca429c9-dcc0-4e0f-9e4c-ff9012460fb7","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"8122f912-a4e0-4e82-a0a5-387718c6b95e","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},},},"Disabled":false,"id":"d1615ec6-d24c-42d1-be1b-051d2da0e19f","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"27494fe2-bf71-4448-9896-4a01becfc846","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},},},"Disabled":false,"id":"fb2f5d74-cc5c-4122-80e3-b6e87dc7a51e","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"80e1e68d-52fa-4da7-b7f2-d2189e574e36","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},},},"Disabled":false,"id":"0b319bcb-481d-487c-805c-0434af0d9312","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c2df7ac2-2fb5-49dd-9a9f-acac3a8890d3","path":"sprites/spr_andy_attack_ground_1/spr_andy_attack_ground_1.yy",},},},"Disabled":false,"id":"652a8952-6487-45a0-bdc7-016839c812e3","IsCreationKey":false,"Key":4.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
