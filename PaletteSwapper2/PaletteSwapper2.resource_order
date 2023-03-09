@@ -16,6 +16,7 @@
     {"name":"Autumn Trails","order":6,"path":"folders/Rooms/Autumn Trails.yy",},
     {"name":"Sunset Street","order":5,"path":"folders/Rooms/Sunset Street.yy",},
     {"name":"Scripts","order":5,"path":"folders/Scripts.yy",},
+    {"name":"Components","order":8,"path":"folders/Scripts/Components.yy",},
     {"name":"Palette Swap","order":2,"path":"folders/Scripts/Palette Swap.yy",},
     {"name":"Sequences","order":11,"path":"folders/Sequences.yy",},
     {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
@@ -38,6 +39,7 @@
   ],
   "ResourceOrderSettings": [
     {"name":"obj_attack_player","order":4,"path":"objects/obj_attack_player/obj_attack_player.yy",},
+    {"name":"spr_andy_attack_swipe","order":11,"path":"sprites/spr_andy_attack_swipe/spr_andy_attack_swipe.yy",},
     {"name":"spr_paintdrop","order":2,"path":"sprites/spr_paintdrop/spr_paintdrop.yy",},
     {"name":"spr_title_switch","order":9,"path":"sprites/spr_title_switch/spr_title_switch.yy",},
     {"name":"obj_paintglob_yellow","order":2,"path":"objects/obj_paintglob_yellow/obj_paintglob_yellow.yy",},
@@ -95,6 +97,7 @@
     {"name":"obj_hp_indicator","order":2,"path":"objects/obj_hp_indicator/obj_hp_indicator.yy",},
     {"name":"snd_100_level","order":10,"path":"sounds/snd_100_level/snd_100_level.yy",},
     {"name":"spr_breezepuff_projectile","order":1,"path":"sprites/spr_breezepuff_projectile/spr_breezepuff_projectile.yy",},
+    {"name":"scr_animationmap","order":9,"path":"scripts/scr_animationmap/scr_animationmap.yy",},
     {"name":"rm_sunsetstreet2","order":1,"path":"rooms/rm_sunsetstreet2/rm_sunsetstreet2.yy",},
     {"name":"obj_projectile_enemy","order":3,"path":"objects/obj_projectile_enemy/obj_projectile_enemy.yy",},
     {"name":"spr_andy_menu","order":9,"path":"sprites/spr_andy_menu/spr_andy_menu.yy",},
