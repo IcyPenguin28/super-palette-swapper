@@ -6,8 +6,8 @@ yy = display_get_gui_height();
 slideAmt = 0.1;
 onScreen = true;
 
-node = instance_nearest(obj_player_worldmap.x, obj_player_worldmap.y, obj_worldmapnode);
-color = node.previewCol;
+node = noone;
+color = c_gray;
 
 star1 = false;
 star2 = false;
@@ -15,3 +15,10 @@ star3 = false;
 key = false;
 
 image_speed = 0.1;
+
+function SetNode(_node)
+{
+	node = _node;
+	color = node.previewCol;
+}
+

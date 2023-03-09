@@ -87,47 +87,47 @@ else
 #endregion
 
 #region NUMPAD/RIGHT STICK SHORTCUTS
-if (array_has_value(colorList, colors.red) && keyR)
+if (array_has_value(colorList, PlayerPaintColors.red) && keyR)
 {
 	activeSlot = 1;
 }
 
-if (array_has_value(colorList, colors.orange) && keyO)
+if (array_has_value(colorList, PlayerPaintColors.orange) && keyO)
 {
 	activeSlot = 2;
 }
 
-if (array_has_value(colorList, colors.yellow) && keyY)
+if (array_has_value(colorList, PlayerPaintColors.yellow) && keyY)
 {
 	activeSlot = 3;
 }
 
-if (array_has_value(colorList, colors.green) && keyG)
+if (array_has_value(colorList, PlayerPaintColors.green) && keyG)
 {
 	activeSlot = 4;
 }
 
-if (array_has_value(colorList, colors.cyan) && keyC)
+if (array_has_value(colorList, PlayerPaintColors.cyan) && keyC)
 {
 	activeSlot = 5;
 }
 
-if (array_has_value(colorList, colors.blue) && keyB)
+if (array_has_value(colorList, PlayerPaintColors.blue) && keyB)
 {
 	activeSlot = 6;
 }
 
-if (array_has_value(colorList, colors.indigo) && keyI)
+if (array_has_value(colorList, PlayerPaintColors.indigo) && keyI)
 {
 	activeSlot = 7;
 }
 
-if (array_has_value(colorList, colors.purple) && keyP)
+if (array_has_value(colorList, PlayerPaintColors.purple) && keyP)
 {
 	activeSlot = 8;
 }
 
-if (array_has_value(colorList, colors.white) && keyW)
+if (array_has_value(colorList, PlayerPaintColors.white) && keyW)
 {
 	activeSlot = 0;
 }
@@ -147,7 +147,7 @@ if keyRotateL
 			activeSlot = array_length(colorList) - 1;
 		}
 	}
-	until (colorList[activeSlot] != colors.empty);
+	until (colorList[activeSlot] != PlayerPaintColors.empty);
 }
 
 if keyRotateR
@@ -163,7 +163,7 @@ if keyRotateR
 			activeSlot = 0;
 		}
 	}
-	until (colorList[activeSlot] != colors.empty);
+	until (colorList[activeSlot] != PlayerPaintColors.empty);
 }
 #endregion
 

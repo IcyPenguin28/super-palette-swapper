@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-enum colors
+enum PlayerPaintColors
 {
 	empty,
 	white,
@@ -15,27 +15,52 @@ enum colors
 	purple
 }
 
-colorList = array_create(9, colors.empty);
+colorList = array_create(9, PlayerPaintColors.empty);
 activeSlot = 0;
 
 // These are here for debugging and testing what a full palette would be.
 // Comment out any colors you want to deactivate
 
-array_set(colorList, 0, colors.white);
-array_set(colorList, 1, colors.red);
-array_set(colorList, 2, colors.orange);
-//array_set(colorList, 3, colors.yellow);
-//array_set(colorList, 4, colors.green);
-//array_set(colorList, 5, colors.cyan);
-array_set(colorList, 6, colors.blue);
-//array_set(colorList, 7, colors.indigo);
-//array_set(colorList, 8, colors.purple);
+array_set(colorList, 0, PlayerPaintColors.white);
+array_set(colorList, 1, PlayerPaintColors.red);
+array_set(colorList, 2, PlayerPaintColors.orange);
+//array_set(colorList, 3, PlayerPaintColors.yellow);
+//array_set(colorList, 4, PlayerPaintColors.green);
+//array_set(colorList, 5, PlayerPaintColors.cyan);
+array_set(colorList, 6, PlayerPaintColors.blue);
+//array_set(colorList, 7, PlayerPaintColors.indigo);
+//array_set(colorList, 8, PlayerPaintColors.purple);
 
 // Create cursor
 xx = 48;
 yy = 64;
 padding = 18;
 cursor = instance_create_depth(xx, yy, -10000, obj_palette_cursor);
+
+colorCount = 9;
+
+colorDrawColor = array_create(colorCount);
+colorDrawColor[PlayerPaintColors.red] = c_red;
+colorDrawColor[PlayerPaintColors.orange] = c_orange;
+colorDrawColor[PlayerPaintColors.yellow] = c_yellow;
+colorDrawColor[PlayerPaintColors.green] = c_green;
+colorDrawColor[PlayerPaintColors.cyan] = c_aqua;
+colorDrawColor[PlayerPaintColors.blue] = c_blue;
+colorDrawColor[PlayerPaintColors.indigo] = $8F00FF;
+colorDrawColor[PlayerPaintColors.purple] = c_purple;
+colorDrawColor[PlayerPaintColors.white] = c_white;
+
+colorDrawOrder = [
+	PlayerPaintColors.purple,
+	PlayerPaintColors.red,
+	PlayerPaintColors.orange,
+	PlayerPaintColors.indigo,
+	PlayerPaintColors.white,
+	PlayerPaintColors.yellow,
+	PlayerPaintColors.blue,
+	PlayerPaintColors.cyan,
+	PlayerPaintColors.green,
+];
 
 colorCoords = [
 	[xx, yy],						// empty

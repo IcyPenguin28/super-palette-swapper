@@ -1,8 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 #region UPDATING STATES
-onGround = (place_meeting(x,y+1,obj_solid) && sign(grav) == 1 ||
-			place_meeting(x,y-1,obj_solid) && sign(grav) == -1);
+onGround = (
+	place_meeting(x,y+1,obj_solid) && sign(grav) == 1 ||
+	place_meeting(x,y-1,obj_solid) && sign(grav) == -1
+	);
 inWater = place_meeting(x,y,obj_water);
 #endregion
 
@@ -32,7 +34,7 @@ else if (inWater) //in water
 {
 
 }
-else //airborne
+else // airborne
 {
 	vsp += grav;
 	
@@ -47,7 +49,7 @@ else //airborne
 	}
 }
 
-//Jump
+// Jump
 if (onGround && state == state_breezepuff.attack)
 {
 	if sign(grav) == -1

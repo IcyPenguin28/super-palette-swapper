@@ -144,6 +144,7 @@ if (keyConfirm) && destNode.unlocked
 	with instance_nearest(x, y, obj_levelpreview)
 	{
 		onScreen = true;
+		SetNode(other.destNode);
 	}
 	
 	canMove = false;
