@@ -1,4 +1,4 @@
-/// @desc 
+/// @desc Unique Events
 
 // Inherit the parent event
 event_inherited();
@@ -310,15 +310,31 @@ function ProcessCollision()
 	c = collision_line(x, y-hsep, bbox_left, y-hsep, obj_solid, 0, 1);
 	if (c)
 	{
-		x = c.bbox_right + (bbox_left-x);
+		x = c.bbox_right - (bbox_left-x);
 		hsp = max(hsp, 0);
 	}
 	
 	c = collision_line(x, y+hsep, bbox_left, y+hsep, obj_solid, 0, 1);
 	if (c)
 	{
-		x = c.bbox_right + (bbox_left-x);
+		x = c.bbox_right - (bbox_left-x);
 		hsp = max(hsp, 0);
+	}
+}
+
+// Called when swipe attack occurs
+function OnAttack()
+{
+	switch( myCol )
+	{
+		// White Paint - Simple swipe
+		case(PlayerPaintColors.white):
+			with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
+			{
+				image_xscale = other.image_xscale;
+				image_blend = obj_palette.colorDrawColor[other.myCol];
+			}
+			break;
 	}
 }
 
