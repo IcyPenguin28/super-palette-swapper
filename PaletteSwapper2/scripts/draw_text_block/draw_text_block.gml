@@ -14,7 +14,7 @@ function draw_text_block()
 	{
 		for (var i = n-1; i >= 3; i--)
 		{
-			draw_text_transformed(xx, yy, argument[i], size, size, 0);
+			draw_text_transformed(xx, yy, string(argument[i]), size, size, 0);
 			yy -= hh * size;
 		}
 	}
@@ -22,7 +22,7 @@ function draw_text_block()
 	{
 		for (var i = n-1; i >= 3; i--)
 		{
-			draw_text_transformed(xx, yy, argument[i], size, size, 0);
+			draw_text_transformed(xx, yy, string(argument[i]), size, size, 0);
 			yy += hh * size;
 		}
 	}

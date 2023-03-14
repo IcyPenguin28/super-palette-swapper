@@ -265,63 +265,6 @@ function ProcessPowers()
 	}
 }
 
-// Handles physics with the world. Call after ProcessMovement()
-function ProcessCollision()
-{
-	var c;
-	var hsep = 8;	// Space between horizontal collision lines
-	
-	// Vertical --------------------------------------------
-	
-	// Up
-	c = collision_line(x, y, x, bbox_top, obj_solid, 0, 1);
-	if (c)
-	{
-		y = c.bbox_bottom + (y-bbox_top);
-		vsp = max(vsp, 0);
-	}
-	
-	// Down
-	c = collision_line(x, y, x, bbox_bottom, obj_solid, 0, 1);
-	if (c)
-	{
-		y = c.bbox_top - (bbox_bottom-y);
-		vsp = min(vsp, 0);
-	}
-	
-	// Horizontal ----------------------------------------------
-	
-	// Moving Right
-	c = collision_line(x, y-hsep, bbox_right, y-hsep, obj_solid, 0, 1);
-	if (c)
-	{
-		x = c.bbox_left - (bbox_right-x);
-		hsp = min(hsp, 0);
-	}
-	
-	c = collision_line(x, y+hsep, bbox_right, y+hsep, obj_solid, 0, 1);
-	if (c)
-	{
-		x = c.bbox_left - (bbox_right-x);
-		hsp = min(hsp, 0);
-	}
-	
-	// Left
-	c = collision_line(x, y-hsep, bbox_left, y-hsep, obj_solid, 0, 1);
-	if (c)
-	{
-		x = c.bbox_right - (bbox_left-x);
-		hsp = max(hsp, 0);
-	}
-	
-	c = collision_line(x, y+hsep, bbox_left, y+hsep, obj_solid, 0, 1);
-	if (c)
-	{
-		x = c.bbox_right - (bbox_left-x);
-		hsp = max(hsp, 0);
-	}
-}
-
 // Called when swipe attack occurs
 function OnAttack()
 {

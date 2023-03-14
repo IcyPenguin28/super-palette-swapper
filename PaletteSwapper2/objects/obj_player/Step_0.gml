@@ -78,11 +78,7 @@ switch(state)
 		lockdir = true;
 		spriteanimator.SetAnimationKey("attack1a");
 		
-		with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
-		{
-			image_xscale = other.image_xscale;
-			image_blend = obj_palette.colorDrawColor[other.myCol];
-		}
+		OnAttack();
 		break;
 	
 	case(-ST_Player.attack2):
@@ -90,11 +86,7 @@ switch(state)
 		lockdir = true;
 		spriteanimator.SetAnimationKey("attack2a");
 		
-		with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
-		{
-			image_xscale = other.image_xscale;
-			image_blend = obj_palette.colorDrawColor[other.myCol];
-		}
+		OnAttack();
 		break;
 	
 	case(-ST_Player.attack3):
@@ -102,11 +94,7 @@ switch(state)
 		lockdir = true;
 		spriteanimator.SetAnimationKey("attack3a");
 		
-		with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
-		{
-			image_xscale = other.image_xscale;
-			image_blend = obj_palette.colorDrawColor[other.myCol];
-		}
+		OnAttack();
 		break;
 	
 	case(ST_Player.attack1):

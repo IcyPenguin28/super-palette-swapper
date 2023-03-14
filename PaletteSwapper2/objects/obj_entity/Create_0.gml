@@ -7,3 +7,6 @@ spriteanimator = 0;
 
 state = 0;
 trystart = false;
+
+hitstopstep = 0;
+

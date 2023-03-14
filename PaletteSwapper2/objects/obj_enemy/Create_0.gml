@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+event_inherited();
+
 // These can be changed in child objects
 maxhp = 10;
 kbres = 0; // The amount of knockback that is protected against (in pixels)

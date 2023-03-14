@@ -9,13 +9,21 @@ grav = 0.1;
 spd = 3;
 dashSpd = 20;
 jumpSpd = 3;
-hspmax = 3;	// Max horizontal speed
-hspdamp = 0.14; // Controls how fast enemy returns to max speed once exceeded
+kbres = 1;
+onGround = false;
 
-enum state_breezepuff
+steptimer = 0;
+jumpcount = 0;
+
+enum ST_EN_BreezePuff
 {
+	zero,
 	idle,
-	attack
+	hostile,
+	attackrise,
+	attackfall,
+	hurt,
 }
 
-state = state_breezepuff.idle;
+SetState(ST_EN_BreezePuff.hostile);
+

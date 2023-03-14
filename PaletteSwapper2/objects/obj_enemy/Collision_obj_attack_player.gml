@@ -1,5 +1,5 @@
 /// @description Insert description here
-// You can write your code in this editor
+
 if (!inAttack && lastprojectile != other)
 {
 	lastprojectile = other;
@@ -15,4 +15,7 @@ if (!inAttack && lastprojectile != other)
 	knockbackDamp = 20;
 	
 	show_debug_message("ouch!")
+	
+	OnHit();
+	
 }

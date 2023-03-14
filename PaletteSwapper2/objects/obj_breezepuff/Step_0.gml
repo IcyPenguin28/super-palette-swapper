@@ -1,100 +1,117 @@
 /// @description Insert description here
 // You can write your code in this editor
-#region UPDATING STATES
-onGround = (
-	place_meeting(x,y+1,obj_solid) && sign(grav) == 1 ||
-	place_meeting(x,y-1,obj_solid) && sign(grav) == -1
-	);
+
+var ts = 1;
+
 inWater = place_meeting(x,y,obj_water);
-#endregion
 
-#region MOVEMENT
-
-//Context dependent movement options
-if (onGround) //on ground
+switch(state)
 {
-	if (state = state_breezepuff.idle)
-	{
-		hsp = 0;
-		if alarm[0] == -1
-		{
-			alarm[0] = room_speed * 1;
-		}
-	}
-	else if (state = state_breezepuff.attack)
-	{
-		hsp = 0;
-		if alarm[0] == -1
-		{
-			alarm[0] = 1;
-		}
-	}
-}
-else if (inWater) //in water
-{
-
-}
-else // airborne
-{
-	vsp += grav;
+	// Hitstun ======================================================
+	case(-ST_EN_BreezePuff.hurt):
+		steptimer = room_speed * 1;
+		vsp = -4;
+		break;
 	
-	if (vsp == 0) // At peak of jump
-	{
-		vsp = 0; // Stay airborne
-		hsp = lerp(hsp, dashSpd * dir, aAccel);
-		with instance_create_layer(x, y, "Instances", obj_breezepuff_projectile)
+	case(ST_EN_BreezePuff.hurt):
+		if (hitstopstep == 0)
 		{
-			dir = -other.dir;
+			SetState(ST_EN_BreezePuff.hostile);
 		}
-	}
+		break;
+	
+	// Hostile ======================================================
+	case(-ST_EN_BreezePuff.hostile):
+		steptimer = room_speed * 1;
+		jumpcount = 2;
+		break;
+	
+	case(ST_EN_BreezePuff.hostile):
+		// Slow down hsp when over limit
+		var _hspmax = 0.5; // Max horizontal speed
+		var _hspdamp = 0.1; // Controls how fast enemy returns to max speed once exceeded
+		
+		if (onGround)
+		{
+			steptimer = approach_value(steptimer, 0, ts);
+			_hspmax = 0;
+		}
+		
+		if (hsp > _hspmax)
+		{
+			hsp = lerp(hsp, _hspmax, _hspdamp * ts);
+		}
+		else if (hsp < -_hspmax)
+		{
+			hsp = lerp(hsp, -_hspmax, _hspdamp * ts);
+		}
+		
+		if (steptimer == 0)
+		{
+			SetState(ST_EN_BreezePuff.attackrise);
+		}
+		break;
+	
+	// Attack Rise ======================================================
+	case(-ST_EN_BreezePuff.attackrise):
+		vsp = -jumpSpd * sign(grav);
+		hsp = 0;
+		jumpcount -= 1;
+		break;
+	
+	case(ST_EN_BreezePuff.attackrise):
+		if (vsp >= 0)
+		{
+			// Schut
+			hsp = lerp(hsp, dashSpd * dir, aAccel);
+			with instance_create_layer(x, y, "Instances", obj_breezepuff_projectile)
+			{
+				dir = -other.dir;
+			}
+			
+			SetState(ST_EN_BreezePuff.attackfall);
+		}
+		break;
+	
+	// Attack Fall ======================================================
+	case(-ST_EN_BreezePuff.attackfall):
+		break;
+	
+	case(ST_EN_BreezePuff.attackfall):
+		if (onGround)
+		{
+			// Jump again
+			if (jumpcount > 0)
+			{
+				SetState(ST_EN_BreezePuff.attackrise);
+			}
+			// Switch dir and return to wait state
+			else
+			{
+				dir = -dir;
+				hsp = 0;
+				SetState(ST_EN_BreezePuff.hostile);
+			}
+		}
+		break;
 }
 
-// Jump
-if (onGround && state == state_breezepuff.attack)
+// MOVEMENT
+if (hitstopstep > 0)
 {
-	if sign(grav) == -1
+	hitstopstep = approach_value(hitstopstep, 0, ts);
+}
+else
+{
+	if (!onGround)
 	{
-		vsp = jumpSpd;
+		vsp += grav * ts;
 	}
-	else
-	{
-		vsp = -jumpSpd;
-	}
-}
-#endregion
-
-#region COLLISION
-//Horizontal
-
-// Slow down hsp when over limit
-if (hsp > hspmax)
-{
-	hsp = lerp(hsp, hspmax, hspdamp);
-}
-else if (hsp < -hspmax)
-{
-	hsp = lerp(hsp, -hspmax, hspdamp);
+	
+	x += hsp;
+	y += vsp;
 }
 
-if (place_meeting(x+hsp,y,obj_solid))
-{
-	while (!place_meeting(x+sign(hsp),y,obj_solid))
-	{
-		x += sign(hsp);
-	}
-	hsp = 0;
-}
-x += hsp;
+var _coll = ProcessCollision();
+onGround = _coll & FL_COLLISION_D;
 
-//Vertical
-if (place_meeting(x,y+vsp,obj_solid))
-{
-	while (!place_meeting(x,y+sign(vsp),obj_solid))
-	{
-		y += sign(vsp);
-	}
-	vsp = 0;
-}
-y += vsp;
-
-#endregion

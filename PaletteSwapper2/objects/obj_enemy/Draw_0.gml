@@ -1,6 +1,21 @@
 /// @description Insert description here
-// You can write your code in this editor
-draw_self();
+
+var _x = x;
+var _y = y;
+
+var _xhitstop = 2 * (((hitstopstep div 2) % 2)? 1:-1) * sqrt(abs(hitstopstep));
+
+draw_sprite_ext(
+	sprite_index, 
+	image_index,
+	_x + _xhitstop,
+	_y,
+	image_xscale,
+	image_yscale,
+	image_angle,
+	image_blend,
+	image_alpha
+	);
 
 if (hpDisplayStep > 0)
 {

@@ -1,11 +1,14 @@
+/*SPRITEANIM*/
+
 /*
+	This is managed by the 
 */
 
 // Format:
 // [duration, sprite, image, x, y, flag]
 
 #macro SPRITEANIMMAP global.g_spriteanimationmap
-SPRITEANIMMAP = {
+SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 	andy : {
 		idle : [
 			[12, spr_andy_idle, 0, 0, 0, 0],
@@ -25,8 +28,8 @@ SPRITEANIMMAP = {
 		// Ground Swipe 2
 		attack2a : [	// Startup frames
 			[2, spr_andy_attack_ground_1, 0, 0, 0, 0],
-			[2, spr_andy_attack_ground_1, 1, 0, 0, 0],
-			[7, spr_andy_attack_ground_1, 2, 0, 0, 0],
+			[2, spr_andy_attack_ground_1, 1, 2, 0, 0],
+			[7, spr_andy_attack_ground_1, 2, 1, 0, 0],
 			[4, spr_andy_attack_ground_1, 3, 0, 0, 0],
 			[4, spr_andy_attack_ground_1, 3, 0, 0, 0],
 		],
@@ -41,4 +44,6 @@ SPRITEANIMMAP = {
 		
 	}
 
-};
+}  /*ANIMMAPEND*/;
+
+
