@@ -1,18 +1,20 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_bigpaintdrop_indicator",
+  "name": "obj_ef_paintcollect",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "UI",
-    "path": "folders/Objects/UI.yy",
+    "name": "Effects",
+    "path": "folders/Objects/Game Objects/Effects.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_ef_simple",
+    "path": "objects/obj_ef_simple/obj_ef_simple.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -29,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_ui_bigpaint_bk",
-    "path": "sprites/spr_ui_bigpaint_bk/spr_ui_bigpaint_bk.yy",
+    "name": "spr_paintcollect",
+    "path": "sprites/spr_paintcollect/spr_paintcollect.yy",
   },
   "spriteMaskId": null,
   "visible": true,

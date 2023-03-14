@@ -37,6 +37,6 @@ function HideUI()
 	
 	with bigdrop_ind
 	{
-		xx = lerp(xx, -2000, hideSpd);
+		x = lerp(x, -2000, hideSpd);
 	}
 }

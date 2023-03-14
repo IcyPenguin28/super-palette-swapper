@@ -12,6 +12,19 @@ else
 	var drops = [false, false, false];
 }
 
+// Draw paint bk. 9 slice allows drawing of any width
+draw_sprite_stretched(spr_ui_bigpaint_bk, 0, x, y, 144, sprite_height);
+
+// Draw drops
+for (var i = 0; i < dropcount; i++)
+{
+	draw_sprite(spr_ui_bigpaint_drop, drops[i], 
+		x + dropdrawX + dropdrawSep * i,
+		y + dropdrawY,
+		);
+}
+
+/*
 var subimg = 0;
 
 if !drops[0] && !drops[1] && !drops[2]
@@ -48,3 +61,4 @@ else if drops[0] && drops[1] && drops[2]
 }
 
 draw_sprite(spr_bigpaintdrop_indicator, subimg, xx, yy);
+*/
