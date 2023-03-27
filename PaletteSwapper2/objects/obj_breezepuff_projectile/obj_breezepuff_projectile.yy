@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "DO NOT PLACE",
-    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
+    "name": "Enemy",
+    "path": "folders/Objects/Gameplay Objects/Projectiles/Enemy.yy",
   },
   "parentObjectId": {
     "name": "obj_projectile_enemy",

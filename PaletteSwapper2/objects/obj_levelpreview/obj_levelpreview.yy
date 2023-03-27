@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "UI",
-    "path": "folders/Objects/UI.yy",
+    "name": "World Nav",
+    "path": "folders/Objects/World Nav.yy",
   },
   "parentObjectId": null,
   "persistent": false,

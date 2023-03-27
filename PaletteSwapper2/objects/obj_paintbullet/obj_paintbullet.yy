@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "DO NOT PLACE",
-    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
+    "name": "Player",
+    "path": "folders/Objects/Gameplay Objects/Projectiles/Player.yy",
   },
   "parentObjectId": {
     "name": "prt_glob",

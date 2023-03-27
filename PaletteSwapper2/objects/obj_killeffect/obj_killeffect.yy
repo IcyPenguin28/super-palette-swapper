@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "DO NOT PLACE",
-    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
+    "name": "GFX",
+    "path": "folders/Objects/Gameplay Objects/GFX.yy",
   },
   "parentObjectId": null,
   "persistent": false,

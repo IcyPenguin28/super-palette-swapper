@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "Control",
+    "path": "folders/Objects/Gameplay Objects/Control.yy",
   },
   "parentObjectId": null,
   "persistent": false,

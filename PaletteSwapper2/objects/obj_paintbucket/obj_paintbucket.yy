@@ -6,8 +6,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "Level Progression",
+    "path": "folders/Objects/Gameplay Objects/Entities/Level Progression.yy",
   },
   "parentObjectId": null,
   "persistent": false,

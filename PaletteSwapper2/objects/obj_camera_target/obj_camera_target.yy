@@ -6,8 +6,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "DO NOT PLACE",
-    "path": "folders/Objects/Game Objects/DO NOT PLACE.yy",
+    "name": "Control",
+    "path": "folders/Objects/Gameplay Objects/Control.yy",
   },
   "parentObjectId": null,
   "persistent": false,

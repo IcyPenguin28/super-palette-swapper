@@ -10,7 +10,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Parents (DO NOT PLACE)",
-    "path": "folders/Objects/Parents (DO NOT PLACE).yy",
+    "path": "folders/Objects/Gameplay Objects/Parents (DO NOT PLACE).yy",
   },
   "parentObjectId": null,
   "persistent": false,

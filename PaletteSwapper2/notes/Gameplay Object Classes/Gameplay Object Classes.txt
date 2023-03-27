@@ -1,0 +1,32 @@
+==Objects relevant to level gameplay==
+
+- Parent classes are not designed to be placed on their own, only their child objects.
+
+Entities
+	- Object that require a frame update or makes use of some unique code.
+	- Entities can interact with each other based on flags (solid, canInteract, shootable, etc.)
+	- Entities can interact with projectiles and terrain.
+	- Entities are placed in rooms.
+	
+	Types:
+		Player - Makes use of user input.
+		Enemy - Deals and/or takes damage.
+		Docile/NPC - Is not a player or enemy.
+		
+Projectiles
+	- Projectiles are spawned by entities at runtime.
+	- Projectiles are NOT placed in rooms
+	- Projectiles usually have short lifetimes.
+
+GFX
+	- Graphical effects outside of particle system that requires a frame update.
+	- Very light on code.
+	- GFX are spawned by entities at runtime.
+	- GFX are NOT placed in rooms
+
+Terrain
+	- Used to define world collisions, hazards, and some triggers.
+	- Terrain lacks frame update code -- They are static objects.
+
+Control
+	- Handles common/global game logic and data.

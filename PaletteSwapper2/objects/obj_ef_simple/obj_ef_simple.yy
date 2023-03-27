@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Effects",
-    "path": "folders/Objects/Game Objects/Effects.yy",
+    "name": "GFX",
+    "path": "folders/Objects/Gameplay Objects/GFX.yy",
   },
   "parentObjectId": null,
   "persistent": false,

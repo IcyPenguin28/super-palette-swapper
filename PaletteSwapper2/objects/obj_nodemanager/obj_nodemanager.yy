@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Objects",
-    "path": "folders/Objects/Game Objects.yy",
+    "name": "World Nav",
+    "path": "folders/Objects/World Nav.yy",
   },
   "parentObjectId": null,
   "persistent": false,
