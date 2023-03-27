@@ -40,7 +40,6 @@ else
 }
 #endregion
 
-
 switch(state)
 {
 	default:

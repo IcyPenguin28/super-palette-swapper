@@ -176,6 +176,23 @@ function ProcessMovement(_hspeed, _vspeed)
 	
 	x += hsp;
 	y += _vspw;
+	
+	// Out of Bounds Respawn
+	UpdateFallCheckpoint();
+	
+	if (instance_place(x, y, obj_fall))
+	{
+		// TODO: *Do damage here*
+		
+		// Respawn at last checkpoint
+		if (fallcheckpoint)
+		{
+			hsp = 0;
+			vsp = 0;
+			x = fallcheckpoint.x;
+			y = fallcheckpoint.y - 32;
+		}
+	}
 }
 
 function ProcessPowers()
@@ -278,6 +295,20 @@ function OnAttack()
 				image_blend = obj_palette.colorDrawColor[other.myCol];
 			}
 			break;
+	}
+}
+
+function UpdateFallCheckpoint()
+{
+	// Find nearest checkpoint when on ground
+	if (onGround)
+	{
+		var _inst = instance_nearest(x, y, obj_fallcheckpoint);
+		
+		if (_inst)
+		{
+			fallcheckpoint = _inst;
+		}
 	}
 }
 

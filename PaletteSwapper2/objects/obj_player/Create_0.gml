@@ -89,3 +89,5 @@ spriteanimator.CopyAnimations_Struct(SPRITEANIMMAP[$ "andy"]);
 image_speed = 0;
 
 SetState(ST_Player.neutral);
+
+fallcheckpoint = noone;

@@ -1,8 +1,10 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_solid",
-  "eventList": [],
+  "name": "obj_fall",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+  ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -26,8 +28,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_terrain_solid",
-    "path": "sprites/spr_terrain_solid/spr_terrain_solid.yy",
+    "name": "spr_terrain_fall",
+    "path": "sprites/spr_terrain_fall/spr_terrain_fall.yy",
   },
   "spriteMaskId": null,
   "visible": false,
