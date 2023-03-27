@@ -91,7 +91,6 @@ function ProcessCollision()
 	return _outbits;
 }
 
-
 // STATE ======================================================
 
 /*
@@ -134,6 +133,23 @@ function UpdateAnimator(ts=1)
 	{
 		spriteanimator.UpdateAnimator(ts);
 	}
+}
+
+// CALLBACKS ======================================================
+
+function OnStart()
+{
+	
+}
+
+function OnDefeat()
+{
+	
+}
+
+function OnHit()
+{
+	
 }
 
 

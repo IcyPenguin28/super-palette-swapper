@@ -175,3 +175,6 @@ if instance_exists(obj_player)
 {
 	obj_player.myCol = colorList[activeSlot];
 }
+
+painttheta = (activeSlot - PlayerPaintColors.white + 1) * paintthetasep;
+paintthetadraw = approach_value(paintthetadraw, painttheta, 3);

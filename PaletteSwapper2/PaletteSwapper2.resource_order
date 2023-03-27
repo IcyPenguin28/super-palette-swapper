@@ -34,10 +34,10 @@
     {"name":"Terrain","order":13,"path":"folders/Sprites/Terrain.yy",},
     {"name":"Tile Sets","order":19,"path":"folders/Sprites/Tile Sets.yy",},
     {"name":"UI","order":14,"path":"folders/Sprites/UI.yy",},
+    {"name":"Palette Select","order":21,"path":"folders/Sprites/UI/Palette Select.yy",},
     {"name":"World Map","order":21,"path":"folders/Sprites/World Map.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Effects","order":12,"path":"folders/Objects/Game Objects/Effects.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"obj_attack_player","order":4,"path":"objects/obj_attack_player/obj_attack_player.yy",},
@@ -77,6 +77,7 @@
     {"name":"obj_savecanvas","order":11,"path":"objects/obj_savecanvas/obj_savecanvas.yy",},
     {"name":"spr_explosion","order":4,"path":"sprites/spr_explosion/spr_explosion.yy",},
     {"name":"spr_ui_bigpaint_drop","order":20,"path":"sprites/spr_ui_bigpaint_drop/spr_ui_bigpaint_drop.yy",},
+    {"name":"spr_ui_colselect_paint","order":1,"path":"sprites/spr_ui_colselect_paint/spr_ui_colselect_paint.yy",},
     {"name":"spr_water","order":1,"path":"sprites/spr_water/spr_water.yy",},
     {"name":"obj_savemenu","order":12,"path":"objects/obj_savemenu/obj_savemenu.yy",},
     {"name":"spr_terrain_fall","order":2,"path":"sprites/spr_terrain_fall/spr_terrain_fall.yy",},
@@ -177,6 +178,7 @@
     {"name":"obj_globalcontroller","order":4,"path":"objects/obj_globalcontroller/obj_globalcontroller.yy",},
     {"name":"rm_sunsetstreet3","order":2,"path":"rooms/rm_sunsetstreet3/rm_sunsetstreet3.yy",},
     {"name":"obj_fall","order":2,"path":"objects/obj_fall/obj_fall.yy",},
+    {"name":"spr_ui_colselect_disc","order":2,"path":"sprites/spr_ui_colselect_disc/spr_ui_colselect_disc.yy",},
     {"name":"type","order":3,"path":"scripts/type/type.yy",},
   ],
 }

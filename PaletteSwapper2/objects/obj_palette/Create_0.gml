@@ -18,18 +18,22 @@ enum PlayerPaintColors
 colorList = array_create(9, PlayerPaintColors.empty);
 activeSlot = 0;
 
+paintorder = [
+	
+];
+
 // These are here for debugging and testing what a full palette would be.
 // Comment out any colors you want to deactivate
 
 array_set(colorList, 0, PlayerPaintColors.white);
 array_set(colorList, 1, PlayerPaintColors.red);
 array_set(colorList, 2, PlayerPaintColors.orange);
-//array_set(colorList, 3, PlayerPaintColors.yellow);
-//array_set(colorList, 4, PlayerPaintColors.green);
-//array_set(colorList, 5, PlayerPaintColors.cyan);
+array_set(colorList, 3, PlayerPaintColors.yellow);
+array_set(colorList, 4, PlayerPaintColors.green);
+array_set(colorList, 5, PlayerPaintColors.cyan);
 array_set(colorList, 6, PlayerPaintColors.blue);
-//array_set(colorList, 7, PlayerPaintColors.indigo);
-//array_set(colorList, 8, PlayerPaintColors.purple);
+array_set(colorList, 7, PlayerPaintColors.indigo);
+array_set(colorList, 8, PlayerPaintColors.purple);
 
 // Create cursor
 xx = 48;
@@ -73,6 +77,11 @@ colorCoords = [
 	[xx - padding, yy],				//indigo
 	[xx - padding, yy - padding]	//purple
 ];
+
+painttheta = 0;	// Final value
+paintthetadraw = 0;	// Used in draw call
+paintthetarange = [360, 270];
+paintthetasep = 10;
 
 function move_palette_cursor(tx, ty)
 {
