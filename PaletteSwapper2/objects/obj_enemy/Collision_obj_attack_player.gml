@@ -14,8 +14,6 @@ if (!inAttack && lastprojectile != other)
 	knockbackSide = sign(other.kbx);
 	knockbackDamp = 20;
 	
-	show_debug_message("ouch!")
-	
 	OnHit();
 	
 }

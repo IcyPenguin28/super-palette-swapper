@@ -10,3 +10,17 @@ trystart = false;
 
 hitstopstep = 0;
 
+// Stats
+hpMax = 0;
+hp = 0;
+hpDisplayTime = 120;
+hpDisplayStep = 0;
+
+knockbackSide = 0;
+knockbackDamp = 0;
+
+// Movement
+hsp = 0;
+vsp = 0;
+dir = 1;
+grav = 0.25;

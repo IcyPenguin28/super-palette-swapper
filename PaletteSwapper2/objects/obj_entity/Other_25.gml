@@ -1,21 +1,102 @@
 /// @desc Entity Functions
 /*
-	Functions shared by all entities
+	Functions shared by all entities.
+	Override "Common" and "Callback" functions by redefining them after inheriting this event.
 */
-
-
-// COMMON ======================================================
-
-// Called on first frame of existance
-function Start()
-{
-	
-}
 
 #macro FL_COLLISION_R (1<<0)
 #macro FL_COLLISION_U (1<<1)
 #macro FL_COLLISION_L (1<<2)
 #macro FL_COLLISION_D (1<<3)
+
+// COMMON (Override OK) ======================================================
+
+// Called on first frame of existance. This is NOT a replacement to the Create event.
+function Start()
+{
+	
+}
+
+// Called every frame. Do not define in Step Event! (Doing so will set the function every frame)
+/*
+	Timestep Guide:
+	Multiply "ts" value to result when adding to a **variable over time**.
+		x += hsp * ts	// Add velocity over time
+		y += vsp * ts	// Add velocity over time
+		vsp += grav * ts	// Add gravity over time
+		hsp = approach_value(hsp, maxspd * dir, acceleration*ts)	// Approach max speed over time
+		hsp = approach_value(hsp, 0, deceleration*ts)	// Slow speed to 0 over time
+		timer = max(0, timer-ts)	// Decrement timer over time
+	Ignore "ts" value when doing instant changes
+		vsp = jumpspd	// Immediate change to vertical speed
+		hsp = 0	// Stop horizontal speed
+*/
+function Update(ts)
+{
+	
+}
+
+// Called in Draw event
+function Draw()
+{
+	var _x = x;
+	var _y = y;
+	
+	var _xhitstop = 2 * (((hitstopstep div 2) % 2)? 1:-1) * sqrt(abs(hitstopstep));
+
+	draw_sprite_ext(
+		sprite_index, 
+		image_index,
+		_x + _xhitstop,
+		_y,
+		image_xscale,
+		image_yscale,
+		image_angle,
+		image_blend,
+		image_alpha
+		);
+
+	if (hpDisplayStep > 0)
+	{
+		draw_healthbar(x - 8, y - (sprite_height/2 + 8), x + 8, y - (sprite_height/2 + 6), (hp / hpMax) * 100, c_black, c_red, c_lime, 0, true, false);
+	}
+	else
+	{
+	
+	}
+}
+
+// STATE ======================================================
+
+/*
+	States are positive integer values.
+	Negative value means the current frame is the first frame of this state.
+*/
+
+function SetState(_state)
+{
+	state = -abs(_state);
+	event_perform(ev_step, ev_step_normal);
+	state = abs(state);
+}
+
+function IsStateStart()
+{
+	return state < 0;
+}
+
+function TryStart()
+{
+	if (!trystart)
+	{
+		trystart = true;
+		Start();
+		OnStart();
+		return true;
+	}
+	
+	return false;
+}
 
 // Handles physics with the world. Call after ProcessMovement().
 // Returns bitfield representing collisions
@@ -91,24 +172,6 @@ function ProcessCollision()
 	return _outbits;
 }
 
-// STATE ======================================================
-
-/*
-	States are positive integer values.
-	Negative value means the current frame is the first frame of this state.
-*/
-
-function SetState(_state)
-{
-	state = -abs(_state);
-	event_perform(ev_step, ev_step_normal);
-	state = abs(state);
-}
-
-function IsStateStart()
-{
-	return state < 0;
-}
 
 // ANIMATION ===================================================
 function InitAnimator(_animationsetkey)
@@ -135,7 +198,7 @@ function UpdateAnimator(ts=1)
 	}
 }
 
-// CALLBACKS ======================================================
+// CALLBACKS (Override OK)  ======================================================
 
 function OnStart()
 {
@@ -147,7 +210,7 @@ function OnDefeat()
 	
 }
 
-function OnHit()
+function OnDamage()
 {
 	
 }
