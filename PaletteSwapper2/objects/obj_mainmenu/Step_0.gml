@@ -30,14 +30,7 @@ if (audio_is_playing(mus_mainmenu))
 	y = lerp(y, _ytarget, 0.1);
 }
 
-if ( instance_exists(obj_camera_target) )
-{
-	// Interact once banner has reached a certain point
-	if ( round(y) >= _interacttarget && (round(obj_camera_target.x) == room_width / 2) )
-	{
-		canInteract = true;
-	}
-}
+// Interact when told to by obj_title
 
 image_index = menuPos;
 
@@ -72,17 +65,22 @@ if canInteract
 	if confirmButton
 	{
 		audio_play_sound(snd_menuselection, 0, false);
+		
 		switch (menuPos)
 		{
 			case mainmenu.newgame:
 				obj_savemenu.canInteract = true;
-				obj_camera_target.x += room_width /  3;
+				//obj_camera_target.x += room_width /  3;
 				self.canInteract = false;
+				
+				obj_camera.FollowTarget(inst_titlemenu_focus2);
 				break;
 			case mainmenu.loadgame:
 				obj_savemenu.canInteract = true;
-				obj_camera_target.x += room_width /  3;
+				//obj_camera_target.x += room_width /  3;
 				self.canInteract = false;
+				
+				obj_camera.FollowTarget(inst_titlemenu_focus2);
 				break;
 			case mainmenu.options:
 				break;

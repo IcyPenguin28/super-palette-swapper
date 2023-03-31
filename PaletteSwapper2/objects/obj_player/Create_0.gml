@@ -19,9 +19,6 @@ enum ST_Player
 	attackAir3,
 }
 
-// Debug
-debug = 1;
-
 //Constants
 spd = 3; // This is the player's base movement speed;
 jumpSpd = 6; // Determines the jump height of the player.

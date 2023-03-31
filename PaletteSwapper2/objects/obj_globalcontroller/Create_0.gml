@@ -8,3 +8,10 @@ global.v_res = 360;
 global.active_savefile = "save1.ini"
 
 display_set_gui_size(global.h_res, global.v_res);
+
+
+
+// Debug
+#macro DEBUG global.g_debug
+DEBUG = 0;	// Toggle with tilde "`" key
+

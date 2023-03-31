@@ -14,6 +14,59 @@ else
 					gamepad_button_check_pressed(gp, gp_start);
 }
 
+switch(state)
+{
+	// Wait for confirm
+	case(0):
+		if (confirmButton)
+		{
+			audio_play_sound(snd_menuselection_final, 0, false);
+			soundplayed = true;
+			image_speed = 0.4;
+			
+			waitstep = 60;
+			state = 1;
+		}
+		break;
+	
+	// Let sound play for a moment
+	case(1):
+		if (waitstep > 0)
+		{
+			waitstep -= 1;
+		}
+		else
+		{
+			obj_camera.FollowTarget(inst_titlemenu_focus1);
+			waitstep = 40;
+			state = 2;
+		}
+		break;
+	
+	// Move to menu
+	case(2):
+		if (waitstep > 0)
+		{
+			waitstep -= 1;
+		}
+		else
+		{
+			audio_play_sound(mus_mainmenu, 0, true);
+			menuMusicTriggered = true;
+			inMenu = true;
+			obj_mainmenu.canInteract = true;
+			state = 3;
+		}
+		break;
+	
+	// In Menu
+	case(3):
+		
+		
+		
+		break;
+}
+
 #region DYNAMIC UI
 var gpd = global.gp_desc;
 
@@ -36,34 +89,3 @@ switch (gpd)
 
 #endregion
 
-if confirmButton
-{
-	if (!soundplayed)
-	{
-		audio_play_sound(snd_menuselection_final, 0, false);
-		soundplayed = true;
-		image_speed = 0.4;
-	}
-}
-
-if (!audio_is_playing(snd_menuselection_final) && soundplayed && !inMenu)
-{
-	with (obj_camera_target)
-	{
-		x = lerp(x, room_width / 2, 0.1);
-		y = lerp(y, 1080, 0.1);
-	}
-}
-if instance_exists(obj_camera_target)
-{
-	if round(obj_camera_target.y) == 1080
-	{
-		inMenu = true;
-	}	
-}
-
-if inMenu && !menuMusicTriggered
-{
-	audio_play_sound(mus_mainmenu, 0, true);
-	menuMusicTriggered = true;
-}

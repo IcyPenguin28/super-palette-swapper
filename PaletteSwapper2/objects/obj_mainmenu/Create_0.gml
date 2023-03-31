@@ -14,7 +14,5 @@ menuPos = 0;
 maxMenuPos = image_number;
 canInteract = false;
 
-interactStep = 0;
-interactTime = 3;
-
 image_speed = 0;
+

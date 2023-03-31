@@ -15,7 +15,7 @@ enum ST_Camera
 wRes = 640;
 hRes = 360;
 resScale = 2;
-panSpd = 0.08;
+panSpd = 0.1;
 
 playerCam = camera_create_view(0,0,wRes,hRes,0,obj_player);
 targetCam = camera_create_view(0,0,wRes,hRes,0,obj_camera_target);
@@ -27,20 +27,18 @@ location = [0,0];	// Current position (x,y)
 playerCamLookX = 64;	// X Offset in player direction
 playerCamLookY = 64;	// Unused
 
-state = ST_Camera.player;
+state = ST_Camera.free;
+cameratarget = noone;
+onTarget = false;	// True when location matches target
 
 //Create camera
 view_enabled = true;
 view_visible[0] = true;
+cam = camera_create_view(0,0,wRes,hRes);
 
-if instance_exists(obj_player)
-{
-	cam = playerCam;
-}
-else
-{
-	cam = targetCam;	
-}
+//if instance_exists(obj_player) {cam = playerCam;}
+//else {cam = targetCam;}
+
 view_set_camera(0,cam);
 
 window_set_size(wRes*resScale,hRes*resScale);

@@ -37,7 +37,8 @@ if canInteract
 	if keyCancel
 	{
 		canInteract = false;
-		obj_camera_target.x -= room_width /  3;
+		obj_camera.FollowTarget(inst_titlemenu_focus1)
+		//obj_camera_target.x -= room_width /  3;
 		obj_mainmenu.canInteract = true;
 	}
 	
@@ -45,7 +46,7 @@ if canInteract
 	{
 		if obj_mainmenu.menuPos = mainmenu.newgame
 		{
-			with collision_line(x, y, x, 1080, obj_savecanvas, false, true)
+			with ( canvasinst[pos] )
 			{
 				audio_play_sound(snd_menuselection, 0, false);
 				chosen = true;
@@ -53,7 +54,7 @@ if canInteract
 		}
 		else if obj_mainmenu.menuPos = mainmenu.loadgame
 		{
-			with collision_line(x, y, x, 1080, obj_savecanvas, false, true)
+			with ( canvasinst[pos] )
 			{
 				if file_exists(myFile)
 				{
@@ -65,15 +66,9 @@ if canInteract
 	}
 }
 
-show_debug_message(pos == 0 ? "pos is zero" : "pos is NOT zero");
-show_debug_message(keyLeft ? "keyLeft" : "not keyLeft");
-show_debug_message(canInteract ? "can interact" : "cannot interact");
-
-if canInteract && keyLeft && pos == 0
-{
-	show_debug_message("wtf");
-}
-
+//show_debug_message(pos == 0 ? "pos is zero" : "pos is NOT zero");
+//show_debug_message(keyLeft ? "keyLeft" : "not keyLeft");
+//show_debug_message(canInteract ? "can interact" : "cannot interact");
 
 x = xPoses[pos];
 y = yPoses[pos];

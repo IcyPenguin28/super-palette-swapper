@@ -10,4 +10,12 @@ if (keyReset)
 {
 	room_restart();
 }
+
+
+if (keyboard_check_pressed(192))	// 192 = Tilde "~" key
+{
+	DEBUG ^= 1;
+}
+
 #endregion
+

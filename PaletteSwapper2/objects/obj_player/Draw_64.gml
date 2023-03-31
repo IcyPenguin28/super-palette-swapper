@@ -1,6 +1,6 @@
 /// @desc Debug
 
-if (debug)
+if (DEBUG)
 {
 	// Store state
 	var _col = draw_get_color();

@@ -155,7 +155,7 @@ function Draw()
 	pal_swap_set(spr_andy_palette,myCol - 1,false);
 
 	// Collision Debugging
-	if (debug)
+	if (DEBUG)
 	{
 		draw_line_color(x, y-8, bbox_left, y-8, c_orange, c_orange);
 		draw_line_color(x, y-8, bbox_right, y-8, c_orange, c_orange);

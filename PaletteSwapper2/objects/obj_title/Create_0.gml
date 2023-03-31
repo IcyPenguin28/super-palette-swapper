@@ -5,3 +5,10 @@ inMenu = false;
 menuMusicTriggered = false;
 
 image_speed = 0.05;
+
+obj_camera.SetState(ST_Camera.free);
+
+waitstep = 100;
+
+state = 0;
+
