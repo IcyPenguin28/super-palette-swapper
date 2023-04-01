@@ -17,6 +17,8 @@ enum ST_Player
 	attackAir1,
 	attackAir2,
 	attackAir3,
+	
+	dash,
 }
 
 //Constants

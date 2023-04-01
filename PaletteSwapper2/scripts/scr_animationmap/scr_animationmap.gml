@@ -42,6 +42,12 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 			[6, spr_andy_attack_ground_2, 3, 3, 0, 0],
 		],
 		
+		// Dashing
+		dash : [
+			[obj_player.dashTime - 2, spr_andy_dash, 0, 0, 0, 0],
+			[1, spr_andy_dash, 1, 0, 0, 0],
+			[1, spr_andy_dash, 2, 0, 0, 0],
+		]
 	}
 
 }  /*ANIMMAPEND*/;

@@ -130,6 +130,10 @@ function Update(ts)
 				SetState(state+1);
 			}
 			break;
+		
+		// Dashing =====================================================
+		case(-ST_Player.dash):
+			break;
 	}
 
 	// Defeat

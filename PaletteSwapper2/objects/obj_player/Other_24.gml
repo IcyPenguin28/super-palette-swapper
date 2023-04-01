@@ -297,7 +297,6 @@ function OnAttack()
 			}
 			break;
 		case(PlayerPaintColors.orange):
-			// TODO: commented out to prevent double spawning bullet, as we are calling ProcessPowers() to get around the dash limitation for now
 			instance_create_layer(x + sprite_width, y, "Instances", obj_paintbullet);
 			break;
 	}
