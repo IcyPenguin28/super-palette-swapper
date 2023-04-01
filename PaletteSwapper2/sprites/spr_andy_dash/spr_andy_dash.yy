@@ -15,7 +15,7 @@
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"98ef6e29-9baf-4311-9067-ae5c43d0a7f9",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"bb293822-166a-47a9-a447-5d52f9a78e52",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"0316e840-e5b0-415d-a905-de45634bc32e",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"e170342d-8e61-4456-b052-c4980b835bb1",},
   ],
   "gridX": 0,
   "gridY": 0,
@@ -58,7 +58,7 @@
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"98ef6e29-9baf-4311-9067-ae5c43d0a7f9","path":"sprites/spr_andy_dash/spr_andy_dash.yy",},},},"Disabled":false,"id":"07e575ff-74d9-4ff7-a0b3-43b4745bed5a","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"bb293822-166a-47a9-a447-5d52f9a78e52","path":"sprites/spr_andy_dash/spr_andy_dash.yy",},},},"Disabled":false,"id":"9d8482cc-58bd-4157-93dd-e01b54ac2dba","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"0316e840-e5b0-415d-a905-de45634bc32e","path":"sprites/spr_andy_dash/spr_andy_dash.yy",},},},"Disabled":false,"id":"b6b053cc-7aaa-45e8-911a-907da3e705fe","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"e170342d-8e61-4456-b052-c4980b835bb1","path":"sprites/spr_andy_dash/spr_andy_dash.yy",},},},"Disabled":false,"id":"210ae544-6318-4216-ad58-989fb2be4f25","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
