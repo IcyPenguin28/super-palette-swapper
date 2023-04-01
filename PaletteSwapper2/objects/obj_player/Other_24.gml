@@ -223,7 +223,7 @@ function ProcessPowers()
 			break;
 		// ORANGE
 		case PlayerPaintColors.orange:
-			if (canShoot && keyBrush)
+			/*if (canShoot && keyBrush)
 			{
 				shootstep = shootTime;
 				with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbullet)
@@ -231,7 +231,7 @@ function ProcessPowers()
 					dir = sign(other.image_xscale);
 					grav = sign(other.grav) * grav;
 				}
-			}
+			}*/
 			break;
 		// YELLOW
 		case PlayerPaintColors.yellow:
@@ -287,13 +287,18 @@ function OnAttack()
 {
 	switch( myCol )
 	{
-		// White Paint - Simple swipe
+		// White/Red Paint - Simple swipe
 		case(PlayerPaintColors.white):
+		case(PlayerPaintColors.red):
 			with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
 			{
 				image_xscale = other.image_xscale;
 				image_blend = obj_palette.colorDrawColor[other.myCol];
 			}
+			break;
+		case(PlayerPaintColors.orange):
+			// TODO: commented out to prevent double spawning bullet, as we are calling ProcessPowers() to get around the dash limitation for now
+			instance_create_layer(x + sprite_width, y, "Instances", obj_paintbullet);
 			break;
 	}
 }

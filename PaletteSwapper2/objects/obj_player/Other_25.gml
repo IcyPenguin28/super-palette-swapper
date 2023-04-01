@@ -73,7 +73,7 @@ function Update(ts)
 			
 				SetState(ST_Player.attack1);
 			}
-		
+			ProcessPowers();
 			ProcessMovement(movSpd, 0);
 			ProcessCollision();
 		

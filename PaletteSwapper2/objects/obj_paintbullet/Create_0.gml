@@ -9,3 +9,6 @@ spd = 10;
 grav = 0;
 
 // Define child-exclusive vars
+atk = 5;
+kbx = 1;
+kby = 0;
