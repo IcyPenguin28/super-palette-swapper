@@ -44,7 +44,7 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 		
 		// Dashing
 		dash : [
-			[obj_player.dashTime - 2, spr_andy_dash, 0, 0, 0, 0],
+			[18, spr_andy_dash, 0, 0, 0, 0],
 			[1, spr_andy_dash, 1, 0, 0, 0],
 			[1, spr_andy_dash, 2, 0, 0, 0],
 		]

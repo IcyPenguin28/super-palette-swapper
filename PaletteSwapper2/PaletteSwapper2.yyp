@@ -59,6 +59,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"World Map","folderPath":"folders/Sprites/World Map.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Dropling","folderPath":"folders/Sprites/Enemies/Dropling.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"animations.json","CopyToMask":-1,"filePath":"datafiles",},
@@ -110,6 +111,7 @@
     {"id":{"name":"spr_andy_attack_ground_2_trail","path":"sprites/spr_andy_attack_ground_2_trail/spr_andy_attack_ground_2_trail.yy",},},
     {"id":{"name":"spr_andy_dialogue_neutral","path":"sprites/spr_andy_dialogue_neutral/spr_andy_dialogue_neutral.yy",},},
     {"id":{"name":"spr_key_filled","path":"sprites/spr_key_filled/spr_key_filled.yy",},},
+    {"id":{"name":"spr_dropling","path":"sprites/spr_dropling/spr_dropling.yy",},},
     {"id":{"name":"spr_ts_sunsetstreet","path":"sprites/spr_ts_sunsetstreet/spr_ts_sunsetstreet.yy",},},
     {"id":{"name":"obj_savecanvas","path":"objects/obj_savecanvas/obj_savecanvas.yy",},},
     {"id":{"name":"obj_breezepuff","path":"objects/obj_breezepuff/obj_breezepuff.yy",},},
@@ -242,6 +244,7 @@
     {"id":{"name":"obj_fall","path":"objects/obj_fall/obj_fall.yy",},},
     {"id":{"name":"spr_ui_colselect_disc","path":"sprites/spr_ui_colselect_disc/spr_ui_colselect_disc.yy",},},
     {"id":{"name":"type","path":"scripts/type/type.yy",},},
+    {"id":{"name":"obj_dropling","path":"objects/obj_dropling/obj_dropling.yy",},},
     {"id":{"name":"shd_pal_html_sprite","path":"shaders/shd_pal_html_sprite/shd_pal_html_sprite.yy",},},
     {"id":{"name":"spr_andy_idle","path":"sprites/spr_andy_idle/spr_andy_idle.yy",},},
   ],

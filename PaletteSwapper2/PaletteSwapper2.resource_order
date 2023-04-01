@@ -36,7 +36,6 @@
     {"name":"Dialogue Portraits","order":10,"path":"folders/Sprites/Andy/Dialogue Portraits.yy",},
     {"name":"Backgrounds","order":18,"path":"folders/Sprites/Backgrounds.yy",},
     {"name":"Enemies","order":11,"path":"folders/Sprites/Enemies.yy",},
-    {"name":"Breezepuff","order":1,"path":"folders/Sprites/Enemies/Breezepuff.yy",},
     {"name":"Game Objects","order":15,"path":"folders/Sprites/Game Objects.yy",},
     {"name":"Projectiles","order":16,"path":"folders/Sprites/Projectiles.yy",},
     {"name":"Terrain","order":13,"path":"folders/Sprites/Terrain.yy",},
@@ -46,6 +45,7 @@
     {"name":"World Map","order":21,"path":"folders/Sprites/World Map.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
+    {"name":"Dropling","order":3,"path":"folders/Sprites/Enemies/Dropling.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"obj_attack_player","order":4,"path":"objects/obj_attack_player/obj_attack_player.yy",},
@@ -145,7 +145,7 @@
     {"name":"snd_specialstage_victory1","order":3,"path":"sounds/snd_specialstage_victory1/snd_specialstage_victory1.yy",},
     {"name":"rm_init","order":1,"path":"rooms/rm_init/rm_init.yy",},
     {"name":"obj_killeffect","order":3,"path":"objects/obj_killeffect/obj_killeffect.yy",},
-    {"name":"spr_kill_effect","order":2,"path":"sprites/spr_kill_effect/spr_kill_effect.yy",},
+    {"name":"spr_kill_effect","order":1,"path":"sprites/spr_kill_effect/spr_kill_effect.yy",},
     {"name":"obj_player_worldmap","order":1,"path":"objects/obj_player_worldmap/obj_player_worldmap.yy",},
     {"name":"rm_introstage","order":2,"path":"rooms/rm_introstage/rm_introstage.yy",},
     {"name":"spr_menubacking","order":6,"path":"sprites/spr_menubacking/spr_menubacking.yy",},
@@ -186,5 +186,6 @@
     {"name":"obj_fall","order":2,"path":"objects/obj_fall/obj_fall.yy",},
     {"name":"spr_ui_colselect_disc","order":2,"path":"sprites/spr_ui_colselect_disc/spr_ui_colselect_disc.yy",},
     {"name":"type","order":3,"path":"scripts/type/type.yy",},
+    {"name":"obj_dropling","order":1,"path":"objects/obj_dropling/obj_dropling.yy",},
   ],
 }
