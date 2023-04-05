@@ -36,6 +36,7 @@
     {"name":"Dialogue Portraits","order":10,"path":"folders/Sprites/Andy/Dialogue Portraits.yy",},
     {"name":"Backgrounds","order":18,"path":"folders/Sprites/Backgrounds.yy",},
     {"name":"Enemies","order":11,"path":"folders/Sprites/Enemies.yy",},
+    {"name":"Dropling","order":3,"path":"folders/Sprites/Enemies/Dropling.yy",},
     {"name":"Game Objects","order":15,"path":"folders/Sprites/Game Objects.yy",},
     {"name":"Projectiles","order":16,"path":"folders/Sprites/Projectiles.yy",},
     {"name":"Terrain","order":13,"path":"folders/Sprites/Terrain.yy",},
@@ -45,7 +46,6 @@
     {"name":"World Map","order":21,"path":"folders/Sprites/World Map.yy",},
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Dropling","order":3,"path":"folders/Sprites/Enemies/Dropling.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"obj_attack_player","order":4,"path":"objects/obj_attack_player/obj_attack_player.yy",},

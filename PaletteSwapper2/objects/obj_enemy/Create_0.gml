@@ -5,7 +5,6 @@ event_inherited();
 
 // These can be changed in child objects
 hpMax = 10;
-kbres = 0; // The amount of knockback that is protected against (in pixels)
 atk = 1; // The number of HP wedges to remove from the player if they touch the enemy directly
 def = 0; // The amount of damage that is protected against
 grav = 0.1;
@@ -20,9 +19,3 @@ hsp = 0;
 vsp = 0;
 dir = 1;
 inAttack = false;
-
-knockbackDamp = 0;
-knockbackSide = 0;	// +1/-1
-
-lastprojectile = noone;	// Last instance that enemy has been hit by. Reset this to allow re-hits.
-

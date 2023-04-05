@@ -9,6 +9,9 @@
 #macro FL_COLLISION_L (1<<2)
 #macro FL_COLLISION_D (1<<3)
 
+#macro KB_ANGLE_AWAY 361
+#macro KB_ANGLE_TOWARD 362
+
 // COMMON (Override OK) ======================================================
 
 // Called on first frame of existance. This is NOT a replacement to the Create event.
@@ -198,6 +201,162 @@ function UpdateAnimator(ts=1)
 	}
 }
 
+// INTERACTIONS ============================================================
+
+/*
+	Common damage block (order is important):
+	{
+		target.RehitAppend(self, 30);	// Prevent rehits for 30 frames
+		target.TakeKnockback(2, 45, self)	// Deal knockback
+		target.TakeDamage(damage, self)	// Deal damage
+	}
+*/
+
+function RehitUpdate(ts)
+{
+	for (var i = 0; i < rehitqueuecount; i++)
+	{
+		if ( rehitqueuetimer[i] != 0 )
+		{
+			if (rehitqueuetimer[i] < 0)
+			{
+				rehitqueuetimer[i] *= -1;
+			}
+			
+			rehitqueuetimer[i] = max(0, rehitqueuetimer[i]-ts);
+			
+			if (rehitqueuetimer[i] == 0)
+			{
+				rehitqueuetimer[i] = 0;
+				rehitqueueinst[i] = noone;
+			}
+		}
+	}
+}
+
+function RehitContains(inst)
+{
+	for (var i = 0; i < rehitqueuecount; i++)
+	{
+		if ( rehitqueueinst[i] == inst && rehitqueuetimer[i] > 0 )
+		{
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+function RehitAppend(inst, rehit_timer)
+{
+	rehitqueueinst[rehitqueueindex] = inst;
+	rehitqueuetimer[rehitqueueindex] = -rehit_timer;
+	rehitqueueindex = (rehitqueueindex+1) % rehitqueuecount;
+}
+
+function TakeDamage(damage, attackerinst=noone)
+{
+	// Skip if attacker is in rehit queue
+	if (attackerinst)
+	{
+		if (RehitContains(attackerinst))
+		{
+			return 0;
+		}
+	}
+	
+	show_debug_message(string([object_get_name(attackerinst.object_index), damage]));
+
+	
+	damage = max(0, damage-def);
+	
+	hp = max(0, hp-damage);
+	
+	OnDamage(damage, attackerinst);
+	
+	if (hp == 0)
+	{
+		Defeat();
+		return 0;
+	}
+	
+	return 1;
+}
+
+// Assumes facing right. Flips X if absolute_direction is not set
+/*
+	Direction value assumes target is right of attacker. Flips X based on position when inst value is provided.
+	dir = 0: Send right when attacking from left, send left when attacking from right
+														...[dir=45]
+			>>PROJECTILE>>  ..>	..>	..>   [TARGET]...			...[dir=0]
+														...[dir=315]
+*/
+function TakeKnockback(kb_strength, kb_direction=45, attackerinst=noone, force_speed=false)
+{
+	// Skip if attacker is in rehit queue
+	if (attackerinst)
+	{
+		if (RehitContains(attackerinst))
+		{
+			return;
+		}
+		
+		// Move away from attacker
+		if (kb_direction == KB_ANGLE_AWAY)
+		{
+			kb_direction = point_direction(x, y, attackerinst.x, attackerinst.y);
+		}
+		// Move towards attacker
+		else if (kb_direction == KB_ANGLE_TOWARD)
+		{
+			kb_direction = point_direction(attackerinst.x, attackerinst.y, x, y);
+		}
+	}
+	
+	kb_strength = max(0, kb_strength-kbres);
+	
+	var _kbx = lengthdir_x(kb_strength, kb_direction);
+	var _kby = lengthdir_y(kb_strength, kb_direction);
+	
+	if (attackerinst && (kb_direction < 360))
+	{
+		_kbx *= (attackerinst.x < x)? 1: -1;	// 1 if attacker is left of target, -1 if to the right
+	}
+	
+	// Set speed to knockback
+	if (force_speed)
+	{
+		hsp = _kbx;
+		vsp = _kby;
+	}
+	// Add knockback to value
+	else
+	{
+		hsp += _kbx;
+		vsp += _kby;
+	}
+}
+
+// Alternative function using x and y instead of direction
+function TakeKnockbackXY(kb_strength, kb_x, kb_y, attackerinst=noone, force_speed=false)
+{
+	return TakeKnockback(
+		kb_strength,
+		point_direction(0,0, kb_x, kb_y),
+		attackerinst,
+		force_speed
+		);
+}
+
+function Defeat()
+{
+	// Destroy instance if OnDefeat returns anything but 0 or undefined
+	if ( !OnDefeat() )
+	{
+		instance_destroy();
+	}
+}
+
 // CALLBACKS (Override OK)  ======================================================
 
 function OnStart()
@@ -205,14 +364,13 @@ function OnStart()
 	
 }
 
+// Return 0 (default) to destroy instance afterwards, 1 to prevent destroy
 function OnDefeat()
 {
-	
+	return 0;
 }
 
-function OnDamage()
+function OnDamage(damage, inst=noone)
 {
-	
+	hpDisplayStep = hpDisplayTime;
 }
-
-

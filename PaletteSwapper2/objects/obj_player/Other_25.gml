@@ -172,6 +172,22 @@ function Draw()
 	}
 }
 
+// Interaction ===================================================================
+
+P_TakeDamage = TakeDamage;	// Keep reference to parent function
+function TakeDamage(damage, attacker=noone)
+{
+	if (iFrames == 0)
+	{
+		return P_TakeDamage(damage, attacker);
+	}
+	
+	return false;
+}
+
+
+// Callbacks ===================================================================
+
 function OnAnimationEnd()
 {
 	// Attack animation is in progress (just finished)
@@ -236,3 +252,28 @@ function OnAnimationEnd()
 	spriteanimator.UpdateAnimation(0);
 }
 
+// Called when swipe attack occurs
+function OnAttack()
+{
+	switch( myCol )
+	{
+		// White/Red Paint - Simple swipe
+		case(PlayerPaintColors.white):
+		case(PlayerPaintColors.red):
+			with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
+			{
+				image_xscale = other.image_xscale;
+				image_blend = obj_palette.colorDrawColor[other.myCol];
+			}
+			break;
+		case(PlayerPaintColors.orange):
+			instance_create_layer(x + sprite_width, y, "Instances", obj_paintbullet);
+			break;
+	}
+}
+
+function OnDamage()
+{
+	iFrames = maxIFrames;
+	hitStop = true;
+}

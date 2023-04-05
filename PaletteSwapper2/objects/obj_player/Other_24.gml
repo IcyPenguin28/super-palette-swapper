@@ -283,26 +283,6 @@ function ProcessPowers()
 	}
 }
 
-// Called when swipe attack occurs
-function OnAttack()
-{
-	switch( myCol )
-	{
-		// White/Red Paint - Simple swipe
-		case(PlayerPaintColors.white):
-		case(PlayerPaintColors.red):
-			with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
-			{
-				image_xscale = other.image_xscale;
-				image_blend = obj_palette.colorDrawColor[other.myCol];
-			}
-			break;
-		case(PlayerPaintColors.orange):
-			instance_create_layer(x + sprite_width, y, "Instances", obj_paintbullet);
-			break;
-	}
-}
-
 function UpdateFallCheckpoint()
 {
 	// Find nearest checkpoint when on ground

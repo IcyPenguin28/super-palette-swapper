@@ -6,3 +6,7 @@
 atk = 5; // The base attack power for the attack
 kbx = 5; // The number of pixels the anemy will take in horizontal knockback (does NOT account for kb resistances)
 kby = 4; // The number of pixels the enemy will take in vertical knockback (does NOT account for kb resistances)
+
+kbangle = 45;
+kbstrength = 5;
+

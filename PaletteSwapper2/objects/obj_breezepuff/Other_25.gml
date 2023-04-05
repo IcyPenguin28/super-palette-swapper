@@ -1,4 +1,4 @@
-/// @desc 
+/// @desc Entity Methods
 
 // Inherit the parent event
 event_inherited();
@@ -117,12 +117,12 @@ function Update(ts)
 	var _coll = ProcessCollision();
 	onGround = _coll & FL_COLLISION_D;
 
-
 }
 
-function OnHit()
+function OnDamage()
 {
 	hitstopstep = 7;
+	hpDisplayStep = hpDisplayTime;
 	SetState(ST_EN_BreezePuff.hurt);
 }
 

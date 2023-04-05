@@ -50,6 +50,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Backgrounds","folderPath":"folders/Sprites/Backgrounds.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enemies","folderPath":"folders/Sprites/Enemies.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Breezepuff","folderPath":"folders/Sprites/Enemies/Breezepuff.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Dropling","folderPath":"folders/Sprites/Enemies/Dropling.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Game Objects","folderPath":"folders/Sprites/Game Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Projectiles","folderPath":"folders/Sprites/Projectiles.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Terrain","folderPath":"folders/Sprites/Terrain.yy",},
@@ -59,7 +60,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"World Map","folderPath":"folders/Sprites/World Map.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Dropling","folderPath":"folders/Sprites/Enemies/Dropling.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"animations.json","CopyToMask":-1,"filePath":"datafiles",},

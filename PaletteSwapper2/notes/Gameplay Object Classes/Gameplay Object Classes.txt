@@ -1,6 +1,11 @@
 ==Objects relevant to level gameplay==
 
 - Parent classes are not designed to be placed on their own, only their child objects.
+- Avoid setting variables of one object from another directly as much as possible.
+	- Object methods should contain code to modify its owner's properties. Define more if necessary.
+	Ex:
+		Avoid:	enemy.hp -= damage;
+		Do:		enemy.TakeDamage(damage);
 
 Entities
 	- Object that require a frame update or makes use of some unique code.
