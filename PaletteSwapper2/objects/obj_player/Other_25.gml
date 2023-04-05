@@ -62,6 +62,7 @@ function Update(ts)
 			isAttackingGround = false;
 			isAttackingAir = false;
 			lockdir = false;
+			isDashing = false;
 			break;
 	
 		case(ST_Player.neutral):	// State Update
@@ -73,6 +74,7 @@ function Update(ts)
 			
 				SetState(ST_Player.attack1);
 			}
+			
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
 			ProcessCollision();
@@ -111,7 +113,7 @@ function Update(ts)
 			ProcessMovement(atkMovSpd, 0);
 		
 			isAttackingAir = !onGround;
-		
+			
 			ProcessCollision();
 		
 			spriteanimator.UpdateAnimation(ts);
@@ -133,6 +135,39 @@ function Update(ts)
 		
 		// Dashing =====================================================
 		case(-ST_Player.dash):
+			spriteanimator.SetAnimationKey("dash");
+			lockdir = true;
+			canDash = false;
+			isDashing = true;
+			dashstep = dashTime;
+			
+			if (dir != 0)
+			{
+				dashDir = dir;
+			}
+			else
+			{
+				dashDir = sign(image_xscale);
+			}
+				
+			break;
+		
+		case(ST_Player.dash):
+			vsp = 0;
+			hsp = dashSpd * dashDir;
+			ProcessMovement(hsp, vsp);
+			ProcessCollision();
+			
+			// Dash Timer
+			if dashstep > 0
+			{
+				dashstep = max(0, dashstep-ts);
+				
+				if dashstep == 0 // Countdown is complete
+				{
+					SetState(ST_Player.neutral);
+				}
+			}
 			break;
 	}
 

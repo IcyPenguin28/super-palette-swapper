@@ -118,21 +118,6 @@ function ProcessMovement(_hspeed, _vspeed)
 		}
 	}
 	
-	// Dash Timer
-	if dashstep > 0
-	{
-		dashstep --;
-
-		if dashstep == 0 // Countdown is complete
-		{
-			isDashing = false;
-			if onGround
-			{
-				canDash = true;
-			}
-		}
-	}
-
 	// Shoot Timer
 	if shootstep > 0
 	{
@@ -204,22 +189,7 @@ function ProcessPowers()
 		case PlayerPaintColors.red:
 			if (canDash && keyAction)
 			{
-				canDash = false;
-				isDashing = true;
-				dashstep = dashTime;
-				if (dir != 0)
-				{
-					dashDir = dir;
-				}
-				else
-				{
-					dashDir = sign(image_xscale);
-				}
-			}
-			if (isDashing)
-			{
-				vsp = 0;
-				hsp = dashSpd * dashDir;
+				SetState(ST_Player.dash);
 			}
 			break;
 		// ORANGE
