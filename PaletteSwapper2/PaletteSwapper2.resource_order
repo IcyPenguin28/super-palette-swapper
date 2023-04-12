@@ -47,6 +47,7 @@
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
     {"name":"SFX","order":16,"path":"folders/Sounds/SFX.yy",},
     {"name":"Music","order":17,"path":"folders/Sounds/Music.yy",},
+    {"name":"Demo Build Exclusive","order":22,"path":"folders/Sprites/Demo Build Exclusive.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"obj_attack_player","order":4,"path":"objects/obj_attack_player/obj_attack_player.yy",},
@@ -123,6 +124,7 @@
     {"name":"rm_sunsetstreet_boss","order":3,"path":"rooms/rm_sunsetstreet_boss/rm_sunsetstreet_boss.yy",},
     {"name":"spr_ui_bigpaint_bk","order":19,"path":"sprites/spr_ui_bigpaint_bk/spr_ui_bigpaint_bk.yy",},
     {"name":"obj_textbox","order":1,"path":"objects/obj_textbox/obj_textbox.yy",},
+    {"name":"rm_demoend","order":8,"path":"rooms/rm_demoend/rm_demoend.yy",},
     {"name":"spr_title_playstation","order":8,"path":"sprites/spr_title_playstation/spr_title_playstation.yy",},
     {"name":"spr_worldmapnode_unplayed","order":2,"path":"sprites/spr_worldmapnode_unplayed/spr_worldmapnode_unplayed.yy",},
     {"name":"spr_andy_dialogue_annoyed","order":1,"path":"sprites/spr_andy_dialogue_annoyed/spr_andy_dialogue_annoyed.yy",},
@@ -161,6 +163,7 @@
     {"name":"spr_terrain_fallcheckpoint","order":3,"path":"sprites/spr_terrain_fallcheckpoint/spr_terrain_fallcheckpoint.yy",},
     {"name":"mus_specialstage_round3","order":2,"path":"sounds/mus_specialstage_round3/mus_specialstage_round3.yy",},
     {"name":"obj_enemy","order":2,"path":"objects/obj_enemy/obj_enemy.yy",},
+    {"name":"mus_maintheme","order":6,"path":"sounds/mus_maintheme/mus_maintheme.yy",},
     {"name":"obj_explosion","order":2,"path":"objects/obj_explosion/obj_explosion.yy",},
     {"name":"spr_andy_attack_ground_2","order":4,"path":"sprites/spr_andy_attack_ground_2/spr_andy_attack_ground_2.yy",},
     {"name":"obj_entity","order":1,"path":"objects/obj_entity/obj_entity.yy",},

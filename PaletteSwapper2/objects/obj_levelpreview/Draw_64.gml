@@ -58,7 +58,13 @@ else
 }
 
 // Draw Bonus Objective
-
+draw_set_font(fnt_dialogue);
+draw_set_halign(fa_left);
+draw_set_valign(fa_middle);
+//draw_set_color(c_black);
+//draw_text(xx + sprite_get_width(spr_key_filled) * starScale, yy + 148 + offset, node.criteriaString);
+draw_set_color(c_black);
+draw_text(xx - 128, yy + 148, node.criteriaString);
 
 
 // Draw Buttons

@@ -11,6 +11,13 @@ if (keyReset)
 	room_restart();
 }
 
+var keySuperReset = keyboard_check_pressed(ord("R")) && keyboard_check(vk_control);
+if (keySuperReset)
+{
+	audio_stop_all();
+	game_restart();
+}
+
 
 if (keyboard_check_pressed(192))	// 192 = Tilde "~" key
 {

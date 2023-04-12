@@ -20,12 +20,12 @@ if activeBonusObj != -1
 			draw_text(sprite_get_width(spr_key_empty) * 2, display_get_gui_height() - sprite_get_height(spr_key_empty), criteriaString);
 		}
 	}
-	else
+	else if !alreadyGotKey
 	{
 		startTime = time;
 		endTime = startTime + fulfillmentDuration;
 		
-		if time != endTime && !instance_exists(obj_results)
+		if time < endTime && !instance_exists(obj_results)
 		{
 			if !soundplayed
 			{

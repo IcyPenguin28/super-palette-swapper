@@ -6,6 +6,7 @@ levelDisplayName = "Prologue - Memory Lane";
 clearStatus = 0;	// 0 if unplayed or inaccessible. 1 if cleared or 100% completed.
 unlocks = [rm_sunsetstreet1];	// The levels that are unlocked by clearing the stage on this node
 unlocked = false;	// Determines if this particular node is unlocked itself
+criteriaString = "missingno.";
 enum paths
 {
 	left,

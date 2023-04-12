@@ -1,5 +1,5 @@
 myStage = rm_introstage;
-unlocks = [rm_sunsetstreet1];
+unlocks = [rm_demoend];
 connections = [paths.right];
 levelDisplayName = "Prologue - Memory Lane";
 previewCol = gray;
