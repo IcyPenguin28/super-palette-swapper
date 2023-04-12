@@ -25,6 +25,13 @@ if !inSpecialStage
 				}
 			}
 			break;
+		case bonusObjectives.allPaintDrops:
+			criteriaString = "Collect all " + string(initPaintDropCount) + " paint drops";
+			if instance_number(obj_paintdrop) == 0
+			{
+				bonusObjFulfilled = true;
+			}
+			break;
 		case bonusObjectives.goldEnemy:
 			criteriaString = "Defeat the elusive golden enemy";
 			// if !instance_exists(obj_enemy_gold)
@@ -43,7 +50,8 @@ if !inSpecialStage
 			}
 			bonusObjFulfilled = !playerDashed;
 			break;
-		case bonusObjectives.reverseDrops:
+		case bonusObjectives.reverseBigDrops:
+			criteriaString = "Collect all three big paint drops in reverse order";
 			var counter = 0;
 			if instance_exists(obj_player)
 			{

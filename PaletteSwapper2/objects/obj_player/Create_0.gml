@@ -54,6 +54,7 @@ iFrames = 0;
 collectedBigDrops = [false, false, false]; // Bool array that holds the value for which big paintdrops in the stage have been collected.
 numPaintdrops = 0; // Represents the number of paintdrops the player has collected in the current stage
 attackState = -1; // This is the index of where the player is in the 3 hit combo
+paintDropPitch = 1; // This is the pitch of the sound that plays when picking up a small paintdrop. It increases if multiple are collected in quick succession. Think the fruits in Grapple Dog.
 
 //Timers
 dashstep = 0;
@@ -61,6 +62,8 @@ dashTime = 20;
 shootstep = 0;
 shootTime = 5;
 bombTime = 20;
+paintstep = 0;
+paintTime = room_speed;
 
 //Boolean states
 isAttackingGround = false;	// Attack animation is in progress

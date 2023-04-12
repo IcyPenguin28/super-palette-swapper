@@ -25,7 +25,7 @@ if starsOnScreen
 	if (alarm[1] == -1 && !star2Filled) alarm[1] = room_speed;
 	if (alarm[2] == -1 && !star3Filled) alarm[2] = room_speed * 1.5;
 	if (alarm[3] == -1 && !keyFilled) alarm[3] = room_speed * 2;
-	if (alarm[4] == -1 && keyFilled && !canContinue) alarm[4] = room_speed * 2.5;
+	if (alarm[4] == -1 && !canContinue) alarm[4] = room_speed * 2.5;
 }
 
 if star1Filled

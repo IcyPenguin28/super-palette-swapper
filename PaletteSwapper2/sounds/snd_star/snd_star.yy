@@ -12,12 +12,12 @@
   "conversionMode": 0,
   "duration": 0.756984,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "SFX",
+    "path": "folders/Sounds/SFX.yy",
   },
   "preload": false,
   "sampleRate": 44100,
   "soundFile": "snd_star.wav",
   "type": 0,
-  "volume": 0.5,
+  "volume": 0.25,
 }

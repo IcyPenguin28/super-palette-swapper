@@ -8,7 +8,7 @@ hp_ind = instance_create_layer(0, 0, "Instances", obj_hp_indicator);
 
 if !inSpecialStage
 {
-	paint_ind = instance_create_layer(0, 0, "Instances", obj_paintbucket_indicator);
+	bucket_ind = instance_create_layer(0, 0, "Instances", obj_paintbucket_indicator);
 	bigdrop_ind = instance_create_layer(0, 0, "Instances", obj_bigpaintdrop_indicator);	
 }
 
@@ -30,7 +30,7 @@ function HideUI()
 		xx = lerp(xx, 2000, hideSpd);
 	}
 	
-	with paint_ind
+	with bucket_ind
 	{
 		xx = lerp(xx, -2000, hideSpd);
 	}

@@ -1,0 +1,1 @@
+activeBonusObj = bonusObjectives.allPaintDrops;

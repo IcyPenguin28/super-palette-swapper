@@ -13,7 +13,7 @@
   "duration": 3.76,
   "parent": {
     "name": "Special Stage",
-    "path": "folders/Sounds/Special Stage.yy",
+    "path": "folders/Sounds/Music/Special Stage.yy",
   },
   "preload": false,
   "sampleRate": 44100,

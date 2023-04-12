@@ -15,7 +15,7 @@ function ProcessMovement(_hspeed, _vspeed)
 
 	if onGround
 	{
-		if dashstep == 0
+		if dashstep == 0 && !instance_exists(obj_results)
 		{
 			canDash = true;
 		}
@@ -100,6 +100,20 @@ function ProcessMovement(_hspeed, _vspeed)
 		{
 			vsp = -jumpSpd;
 		}
+	}
+	
+	// Timer for when the paintdrop pickup pitch resets
+	// TODO: This does not appear to work
+	if paintstep > 0
+	{
+		show_debug_message(paintstep);
+		paintstep --;
+	}
+	
+	if paintstep == 0
+	{
+		show_debug_message("Back to one");
+		paintdropPitch = 1;
 	}
 
 	// Variable Jump Height
