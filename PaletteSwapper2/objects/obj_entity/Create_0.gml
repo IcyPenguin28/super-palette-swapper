@@ -24,6 +24,7 @@ hsp = 0;
 vsp = 0;
 dir = 1;
 grav = 0.25;
+onGround = false;	// Update via ProcessCollision() Result
 
 // Rehit Queue
 rehitqueuecount = 16;	// Max number of projectiles to avoid rehits of

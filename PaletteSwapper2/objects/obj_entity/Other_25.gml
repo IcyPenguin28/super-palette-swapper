@@ -8,6 +8,8 @@
 #macro FL_COLLISION_U (1<<1)
 #macro FL_COLLISION_L (1<<2)
 #macro FL_COLLISION_D (1<<3)
+#macro FL_COLLISION_LD (1<<4)
+#macro FL_COLLISION_RD (1<<5)
 
 #macro KB_ANGLE_AWAY 361
 #macro KB_ANGLE_TOWARD 362
@@ -103,7 +105,7 @@ function TryStart()
 
 // Handles physics with the world. Call after ProcessMovement().
 // Returns bitfield representing collisions
-function ProcessCollision()
+function ProcessCollision(update_speeds=true)
 {
 	var _outbits = 0;
 	
@@ -117,7 +119,10 @@ function ProcessCollision()
 	if (c)
 	{
 		y = c.bbox_bottom + (y-bbox_top);
-		vsp = max(vsp, 0);
+		if (update_speeds)
+		{
+			vsp = max(vsp, 0);
+		}
 		
 		_outbits |= FL_COLLISION_U;
 	}
@@ -127,9 +132,26 @@ function ProcessCollision()
 	if (c)
 	{
 		y = c.bbox_top - (bbox_bottom-y);
-		vsp = min(vsp, 0);
+		if (update_speeds) 
+		{
+			vsp = min(vsp, 0);
+		}
 		
 		_outbits |= FL_COLLISION_D;
+	}
+	
+	// Down Right
+	c = collision_line(bbox_right, y, bbox_right, bbox_bottom, obj_solid, 0, 1);
+	if (c)
+	{
+		_outbits |= FL_COLLISION_RD;
+	}
+	
+	// Down Left
+	c = collision_line(bbox_left, y, bbox_left, bbox_bottom, obj_solid, 0, 1);
+	if (c)
+	{
+		_outbits |= FL_COLLISION_LD;
 	}
 	
 	// Horizontal ----------------------------------------------
@@ -139,7 +161,10 @@ function ProcessCollision()
 	if (c)
 	{
 		x = c.bbox_left - (bbox_right-x);
-		hsp = min(hsp, 0);
+		if (update_speeds)
+		{
+			hsp = min(hsp, 0);
+		}
 		
 		_outbits |= FL_COLLISION_R;
 	}
@@ -148,7 +173,10 @@ function ProcessCollision()
 	if (c)
 	{
 		x = c.bbox_left - (bbox_right-x);
-		hsp = min(hsp, 0);
+		if (update_speeds)
+		{
+			hsp = min(hsp, 0);
+		}
 		
 		_outbits |= FL_COLLISION_R;
 	}
@@ -158,7 +186,10 @@ function ProcessCollision()
 	if (c)
 	{
 		x = c.bbox_right - (bbox_left-x);
-		hsp = max(hsp, 0);
+		if (update_speeds)
+		{
+			hsp = max(hsp, 0);
+		}
 		
 		_outbits |= FL_COLLISION_L;
 	}
@@ -167,7 +198,10 @@ function ProcessCollision()
 	if (c)
 	{
 		x = c.bbox_right - (bbox_left-x);
-		hsp = max(hsp, 0);
+		if (update_speeds)
+		{
+			hsp = max(hsp, 0);
+		}
 		
 		_outbits |= FL_COLLISION_L;
 	}
@@ -321,6 +355,7 @@ function TakeKnockback(kb_strength, kb_direction=45, attackerinst=noone, force_s
 	if (attackerinst && (kb_direction < 360))
 	{
 		_kbx *= (attackerinst.x < x)? 1: -1;	// 1 if attacker is left of target, -1 if to the right
+		//_kbx *= sign(attackerinst.image_xscale);	// Knockback sign based on attacker x_scale
 	}
 	
 	// Set speed to knockback
@@ -373,4 +408,16 @@ function OnDefeat()
 function OnDamage(damage, inst=noone)
 {
 	hpDisplayStep = hpDisplayTime;
+}
+
+function InCamera(border=0)
+{
+	var cam = obj_camera;
+	return collision_rectangle(
+		cam.location[0]-border,
+		cam.location[1]-border,
+		cam.location[0]+cam.wRes+border,
+		cam.location[1]+cam.hRes+border,
+		self, false, false
+		);
 }

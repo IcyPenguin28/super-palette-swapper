@@ -202,8 +202,6 @@ function SpriteAnimator(_numlayers=1) constructor
 			// Change Animation
 			if (animationkey != animationkeylast)
 			{
-				show_debug_message("Key: {0}", animationkey);
-				
 				animationkeylast = animationkey;
 				animationstep = 0;
 				animationsteplast = -1;
