@@ -42,10 +42,31 @@ function Update(ts=1)
 			locationtarget[1] = obj_camera_target.y - (hRes/2);	
 			break;
 	}
+	
+	// Clamp bounds before use
+	var _boundx1 = bounds[0];
+	var _boundy1 = bounds[1];
+	var _boundx2 = bounds[2];
+	var _boundy2 = bounds[3];
+	
+	if ( abs(_boundx2-_boundx1) < wRes )
+	{
+		// Bound to center value
+		_boundx1 = lerp(_boundx1, _boundx2, 0.5) + wRes/2;
+		_boundx2 = _boundx1;
+	}
+	
+	if ( abs(_boundy2-_boundy1) < hRes )
+	{
+		// Bound to center value
+		_boundy1 = lerp(_boundy1, _boundy2, 0.5) + hRes/2;
+		_boundy2 = _boundy1;
+	}
+	
 
 	// Calculate final position
-	locationtarget[0] = clamp(locationtarget[0], 0, room_width-wRes);
-	locationtarget[1] = clamp(locationtarget[1], 0, room_height-hRes);
+	locationtarget[0] = clamp(locationtarget[0], _boundx1, _boundx2-wRes);
+	locationtarget[1] = clamp(locationtarget[1], _boundy1, _boundy2-hRes);
 
 	locationintermediate[0] = lerp(locationintermediate[0], locationtarget[0], panSpd*ts);
 	locationintermediate[1] = lerp(locationintermediate[1], locationtarget[1], panSpd*ts);
@@ -84,6 +105,12 @@ function SetState(camstate)
 {
 	state = camstate;
 	Update(0);
+}
+
+// Sets min and max location of camera
+function SetBounds(_x1, _y1, _x2, _y2)
+{
+	bounds = [_x1, _y1, _x2, _y2];
 }
 
 function SnapToTarget()
