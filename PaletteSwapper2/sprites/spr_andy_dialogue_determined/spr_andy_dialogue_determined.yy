@@ -26,7 +26,7 @@
   "origin": 4,
   "parent": {
     "name": "Dialogue Portraits",
-    "path": "folders/Sprites/Andy/Dialogue Portraits.yy",
+    "path": "folders/Sprites/Entities/Characters/Andy/Dialogue Portraits.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

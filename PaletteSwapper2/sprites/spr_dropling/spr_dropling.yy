@@ -31,7 +31,7 @@
   "origin": 4,
   "parent": {
     "name": "Dropling",
-    "path": "folders/Sprites/Enemies/Dropling.yy",
+    "path": "folders/Sprites/Entities/Enemies/Dropling.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

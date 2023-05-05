@@ -29,7 +29,7 @@
   "origin": 4,
   "parent": {
     "name": "Game Objects",
-    "path": "folders/Sprites/Game Objects.yy",
+    "path": "folders/Sprites/Entities/Game Objects.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

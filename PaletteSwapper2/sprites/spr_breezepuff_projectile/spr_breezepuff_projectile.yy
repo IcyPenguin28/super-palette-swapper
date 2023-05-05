@@ -26,7 +26,7 @@
   "origin": 4,
   "parent": {
     "name": "Breezepuff",
-    "path": "folders/Sprites/Enemies/Breezepuff.yy",
+    "path": "folders/Sprites/Entities/Enemies/Breezepuff.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

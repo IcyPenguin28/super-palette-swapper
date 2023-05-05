@@ -31,7 +31,7 @@
   "origin": 4,
   "parent": {
     "name": "Vince",
-    "path": "folders/Sprites/Vince.yy",
+    "path": "folders/Sprites/Entities/Characters/Vince.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

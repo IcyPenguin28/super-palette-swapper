@@ -26,7 +26,7 @@
   "origin": 4,
   "parent": {
     "name": "Andy",
-    "path": "folders/Sprites/Andy.yy",
+    "path": "folders/Sprites/Entities/Characters/Andy.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
