@@ -48,7 +48,7 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 			[1, spr_andy_dash, 1, 0, 0, 0],
 			[1, spr_andy_dash, 2, 0, 0, 0],
 		]
-	}
+	},
 	
 	vince : {
 		idle : [
