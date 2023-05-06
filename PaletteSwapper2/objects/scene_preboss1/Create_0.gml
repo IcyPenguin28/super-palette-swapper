@@ -10,3 +10,5 @@ commands = [
 	PORTRAITS(spr_andy_dialogue_happy, spr_vince_dialogue_smug, false, false),
 	TEXT("Big talk for a little guy like yourself! This'll be a piece of cake.")
 ]
+
+StartDialogue(commands);
