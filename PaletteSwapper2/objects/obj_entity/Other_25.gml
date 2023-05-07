@@ -299,7 +299,7 @@ function TakeDamage(damage, attackerinst=noone)
 		}
 	}
 	
-	show_debug_message(string([object_get_name(attackerinst.object_index), damage]));
+	// show_debug_message(string([object_get_name(attackerinst.object_index), damage]));
 
 	
 	damage = max(0, damage-def);

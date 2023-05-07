@@ -10,15 +10,29 @@ function ProcessMovement(_hspeed, _vspeed)
 	onGround = (coll && sign(grav) == 1 ||
 				place_meeting(x,y-1,obj_solid) && sign(grav) == -1);
 	inWater = place_meeting(x,y,obj_water);
-	canShoot = (instance_number(obj_paintbullet) < maxPaintBullets && shootstep == 0);
-	canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0);
+	canShoot = (instance_number(obj_paintbullet) < maxPaintBullets && shootstep == 0) && !instance_exists(obj_results) && !instance_exists(obj_textbox);
+	canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0) && !instance_exists(obj_results) && !instance_exists(obj_textbox);
 
 	if onGround
 	{
-		if dashstep == 0 && !instance_exists(obj_results)
+		if dashstep == 0 && !instance_exists(obj_results) && !instance_exists(obj_textbox)
 		{
 			canDash = true;
 		}
+	}
+	
+	if instance_exists(obj_results) || instance_exists(obj_textbox)
+	{
+		canDash = false;
+		canShoot = false;
+		canBomb = false;
+		canMove = false;
+		canJump = false;
+	}
+	else
+	{
+		canMove = true;
+		canJump = true;
 	}
 
 	// MOVEMENT ----------------------------------------------------- 
@@ -106,13 +120,13 @@ function ProcessMovement(_hspeed, _vspeed)
 	// TODO: This does not appear to work
 	if paintstep > 0
 	{
-		show_debug_message(paintstep);
+		// show_debug_message(paintstep);
 		paintstep --;
 	}
 	
 	if paintstep == 0
 	{
-		show_debug_message("Back to one");
+		// show_debug_message("Back to one");
 		paintdropPitch = 1;
 	}
 
@@ -181,7 +195,7 @@ function ProcessMovement(_hspeed, _vspeed)
 	
 	if (instance_place(x, y, obj_fall))
 	{
-		// TODO: *Do damage here*
+		// Do damage
 		hp --;
 		
 		// Respawn at last checkpoint

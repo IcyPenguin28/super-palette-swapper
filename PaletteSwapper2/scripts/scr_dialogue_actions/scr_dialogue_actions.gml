@@ -2,6 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 #macro TEXT new TextAction
 #macro PORTRAITS new PortraitAction
+#macro MUSIC new MusicAction
 
 function DialogueAction() constructor
 {
@@ -27,6 +28,21 @@ function PortraitAction(_portraitL, _portraitR, _swapL, _swapR) : DialogueAction
 	act = function(textbox)
 	{
 		textbox.setPortraits(portraitL, portraitR, swapL, swapR);
+		textbox.next();
+	}
+}
+
+function MusicAction(_stop, _start = noone) : DialogueAction() constructor
+{
+	audio_stop_sound(_stop);
+	
+	if _start != noone
+	{
+		audio_play_sound(_start, 0, true);	
+	}
+	
+	act = function(textbox)
+	{
 		textbox.next();
 	}
 }

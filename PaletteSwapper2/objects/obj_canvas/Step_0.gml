@@ -21,6 +21,9 @@ if stageCleared && !stepFlag
 		obj_player.canMove = false;
 		obj_player.canJump = false;
 		obj_player.canAttack = false;
+		obj_player.canDash = false;
+		obj_player.canShoot = false;
+		obj_player.canBomb = false;
 		instance_create_layer(0, 0, "Instances", obj_results);
 		stepFlag = true;	// Prevent constant stage clear stuff
 }

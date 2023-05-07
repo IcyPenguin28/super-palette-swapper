@@ -22,18 +22,53 @@ paintorder = [
 	
 ];
 
-// These are here for debugging and testing what a full palette would be.
-// Comment out any colors you want to deactivate
+// Populate palette with unlocked colors by reading save file
 
 array_set(colorList, 0, PlayerPaintColors.white);
-array_set(colorList, 1, PlayerPaintColors.red);
-array_set(colorList, 2, PlayerPaintColors.orange);
-array_set(colorList, 3, PlayerPaintColors.yellow);
-//array_set(colorList, 4, PlayerPaintColors.green);
-//array_set(colorList, 5, PlayerPaintColors.cyan);
-array_set(colorList, 6, PlayerPaintColors.blue);
-//array_set(colorList, 7, PlayerPaintColors.indigo);
-//array_set(colorList, 8, PlayerPaintColors.purple);
+
+ini_open(global.active_savefile);
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.red), 0))
+{
+	array_set(colorList, 1, PlayerPaintColors.red);	
+}
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.orange), 0))
+{
+	array_set(colorList, 2, PlayerPaintColors.orange);	
+}
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.yellow), 0))
+{
+	array_set(colorList, 3, PlayerPaintColors.yellow);	
+}
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.green), 0))
+{
+	array_set(colorList, 4, PlayerPaintColors.green);	
+}
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.cyan), 0))
+{
+	array_set(colorList, 5, PlayerPaintColors.cyan);	
+}
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.blue), 0))
+{
+	array_set(colorList, 6, PlayerPaintColors.blue);	
+}
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.indigo), 0))
+{
+	array_set(colorList, 7, PlayerPaintColors.indigo);	
+}
+
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.purple), 0))
+{
+	array_set(colorList, 8, PlayerPaintColors.purple);	
+}
+
+ini_close();
 
 // Create cursor
 xx = 48;
@@ -90,4 +125,18 @@ function move_palette_cursor(tx, ty)
 		targetX = tx;
 		targetY = ty;
 	}
+}
+
+function CalcNumColors()
+{
+	var numColors = 0;
+	for (var i = 0; i < array_length(colorList) - 1; i++)
+	{
+		if colorList[i] != PlayerPaintColors.empty
+		{
+			numColors ++;
+		}
+	}
+	
+	return numColors;
 }

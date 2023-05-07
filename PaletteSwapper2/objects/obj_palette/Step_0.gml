@@ -86,89 +86,93 @@ else
 }
 #endregion
 
-#region NUMPAD/RIGHT STICK SHORTCUTS
-if (array_has_value(colorList, PlayerPaintColors.red) && keyR)
-{
-	activeSlot = 1;
-}
 
-if (array_has_value(colorList, PlayerPaintColors.orange) && keyO)
+if (CalcNumColors() > 1) // Player has colors they can rotate through
 {
-	activeSlot = 2;
-}
-
-if (array_has_value(colorList, PlayerPaintColors.yellow) && keyY)
-{
-	activeSlot = 3;
-}
-
-if (array_has_value(colorList, PlayerPaintColors.green) && keyG)
-{
-	activeSlot = 4;
-}
-
-if (array_has_value(colorList, PlayerPaintColors.cyan) && keyC)
-{
-	activeSlot = 5;
-}
-
-if (array_has_value(colorList, PlayerPaintColors.blue) && keyB)
-{
-	activeSlot = 6;
-}
-
-if (array_has_value(colorList, PlayerPaintColors.indigo) && keyI)
-{
-	activeSlot = 7;
-}
-
-if (array_has_value(colorList, PlayerPaintColors.purple) && keyP)
-{
-	activeSlot = 8;
-}
-
-if (array_has_value(colorList, PlayerPaintColors.white) && keyW)
-{
-	activeSlot = 0;
-}
-#endregion
-
-#region ROTATE THROUGH COLORS
-if keyRotateL
-{
-	do
+	#region NUMPAD/RIGHT STICK SHORTCUTS
+	if (array_has_value(colorList, PlayerPaintColors.red) && keyR)
 	{
-		if (activeSlot > 0)
-		{
-			activeSlot --;
-		}
-		else
-		{
-			activeSlot = array_length(colorList) - 1;
-		}
+		activeSlot = 1;
 	}
-	until (colorList[activeSlot] != PlayerPaintColors.empty);
-}
 
-if keyRotateR
-{
-	do
+	if (array_has_value(colorList, PlayerPaintColors.orange) && keyO)
 	{
-		if (activeSlot < array_length(colorList) - 1)
-		{
-			activeSlot ++;
-		}
-		else
-		{
-			activeSlot = 0;
-		}
+		activeSlot = 2;
 	}
-	until (colorList[activeSlot] != PlayerPaintColors.empty);
-}
-#endregion
 
-//Move cursor to location of active color
-move_palette_cursor(colorCoords[activeSlot][0], colorCoords[activeSlot][1]);
+	if (array_has_value(colorList, PlayerPaintColors.yellow) && keyY)
+	{
+		activeSlot = 3;
+	}
+
+	if (array_has_value(colorList, PlayerPaintColors.green) && keyG)
+	{
+		activeSlot = 4;
+	}
+
+	if (array_has_value(colorList, PlayerPaintColors.cyan) && keyC)
+	{
+		activeSlot = 5;
+	}
+
+	if (array_has_value(colorList, PlayerPaintColors.blue) && keyB)
+	{
+		activeSlot = 6;
+	}
+
+	if (array_has_value(colorList, PlayerPaintColors.indigo) && keyI)
+	{
+		activeSlot = 7;
+	}
+
+	if (array_has_value(colorList, PlayerPaintColors.purple) && keyP)
+	{
+		activeSlot = 8;
+	}
+
+	if (array_has_value(colorList, PlayerPaintColors.white) && keyW)
+	{
+		activeSlot = 0;
+	}
+	#endregion
+
+	#region ROTATE THROUGH COLORS
+	if keyRotateL
+	{
+		do
+		{
+			if (activeSlot > 0)
+			{
+				activeSlot --;
+			}
+			else
+			{
+				activeSlot = array_length(colorList) - 1;
+			}
+		}
+		until (colorList[activeSlot] != PlayerPaintColors.empty);
+	}
+
+	if keyRotateR
+	{
+		do
+		{
+			if (activeSlot < array_length(colorList) - 1)
+			{
+				activeSlot ++;
+			}
+			else
+			{
+				activeSlot = 0;
+			}
+		}
+		until (colorList[activeSlot] != PlayerPaintColors.empty);
+	}
+	#endregion
+	
+	//Move cursor to location of active color
+	move_palette_cursor(colorCoords[activeSlot][0], colorCoords[activeSlot][1]);
+}
 
 // Set player's color to the one highlighted by the palette
 if instance_exists(obj_player)
@@ -178,3 +182,5 @@ if instance_exists(obj_player)
 
 painttheta = (activeSlot - PlayerPaintColors.white + 1) * paintthetasep;
 paintthetadraw = approach_value(paintthetadraw, painttheta, 3);
+
+show_debug_message(colorList[activeSlot]);

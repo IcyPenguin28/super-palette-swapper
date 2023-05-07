@@ -65,7 +65,6 @@ if ( canMove && !isMoving )
 	if (xdist != 0 || ydist != 0)
 	{
 		numDests = collision_line_list(x, y, x + xdist, y + ydist, obj_worldmapnode, false, true, possibleDests, true);
-		show_debug_message("Initial destination node: " + string(destNode));
 		
 		// Check for valid nodes in direction
 		var _nd;
