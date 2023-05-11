@@ -33,7 +33,7 @@ if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.red), 0))
 	array_set(colorList, 1, PlayerPaintColors.red);	
 }
 
-if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.orange), 0))
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.orange), 0)) || true
 {
 	array_set(colorList, 2, PlayerPaintColors.orange);	
 }
@@ -53,7 +53,7 @@ if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.cyan), 0))
 	array_set(colorList, 5, PlayerPaintColors.cyan);	
 }
 
-if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.blue), 0))
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.blue), 0)) || true
 {
 	array_set(colorList, 6, PlayerPaintColors.blue);	
 }

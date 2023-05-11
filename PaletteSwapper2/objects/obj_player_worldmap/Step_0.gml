@@ -133,7 +133,7 @@ if (destNode != noone)
 }
 
 // Open level preview
-if (keyConfirm) && destNode.unlocked
+if (keyConfirm) && destNode.unlocked && !instance_exists(obj_textbox)
 {
 	if !instance_exists(obj_levelpreview)
 	{
@@ -149,8 +149,17 @@ if (keyConfirm) && destNode.unlocked
 	canMove = false;
 }
 
+if instance_exists(obj_textbox)
+{
+	canMove = false;
+}
+else
+{
+	canMove = true;
+}
+
 // Close level preview
-if (keyCancel) && instance_exists(obj_levelpreview)
+if (keyCancel) && instance_exists(obj_levelpreview) && !instance_exists(obj_textbox)
 {
 	with instance_nearest(x, y, obj_levelpreview)
 	{

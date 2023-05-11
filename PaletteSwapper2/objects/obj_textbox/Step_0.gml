@@ -79,7 +79,16 @@ else
 		portraitRX = lerp(portraitRX, portraitRXMax, stretchSpeed);
 	}
 	
-	keyConfirm = keyboard_check_pressed(ord("Z"));
+	if global.gp_device == -1
+	{
+		keyConfirm = keyboard_check_pressed(ord("Z"));
+	}
+	else
+	{
+		keyConfirm = keyboard_check_pressed(ord("Z")) ||
+			gamepad_button_check_pressed(global.gp_device, gp_face1) ||
+			gamepad_button_check_pressed(global.gp_device, gp_face2);
+	}
 
 	textProgress = min(textProgress + textSpeed, textLength);
 

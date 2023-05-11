@@ -17,9 +17,18 @@ else
 	keyRight = keyboard_check_pressed(vk_right) ||
 		//max(0,gamepad_axis_value(gp, gp_axislh)) ||
 		gamepad_button_check_pressed(gp, gp_padr);
-	confirmButton = keyboard_check_pressed(ord("Z")) ||
+	if (global.gp_desc == "Nintendo Switch Pro Controller")
+	{
+		confirmButton = keyboard_check_pressed(ord("Z")) ||
+		gamepad_button_check_pressed(gp, gp_start) ||
+		gamepad_button_check_pressed(gp, gp_face2);
+	}
+	else
+	{
+		confirmButton = keyboard_check_pressed(ord("Z")) ||
 		gamepad_button_check_pressed(gp, gp_start) ||
 		gamepad_button_check_pressed(gp, gp_face1);
+	}
 }
 
 var _ytarget = 900;	// Final position of obj_mainmenu

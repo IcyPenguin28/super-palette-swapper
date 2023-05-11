@@ -1,10 +1,29 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-keyConfirm = keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face1);
-keyCancel = keyboard_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face2);
-keyLeft = keyboard_check_pressed(vk_left)  || gamepad_button_check_pressed(global.gp_device, gp_padl);
-keyRight = keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(global.gp_device, gp_padr);
+if global.gp_device == -1
+{
+	keyLeft = keyboard_check_pressed(vk_left);
+	keyRight = keyboard_check_pressed(vk_right);
+	keyConfirm = keyboard_check_pressed(ord("Z"));
+	keyCancel = keyboard_check_pressed(ord("X"));
+}
+else
+{
+	if global.gp_desc == "Nintendo Switch Pro Controller"
+	{
+		keyConfirm = keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face2);
+		keyCancel = keyboard_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face1);
+	}
+	else
+	{
+		keyConfirm = keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face1);
+		keyCancel = keyboard_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face2);
+	}
+	keyLeft = keyboard_check_pressed(vk_left)  || gamepad_button_check_pressed(global.gp_device, gp_padl);
+	keyRight = keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(global.gp_device, gp_padr);
+}
+
 
 if canInteract
 {
