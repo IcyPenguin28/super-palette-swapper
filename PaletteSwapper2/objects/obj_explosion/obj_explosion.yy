@@ -32,8 +32,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_explosion",
-    "path": "sprites/spr_explosion/spr_explosion.yy",
+    "name": "spr_explosion_blue",
+    "path": "sprites/spr_explosion_blue/spr_explosion_blue.yy",
   },
   "spriteMaskId": null,
   "visible": true,
