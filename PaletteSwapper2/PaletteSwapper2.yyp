@@ -144,6 +144,7 @@
     {"id":{"name":"spr_ui_colselect_paint","path":"sprites/spr_ui_colselect_paint/spr_ui_colselect_paint.yy",},},
     {"id":{"name":"spr_terrain_solid","path":"sprites/spr_terrain_solid/spr_terrain_solid.yy",},},
     {"id":{"name":"spr_water","path":"sprites/spr_water/spr_water.yy",},},
+    {"id":{"name":"obj_vince_can","path":"objects/obj_vince_can/obj_vince_can.yy",},},
     {"id":{"name":"obj_savemenu","path":"objects/obj_savemenu/obj_savemenu.yy",},},
     {"id":{"name":"mus_introstage","path":"sounds/mus_introstage/mus_introstage.yy",},},
     {"id":{"name":"spr_terrain_fall","path":"sprites/spr_terrain_fall/spr_terrain_fall.yy",},},
