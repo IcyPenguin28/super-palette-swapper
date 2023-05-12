@@ -296,6 +296,11 @@ function SpriteAnimator(_numlayers=1) constructor
 					y = activeframedata[4];
 					flag = activeframedata[5];
 					
+					if ( flag & FL_SpriteAnimator_Frame.loop )
+					{
+						activeloopindex = activeframeindex;
+					}
+					
 				}
 				
 				if (_animationended && loopcallback != -1)

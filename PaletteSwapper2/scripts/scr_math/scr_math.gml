@@ -12,3 +12,9 @@ function approach_smooth(x, target, smooth)
 		min(x+(target-x+smooth)*smooth, target): 
 		max(x+(target-x-smooth)*smooth, target);
 }
+
+// Returns 1 or -1 based on evaluated boolean
+function polarize(x)
+{
+	return bool(x)? 1: -1;
+}

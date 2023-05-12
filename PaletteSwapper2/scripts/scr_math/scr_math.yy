@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "approach_value",
+  "name": "scr_math",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

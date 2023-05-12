@@ -52,15 +52,41 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 	
 	vince : {
 		idle : [
-			[7, spr_vince_idle, 0, 0, 0, 0],
-			[7, spr_vince_idle, 1, 0, 0, 0],
-			[7, spr_vince_idle, 2, 0, 0, 0],
-			[7, spr_vince_idle, 3, 0, 0, 0],
+			[8, spr_vince_idle, 0, 0, 0, 0],
+			[8, spr_vince_idle, 1, 0, 0, 0],
+			[8, spr_vince_idle, 2, 0, 0, 0],
+			[8, spr_vince_idle, 3, 0, 0, 0],
+		],
+		
+		move_f : [
+			[8, spr_vince_move_f, 0, 0, 0, 0],
+			[8, spr_vince_move_f, 1, 0, 0, 0],
+			[8, spr_vince_move_f, 2, 0, 0, 0],
+			[8, spr_vince_move_f, 3, 0, 0, 0],
+		],
+		
+		move_b : [
+			[8, spr_vince_move_b, 0, 0, 0, 0],
+			[8, spr_vince_move_b, 1, 0, 0, 0],
+			[8, spr_vince_move_b, 2, 0, 0, 0],
+			[8, spr_vince_move_b, 4, 0, 0, 0],
 		],
 		
 		dash : [
 			[2, spr_vince_dash, 0, 0, 0, 0],
-			[3, spr_vince_dash, 1, 0, 0, FL_SpriteAnimator_Frame.loop],
+			[3, spr_vince_dash, 1, 0, 0, 0],
+			[3, spr_vince_dash, 2, 0, 0, FL_SpriteAnimator_Frame.loop],
+			[3, spr_vince_dash, 3, 0, 0, 0],
+		],
+		
+		// Dash start
+		dash0 : [
+			[6, spr_vince_dash, 0, 0, 0, 0],
+			[6, spr_vince_dash, 1, 0, 0, FL_SpriteAnimator_Frame.loop],
+		],
+		
+		// Dash loop
+		dash1 : [
 			[3, spr_vince_dash, 2, 0, 0, 0],
 			[3, spr_vince_dash, 3, 0, 0, 0],
 		],
@@ -81,20 +107,6 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 			[0, spr_vince_jump, 1, 0, 0, 0],
 		],
 		
-		move_b : [
-			[8, spr_vince_move_b, 0, 0, 0, 0],
-			[8, spr_vince_move_b, 1, 0, 0, 0],
-			[8, spr_vince_move_b, 2, 0, 0, 0],
-			[8, spr_vince_move_b, 4, 0, 0, 0],
-		],
-		
-		move_f : [
-			[8, spr_vince_move_f, 0, 0, 0, 0],
-			[8, spr_vince_move_f, 1, 0, 0, 0],
-			[8, spr_vince_move_f, 2, 0, 0, 0],
-			[8, spr_vince_move_f, 3, 0, 0, 0],
-		],
-		
 		// Reel back
 		throw0 : [
 			[2, spr_vince_throw, 0, 0, 0, 0],
@@ -105,7 +117,7 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 		// Throw
 		throw1 : [
 			[2, spr_vince_throw, 3, 0, 0, 0],
-			[0, spr_vince_throw, 4, 0, 0, FL_SpriteAnimator_Frame.loop],
+			[10, spr_vince_throw, 4, 0, 0, FL_SpriteAnimator_Frame.loop],
 		],
 	}
 
