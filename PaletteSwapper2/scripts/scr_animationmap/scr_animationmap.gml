@@ -119,6 +119,21 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 			[2, spr_vince_throw, 3, 0, 0, 0],
 			[10, spr_vince_throw, 4, 0, 0, FL_SpriteAnimator_Frame.loop],
 		],
+		
+		// Spray
+		spray0 : [
+			[6, spr_vince_spray, 0, 0, 0, 0],
+		],
+		
+		spray1 : [
+			[2, spr_vince_spray, 1, 0, 0, FL_SpriteAnimator_Frame.loop],
+			[2, spr_vince_spray, 2, 0, 0, 0],
+		],
+		
+		// Defeat
+		defeat : [
+			[0, spr_vince_throw, 4, 0, 0, 0],
+		],
 	}
 
 }  /*ANIMMAPEND*/;

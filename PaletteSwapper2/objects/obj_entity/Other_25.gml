@@ -367,15 +367,15 @@ function TakeDamage(damage, attackerinst=noone)
 	}
 	
 	// show_debug_message(string([object_get_name(attackerinst.object_index), damage]));
-
 	
 	damage = max(0, damage-def);
 	
+	var _lasthp = hp;
 	hp = max(0, hp-damage);
 	
 	OnDamage(damage, attackerinst);
 	
-	if (hp == 0)
+	if (_lasthp > 0 && hp == 0)
 	{
 		Defeat();
 		return 0;

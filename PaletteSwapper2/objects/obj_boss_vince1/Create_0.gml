@@ -9,6 +9,7 @@ walkSpd = 1;
 spriteanimator = new SpriteAnimator();
 //spriteanimator.Layer(0).SetCallback(OnAnimationEnd);
 spriteanimator.CopyAnimations_Struct(SPRITEANIMMAP[$ "vince"]);
+spriteanimator.SetAnimationKey("idle");
 
 enum ST_Boss_Vince
 {
@@ -19,6 +20,8 @@ enum ST_Boss_Vince
 	jump,		// Boss is jumping
 	attack1,	// One of the boss's attacks
 	attack2,	// Another one of the boss's attacks
-	attack3		// What do you think?
+	attack3,	// What do you think?
+	
+	defeat,
 }
 

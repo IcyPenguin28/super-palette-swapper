@@ -3,6 +3,12 @@
 // Inherit the parent event
 event_inherited();
 
+function OnDefeat()
+{
+	SetState(ST_Boss_Vince.defeat);
+	return 1;	// Prevent destroy
+}
+
 function Update(ts)
 {
 	/*
@@ -10,37 +16,17 @@ function Update(ts)
 		Idle > Attack > Idle
 	*/
 	
-	if (hp <= 0)
-	{
-		hp = 0;
-		displayHP = false;
-		if ( instance_exists(inst_introstage_solid_boss0) )
-		{
-			inst_introstage_solid_boss0.active = false;
-		}
-		if ( instance_exists(inst_introstage_solid_boss1) )
-		{
-			inst_introstage_solid_boss1.active = false;
-		}
-		
-		if !(instance_exists(myPostBossScene))
-		{
-			instance_create_layer(0, 0, "Instances", myPostBossScene);
-		}
-		
-		audio_stop_sound(fightMusic);
-		
-	}
-	
 	// True when on house platforms. Used in some decision making
 	var _onplatform = y < ystart-16;
 	
-	switch state
+	var p = instance_exists(obj_player)? obj_player: noone;
+	
+	switch(state)
 	{
 		// Inactive =========================================================
 		case(ST_Boss_Vince.inactive):
 			sprite_index = idleSprite;
-			image_xscale = obj_player.x > x ? 1 : -1;
+			if (p) {image_xscale = obj_player.x > x ? 1 : -1;}
 			
 			if !instance_exists(obj_textbox) && instance_exists(myPreBossScene)
 			{
@@ -58,7 +44,8 @@ function Update(ts)
 			
 		case(ST_Boss_Vince.prefight):
 			sprite_index = idleSprite;
-			image_xscale = obj_player.x > x ? 1 : -1;
+			if (p) {image_xscale = obj_player.x > x ? 1 : -1;}
+			
 			audio_stop_all();
 			audio_play_sound(fightMusic, 0, true);
 			displayHP = true;
@@ -80,7 +67,7 @@ function Update(ts)
 			break;
 			
 		case(ST_Boss_Vince.idle):		// State Step
-			image_xscale = obj_player.x > x ? 1 : -1;
+			if (p) {image_xscale = obj_player.x > x ? 1 : -1;}
 			
 			if (statestep > 0)
 			{
@@ -106,7 +93,12 @@ function Update(ts)
 		// Walk ====================================================================================
 		case(-ST_Boss_Vince.walk):
 			statestep = Boss_StateDurations.walk;
-			hsp = -polarize(obj_player.x-x);
+			
+			if (p)
+			{
+				hsp = -polarize(obj_player.x-x);
+				spriteanimator.SetAnimationKey((sign(obj_player.x-x) == sign(hsp))? "move_f": "move_b");
+			}
 			
 			// Walk towards center if too far
 			if ( abs(obj_camera.xcenter-x) > 200 )
@@ -114,14 +106,16 @@ function Update(ts)
 				hsp = polarize(obj_camera.xcenter-x);
 			}
 			
-			spriteanimator.SetAnimationKey((sign(obj_player.x-x) == sign(hsp))? "move_f": "move_b");
 			break;
 		
 		case(ST_Boss_Vince.walk):
-			image_xscale = obj_player.x > x ? 1 : -1;
+			if (p)
+			{
+				image_xscale = obj_player.x > x ? 1 : -1;
 			
-			// Set animation based on direction to player and hsp
-			spriteanimator.SetAnimationKey((sign(obj_player.x-x) == sign(hsp))? "move_f": "move_b");
+				// Set animation based on direction to player and hsp
+				spriteanimator.SetAnimationKey((sign(obj_player.x-x) == sign(hsp))? "move_f": "move_b");
+			}
 			
 			if (statestep > 0)
 			{
@@ -173,7 +167,7 @@ function Update(ts)
 		// Attack 1 ====================================================================================
 		// Spray: Basically instant Piranha Plant Side-B, but with obj_spraycloud.
 		case(-ST_Boss_Vince.attack1):
-			spriteanimator.SetAnimationKey("throw0");
+			spriteanimator.SetAnimationKey("spray0");
 			statestep = 0;
 			break;
 		
@@ -184,7 +178,7 @@ function Update(ts)
 				// Spray
 				if ( spriteanimator.Layer(0).HasCompleted(true) )
 				{
-					spriteanimator.SetAnimationKey("throw1");
+					spriteanimator.SetAnimationKey("spray1");
 					statestep = 1;
 					
 					var _inst = instance_create_depth(x+image_xscale*10, y, depth-10, obj_spraycloud);
@@ -268,6 +262,51 @@ function Update(ts)
 					SetState(ST_Boss_Vince.idle);
 				}
 			}
+			break;
+		
+		// Defeat ================================================================================
+		case(-ST_Boss_Vince.defeat):
+			spriteanimator.SetAnimationKey("defeat");
+			statestep = 0;
+			
+			displayHP = false;
+			if ( instance_exists(inst_introstage_solid_boss0) )
+			{
+				inst_introstage_solid_boss0.active = false;
+			}
+			if ( instance_exists(inst_introstage_solid_boss1) )
+			{
+				inst_introstage_solid_boss1.active = false;
+			}
+		
+			if !(instance_exists(myPostBossScene))
+			{
+				instance_create_layer(0, 0, "Instances", myPostBossScene);
+			}
+			
+			atk = 0;
+			
+			audio_stop_sound(fightMusic);
+			break;
+		
+		case(ST_Boss_Vince.defeat):
+			hsp = 0;
+			image_xscale = polarize(p.x-x);
+			
+			if (!onGround)
+			{
+				vsp += 0.16;
+				
+				x += hsp;
+				y += vsp;
+				
+				if ( ProcessCollision(true) )
+				{
+					onGround = true;
+					vsp = 0;
+				}
+			}
+			
 			break;
 	}
 	
