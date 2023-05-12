@@ -19,13 +19,14 @@ enum ST_Boss
 }
 
 state = ST_Boss.inactive;
+
 displayHP = false;
 
 fightMusic = mus_boss_rival;
 
 idleSprite = spr_vince_idle;
 walkingSprite = spr_vince_move_b;
-jumpingSprite
+jumpingSprite = spr_vince_jump;
 
 walkSpd = 4;
 
@@ -42,13 +43,15 @@ proceedingWallF = noone;	// The one in front of the player that prevents them fr
 // Read jump points
 // Copied straight from Hunter, sorry not sorry
 var _inst;
-numjumppoints = instance_number(obj_bossjumpoint);
+numjumppoints = instance_number(obj_bossjumppoint);
 jumpPoints = array_create(numjumppoints);
+jumpstartpos = [0, 0];
+jumptargetpos = [0, 0];
 
 for (var i = 0; i < numjumppoints; i++)
 {
-	_inst = instance_find(obj_bossjumpoint, i);
-	jumpPoints[i] = [_inst.x, _inst.y-32];
+	_inst = instance_find(obj_bossjumppoint, i);
+	jumpPoints[i] = [_inst.x, _inst.y-(bbox_bottom-y)];	// Account for sprite offset
 }
 
 

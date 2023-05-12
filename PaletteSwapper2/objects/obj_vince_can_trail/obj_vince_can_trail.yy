@@ -1,21 +1,18 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_boss_vince1",
+  "name": "obj_vince_can_trail",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":25,"eventType":7,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Bosses",
-    "path": "folders/Objects/Gameplay Objects/Entities/Bosses.yy",
+    "name": "Enemy",
+    "path": "folders/Objects/Gameplay Objects/Projectiles/Enemy.yy",
   },
-  "parentObjectId": {
-    "name": "obj_boss",
-    "path": "objects/obj_boss/obj_boss.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -32,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_vince_idle",
-    "path": "sprites/spr_vince_idle/spr_vince_idle.yy",
+    "name": "spr_spraycloud_ball",
+    "path": "sprites/spr_spraycloud_ball/spr_spraycloud_ball.yy",
   },
   "spriteMaskId": null,
   "visible": true,

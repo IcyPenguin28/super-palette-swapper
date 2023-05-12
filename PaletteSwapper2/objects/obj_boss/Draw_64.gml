@@ -8,5 +8,19 @@ var _padding = 16;
 
 if displayHP
 {
-	draw_healthbar(display_get_gui_width()/2 - _length/2, _padding, display_get_gui_width()/2 + _length/2, _padding + _width, (hp/maxHP) * 100, c_black, c_maroon, c_red, 0, true, false);
+	draw_healthbar(
+		display_get_gui_width()/2 - _length/2, 
+		_padding, 
+		display_get_gui_width()/2 + _length/2,
+		_padding + _width, 
+		(hp/maxHP) * 100, 
+		c_black, 
+		c_maroon, 
+		c_red, 
+		0, 
+		true, 
+		false
+		);
+	
+	
 }
