@@ -18,3 +18,8 @@ function polarize(x)
 {
 	return bool(x)? 1: -1;
 }
+
+function BoolStep(x, step)
+{
+	return ( (x / step) % 2 ) > 0;
+}

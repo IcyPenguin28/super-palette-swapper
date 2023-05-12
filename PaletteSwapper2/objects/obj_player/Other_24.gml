@@ -196,7 +196,7 @@ function ProcessMovement(_hspeed, _vspeed)
 	if (instance_place(x, y, obj_fall))
 	{
 		// Do damage
-		hp --;
+		TakeDamage(1);
 		
 		// Respawn at last checkpoint
 		if (fallcheckpoint)

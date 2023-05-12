@@ -15,3 +15,5 @@ display_set_gui_size(global.h_res, global.v_res);
 #macro DEBUG global.g_debug
 DEBUG = 0;	// Toggle with tilde "`" key
 
+timestepLevel = 1;
+
