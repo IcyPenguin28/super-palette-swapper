@@ -24,6 +24,9 @@ locationtarget = [0,0];	// Final target position
 locationintermediate = [0,0];	// Midway target position. 1 degree of smoothing
 location = [0,0];	// Current position (x,y)
 
+xcenter = 0;	// Center of screen
+ycenter = 0;	// Center of screen
+
 bounds = [0, 0, room_width, room_height];	// [x1, y1, x2, y2]
 
 playerCamLookX = 64;	// X Offset in player direction

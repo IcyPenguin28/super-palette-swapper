@@ -23,9 +23,9 @@ if (keyboard_check_pressed(192))	// 192 = Tilde "~" key
 {
 	DEBUG ^= 1;
 	
-	obj_camerabounds.visible = DEBUG > 0;
-	obj_trigger.visible = DEBUG > 0;
-	obj_scenetrigger.visible = DEBUG > 0;
+	with (obj_camerabounds) {visible = DEBUG > 0;}
+	with (obj_trigger) {visible = DEBUG > 0;}
+	with (obj_scenetrigger) {visible = DEBUG > 0;}
 }
 
 #endregion

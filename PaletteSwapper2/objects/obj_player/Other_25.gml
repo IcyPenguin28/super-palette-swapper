@@ -212,9 +212,12 @@ function Draw()
 P_TakeDamage = TakeDamage;	// Keep reference to parent function
 function TakeDamage(damage, attacker=noone)
 {
-	if (iFrames == 0)
+	if (damage > 0)
 	{
-		return P_TakeDamage(damage, attacker);
+		if (iFrames == 0)
+		{
+			return P_TakeDamage(damage, attacker);
+		}
 	}
 	
 	return false;

@@ -109,16 +109,19 @@ function ProcessCollision(update_speeds=true)
 {
 	var _outbits = 0;
 	
+	var xx = lerp(bbox_left, bbox_right, 0.5);
+	var yy = lerp(bbox_top, bbox_bottom, 0.5);
+	
 	var c;
 	var n;
-	var _hsep = sprite_get_height(mask_index) / 3;	// Space between horizontal collision lines
+	var _hsep = (bbox_bottom-bbox_top) / 3;	// Space between horizontal collision lines
 	var _colllist = ds_list_create();
 	
 	// Vertical --------------------------------------------
 	
 	// Up
 	ds_list_clear(_colllist);
-	n = collision_line_list(x, y, x, bbox_top, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(xx, yy, xx, bbox_top, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -126,6 +129,8 @@ function ProcessCollision(update_speeds=true)
 		if (c && c.active)
 		{
 			y = c.bbox_bottom + (y-bbox_top);
+			yy = lerp(bbox_top, bbox_bottom, 0.5);
+			
 			if (update_speeds)
 			{
 				vsp = max(vsp, 0);
@@ -137,7 +142,7 @@ function ProcessCollision(update_speeds=true)
 	
 	// Down
 	ds_list_clear(_colllist);
-	n = collision_line_list(x, y, x, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(xx, yy, xx, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -145,6 +150,8 @@ function ProcessCollision(update_speeds=true)
 		if (c && c.active)
 		{
 			y = c.bbox_top - (bbox_bottom-y);
+			yy = lerp(bbox_top, bbox_bottom, 0.5);
+			
 			if (update_speeds) 
 			{
 				vsp = min(vsp, 0);
@@ -156,7 +163,7 @@ function ProcessCollision(update_speeds=true)
 	
 	// Down Right
 	ds_list_clear(_colllist);
-	n = collision_line_list(bbox_right, y, bbox_right, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(bbox_right, yy, bbox_right, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -169,7 +176,7 @@ function ProcessCollision(update_speeds=true)
 	
 	// Down Left
 	ds_list_clear(_colllist);
-	n = collision_line_list(bbox_left, y, bbox_left, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(bbox_left, yy, bbox_left, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -184,7 +191,7 @@ function ProcessCollision(update_speeds=true)
 	
 	// Moving Right
 	ds_list_clear(_colllist);
-	n = collision_line_list(x, y-_hsep, bbox_right, y-_hsep, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(xx, yy-_hsep, bbox_right, yy-_hsep, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -192,6 +199,8 @@ function ProcessCollision(update_speeds=true)
 		if (c && c.active)
 		{
 			x = c.bbox_left - (bbox_right-x);
+			xx = lerp(bbox_left, bbox_right, 0.5);
+			
 			if (update_speeds)
 			{
 				hsp = min(hsp, 0);
@@ -202,7 +211,7 @@ function ProcessCollision(update_speeds=true)
 	}
 	
 	ds_list_clear(_colllist);
-	n = collision_line_list(x, y+_hsep, bbox_right, y+_hsep, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(xx, yy+_hsep, bbox_right, yy+_hsep, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -210,6 +219,8 @@ function ProcessCollision(update_speeds=true)
 		if (c && c.active)
 		{
 			x = c.bbox_left - (bbox_right-x);
+			xx = lerp(bbox_left, bbox_right, 0.5);
+			
 			if (update_speeds)
 			{
 				hsp = min(hsp, 0);
@@ -221,7 +232,7 @@ function ProcessCollision(update_speeds=true)
 	
 	// Left
 	ds_list_clear(_colllist);
-	n = collision_line_list(x, y-_hsep, bbox_left, y-_hsep, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(xx, yy-_hsep, bbox_left, yy-_hsep, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -229,6 +240,8 @@ function ProcessCollision(update_speeds=true)
 		if (c && c.active)
 		{
 			x = c.bbox_right - (bbox_left-x);
+			xx = lerp(bbox_left, bbox_right, 0.5);
+			
 			if (update_speeds)
 			{
 				hsp = max(hsp, 0);
@@ -239,7 +252,7 @@ function ProcessCollision(update_speeds=true)
 	}
 	
 	ds_list_clear(_colllist);
-	n = collision_line_list(x, y+_hsep, bbox_left, y+_hsep, obj_solid, 0, 1, _colllist, 0);
+	n = collision_line_list(xx, yy+_hsep, bbox_left, yy+_hsep, obj_solid, 0, 1, _colllist, 0);
 	
 	for (var i = 0; i < n; i++)
 	{
@@ -247,6 +260,8 @@ function ProcessCollision(update_speeds=true)
 		if (c && c.active)
 		{
 			x = c.bbox_right - (bbox_left-x);
+			xx = lerp(bbox_left, bbox_right, 0.5);
+			
 			if (update_speeds)
 			{
 				hsp = max(hsp, 0);

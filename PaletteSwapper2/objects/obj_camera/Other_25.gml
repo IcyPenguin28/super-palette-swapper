@@ -77,6 +77,9 @@ function Update(ts=1)
 	// Apply position
 	camX = location[0];
 	camY = location[1];
+	
+	xcenter = camX + wRes/2;
+	ycenter = camY + hRes/2;
 
 	camera_set_view_pos(cam,camX,camY);
 
