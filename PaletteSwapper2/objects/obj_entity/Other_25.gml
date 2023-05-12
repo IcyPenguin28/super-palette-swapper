@@ -110,101 +110,153 @@ function ProcessCollision(update_speeds=true)
 	var _outbits = 0;
 	
 	var c;
+	var n;
 	var _hsep = sprite_get_height(mask_index) / 3;	// Space between horizontal collision lines
+	var _colllist = ds_list_create();
 	
 	// Vertical --------------------------------------------
 	
 	// Up
-	c = collision_line(x, y, x, bbox_top, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(x, y, x, bbox_top, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		y = c.bbox_bottom + (y-bbox_top);
-		if (update_speeds)
+		c = _colllist[| i];
+		if (c && c.active)
 		{
-			vsp = max(vsp, 0);
-		}
+			y = c.bbox_bottom + (y-bbox_top);
+			if (update_speeds)
+			{
+				vsp = max(vsp, 0);
+			}
 		
-		_outbits |= FL_COLLISION_U;
+			_outbits |= FL_COLLISION_U;
+		}
 	}
 	
 	// Down
-	c = collision_line(x, y, x, bbox_bottom, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(x, y, x, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		y = c.bbox_top - (bbox_bottom-y);
-		if (update_speeds) 
+		c = _colllist[| i];
+		if (c && c.active)
 		{
-			vsp = min(vsp, 0);
-		}
+			y = c.bbox_top - (bbox_bottom-y);
+			if (update_speeds) 
+			{
+				vsp = min(vsp, 0);
+			}
 		
-		_outbits |= FL_COLLISION_D;
+			_outbits |= FL_COLLISION_D;
+		}
 	}
 	
 	// Down Right
-	c = collision_line(bbox_right, y, bbox_right, bbox_bottom, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(bbox_right, y, bbox_right, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		_outbits |= FL_COLLISION_RD;
+		c = _colllist[| i];
+		if (c && c.active)
+		{
+			_outbits |= FL_COLLISION_RD;
+		}
 	}
 	
 	// Down Left
-	c = collision_line(bbox_left, y, bbox_left, bbox_bottom, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(bbox_left, y, bbox_left, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		_outbits |= FL_COLLISION_LD;
+		c = _colllist[| i];
+		if (c && c.active)
+		{
+			_outbits |= FL_COLLISION_LD;
+		}
 	}
 	
 	// Horizontal ----------------------------------------------
 	
 	// Moving Right
-	c = collision_line(x, y-_hsep, bbox_right, y-_hsep, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(x, y-_hsep, bbox_right, y-_hsep, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		x = c.bbox_left - (bbox_right-x);
-		if (update_speeds)
+		c = _colllist[| i];
+		if (c && c.active)
 		{
-			hsp = min(hsp, 0);
-		}
+			x = c.bbox_left - (bbox_right-x);
+			if (update_speeds)
+			{
+				hsp = min(hsp, 0);
+			}
 		
-		_outbits |= FL_COLLISION_R;
+			_outbits |= FL_COLLISION_R;
+		}
 	}
 	
-	c = collision_line(x, y+_hsep, bbox_right, y+_hsep, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(x, y+_hsep, bbox_right, y+_hsep, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		x = c.bbox_left - (bbox_right-x);
-		if (update_speeds)
+		c = _colllist[| i];
+		if (c && c.active)
 		{
-			hsp = min(hsp, 0);
-		}
+			x = c.bbox_left - (bbox_right-x);
+			if (update_speeds)
+			{
+				hsp = min(hsp, 0);
+			}
 		
-		_outbits |= FL_COLLISION_R;
+			_outbits |= FL_COLLISION_R;
+		}
 	}
 	
 	// Left
-	c = collision_line(x, y-_hsep, bbox_left, y-_hsep, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(x, y-_hsep, bbox_left, y-_hsep, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		x = c.bbox_right - (bbox_left-x);
-		if (update_speeds)
+		c = _colllist[| i];
+		if (c && c.active)
 		{
-			hsp = max(hsp, 0);
-		}
+			x = c.bbox_right - (bbox_left-x);
+			if (update_speeds)
+			{
+				hsp = max(hsp, 0);
+			}
 		
-		_outbits |= FL_COLLISION_L;
+			_outbits |= FL_COLLISION_L;
+		}
 	}
 	
-	c = collision_line(x, y+_hsep, bbox_left, y+_hsep, obj_solid, 0, 1);
-	if (c)
+	ds_list_clear(_colllist);
+	n = collision_line_list(x, y+_hsep, bbox_left, y+_hsep, obj_solid, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++)
 	{
-		x = c.bbox_right - (bbox_left-x);
-		if (update_speeds)
+		c = _colllist[| i];
+		if (c && c.active)
 		{
-			hsp = max(hsp, 0);
-		}
+			x = c.bbox_right - (bbox_left-x);
+			if (update_speeds)
+			{
+				hsp = max(hsp, 0);
+			}
 		
-		_outbits |= FL_COLLISION_L;
+			_outbits |= FL_COLLISION_L;
+		}
 	}
+	
+	ds_list_destroy(_colllist);
 	
 	return _outbits;
 }
