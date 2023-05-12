@@ -52,3 +52,10 @@ function Update(ts)
 	image_xscale = polarize(hsp);
 }
 
+function OnDamage()
+{
+	atk = 0;
+	lifestep = life;
+	grav = 0.15;
+	vsp = -3;
+}

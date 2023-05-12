@@ -61,7 +61,7 @@ for (var i = 0; i < numjumppoints; i++)
 // TODO: Populate with default values or populate with values only in child objects
 enum Boss_StateDurations
 {
-	idle = 50,
+	idle = 70,
 	walk = 90,
 	jump,
 	attack1,
