@@ -6,7 +6,7 @@ event_inherited();
 atk = 1;
 spd = 2;
 
-image_blend = c_yellow;
+image_blend = make_color_rgb(29, 0, 51);
 sprite_index = spr_spraycloud_ball;
 
 life = 180;

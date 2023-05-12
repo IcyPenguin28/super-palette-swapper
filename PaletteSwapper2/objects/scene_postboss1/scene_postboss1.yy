@@ -1,22 +1,17 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_spraycloud",
+  "name": "scene_postboss1",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Enemy",
-    "path": "folders/Objects/Gameplay Objects/Projectiles/Enemy.yy",
+    "name": "Events",
+    "path": "folders/Objects/Events.yy",
   },
-  "parentObjectId": {
-    "name": "obj_projectile_enemy",
-    "path": "objects/obj_projectile_enemy/obj_projectile_enemy.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -33,9 +28,6 @@
   "properties": [],
   "solid": false,
   "spriteId": null,
-  "spriteMaskId": {
-    "name": "spr_spraycloud_mask",
-    "path": "sprites/spr_spraycloud_mask/spr_spraycloud_mask.yy",
-  },
+  "spriteMaskId": null,
   "visible": true,
 }

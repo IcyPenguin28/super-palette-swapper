@@ -3,7 +3,7 @@
 
 // TODO: Replace with custom sprite eventually
 var _length = 128;
-var _width = 48;
+var _width = 16;
 var _padding = 16;
 
 if displayHP

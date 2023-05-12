@@ -35,6 +35,9 @@ statestep = 0;
 // The scene to check for to enter prefight state
 myPreBossScene = scene_preboss1;
 
+// The scene to play after boss defeat
+myPostBossScene = scene_postboss1;
+
 // To set in room editor: they are the walls that prevent the player from leaving the boss arena
 proceedingWallB = noone;	// The one behind the player that should get added on prefight state
 							// Usually occupies same space as the preboss scene trigger

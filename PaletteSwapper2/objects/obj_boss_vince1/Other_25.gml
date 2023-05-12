@@ -14,6 +14,22 @@ function Update(ts)
 	{
 		hp = 0;
 		displayHP = false;
+		if ( instance_exists(inst_introstage_solid_boss0) )
+		{
+			inst_introstage_solid_boss0.active = false;
+		}
+		if ( instance_exists(inst_introstage_solid_boss1) )
+		{
+			inst_introstage_solid_boss1.active = false;
+		}
+		
+		if !(instance_exists(myPostBossScene))
+		{
+			instance_create_layer(0, 0, "Instances", myPostBossScene);
+		}
+		
+		audio_stop_sound(fightMusic);
+		
 	}
 	
 	// True when on house platforms. Used in some decision making
@@ -48,9 +64,9 @@ function Update(ts)
 			displayHP = true;
 			
 			// Activate wall
-			if ( instance_exists(inst_introstage_solid_boss) )
+			if ( instance_exists(inst_introstage_solid_boss0) )
 			{
-				inst_introstage_solid_boss.active = true;
+				inst_introstage_solid_boss0.active = true;
 			}
 			
 			SetState(ST_Boss_Vince.idle);
@@ -109,7 +125,6 @@ function Update(ts)
 			
 			if (statestep > 0)
 			{
-				// Vince shuffles backwards, so we subtract instead of add
 				x += hsp * ts;
 				statestep -= ts;
 			}
