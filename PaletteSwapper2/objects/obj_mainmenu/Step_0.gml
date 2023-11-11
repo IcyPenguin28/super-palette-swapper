@@ -34,7 +34,7 @@ else
 var _ytarget = 900;	// Final position of obj_mainmenu
 var _interacttarget = _ytarget + 100;	// Position where player can interact, just before stopping.
 
-if (audio_is_playing(mus_mainmenu))
+if (audio_sync_group_is_playing(obj_title.menuMusic))
 {
 	y = lerp(y, _ytarget, 0.1);
 }
@@ -92,6 +92,11 @@ if canInteract
 				obj_camera.FollowTarget(inst_titlemenu_focus2);
 				break;
 			case mainmenu.options:
+				self.canInteract = false;
+				audio_sound_gain(mus_mainmenu, 0, 0.5);
+				audio_sound_gain(mus_options, 0.5, 0.5);
+				
+				obj_camera.FollowTarget(inst_titlemenu_focus3);
 				break;
 			case mainmenu.credits:
 				break;

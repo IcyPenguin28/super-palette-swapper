@@ -14,36 +14,39 @@ function Update(ts)
 	var gp = global.gp_device;
 	if gp != -1
 	{
-		keyLeft = keyboard_check(vk_left) ||
+		keyLeft = keyboard_check(global.key_left) ||
+			gamepad_button_check(gp, global.gp_left) ||
 			abs(min(0,gamepad_axis_value(gp, gp_axislh)));
-		keyRight = keyboard_check(vk_right) ||
+		keyRight = keyboard_check(global.key_right) ||
+			gamepad_button_check(gp, global.gp_right) ||
 			max(0,gamepad_axis_value(gp, gp_axislh));
-		keyUp = keyboard_check(vk_up) ||
+		keyUp = keyboard_check(global.key_up) ||
+			gamepad_button_check(gp, global.gp_up) ||
 			abs(min(0,gamepad_axis_value(gp, gp_axislv)));
-		keyDown = keyboard_check(vk_down) ||
+		keyDown = keyboard_check(global.key_down) ||
+			gamepad_button_check(gp, global.gp_down) ||
 			max(0,gamepad_axis_value(gp, gp_axislv));
-		keyJump = keyboard_check_pressed(ord("Z")) ||
-			gamepad_button_check_pressed(gp, gp_face1);
-		keyJumpHeld = keyboard_check(ord("Z")) ||
-			gamepad_button_check(gp, gp_face1);
-		keyBrush = keyboard_check_pressed(ord("X")) ||
-			gamepad_button_check_pressed(gp, gp_face3) ||
-			gamepad_button_check_pressed(gp, gp_face4);
-		keyAction = keyboard_check_pressed(ord("C")) ||
-			gamepad_button_check_pressed(gp, gp_face2);
+		keyJump = keyboard_check_pressed(global.key_jump) ||
+			gamepad_button_check_pressed(gp, global.gp_jump);
+		keyJumpHeld = keyboard_check(global.key_jump) ||
+			gamepad_button_check(gp, global.gp_jump);
+		keyBrush = keyboard_check_pressed(global.key_brush) ||
+			gamepad_button_check_pressed(gp, global.gp_brush);
+		keyAction = keyboard_check_pressed(global.key_action) ||
+			gamepad_button_check_pressed(gp, global.gp_action);
 	
 		keyReset = keyboard_check_pressed(ord("R"));
 	}
 	else
 	{
-		keyLeft = keyboard_check(vk_left);
-		keyRight = keyboard_check(vk_right);
-		keyUp = keyboard_check(vk_up);
-		keyDown = keyboard_check(vk_down);
-		keyJump = keyboard_check_pressed(ord("Z"));
-		keyJumpHeld = keyboard_check(ord("Z"));
-		keyBrush = keyboard_check_pressed(ord("X"));
-		keyAction = keyboard_check_pressed(ord("C"));
+		keyLeft = keyboard_check(global.key_left);
+		keyRight = keyboard_check(global.key_right);
+		keyUp = keyboard_check(global.key_up);
+		keyDown = keyboard_check(global.key_down);
+		keyJump = keyboard_check_pressed(global.key_jump);
+		keyJumpHeld = keyboard_check(global.key_jump);
+		keyBrush = keyboard_check_pressed(global.key_brush);
+		keyAction = keyboard_check_pressed(global.key_action);
 	
 		keyReset = keyboard_check_pressed(ord("R"));
 	}
@@ -75,13 +78,96 @@ function Update(ts)
 				SetState(ST_Player.attack1);
 			}
 			
+			if (canMove && (keyLeft xor keyRight))
+			{
+				SetState(ST_Player.walk);
+			}
+			
+			if (!onGround)
+			{
+				if (vsp >= 0) SetState(ST_Player.falling)
+				else SetState(ST_Player.rising);
+			}
+			
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
 			ProcessCollision();
 		
 			spriteanimator.UpdateAnimation(ts);
 			break;
-	
+		
+		case(-ST_Player.walk):
+			spriteanimator.SetAnimationKey("walk");
+			break;
+			
+		case(ST_Player.walk):
+			spriteanimator.UpdateAnimation(ts);
+			ProcessPowers();
+			ProcessMovement(movSpd, 0);
+			ProcessCollision();
+			if (!canMove || dir = 0)
+			{
+				SetState(ST_Player.neutral);
+			}
+			
+			if (!onGround)
+			{
+				if (vsp >= 0) SetState(ST_Player.falling)
+				else SetState(ST_Player.rising);
+			}
+			
+			// Ground Combat
+			if (canAttack && keyBrush)
+			{
+				spd = atkMovSpd;
+				isAttackingGround = true;
+			
+				SetState(ST_Player.attack1);
+			}
+			break;
+		
+		case(-ST_Player.rising):
+			spriteanimator.SetAnimationKey("rising");
+			break;
+		
+		case(ST_Player.rising):
+			spriteanimator.UpdateAnimation(ts);
+			ProcessPowers();
+			ProcessMovement(movSpd, 0);
+			ProcessCollision();	
+			if (vsp > 0) SetState(ST_Player.falling);
+			
+			// Combat
+			if (canAttack && keyBrush)
+			{
+				spd = atkMovSpd;
+				isAttackingGround = true;
+			
+				SetState(ST_Player.attack1);
+			}
+			break;
+		
+		case(-ST_Player.falling):
+			spriteanimator.SetAnimationKey("falling");
+			break;
+		
+		case(ST_Player.falling):
+			spriteanimator.UpdateAnimation(ts);
+			ProcessPowers();
+			ProcessMovement(movSpd, 0);
+			ProcessCollision();
+			if (onGround) SetState(ST_Player.neutral);
+			
+			// Combat
+			if (canAttack && keyBrush)
+			{
+				spd = atkMovSpd;
+				isAttackingGround = true;
+			
+				SetState(ST_Player.attack1);
+			}
+			break;
+			
 		// Attacks =====================================================
 		case(-ST_Player.attack1):
 			changeAttackState = false;
@@ -168,6 +254,7 @@ function Update(ts)
 					SetState(ST_Player.neutral);
 				}
 			}
+			spriteanimator.UpdateAnimation(ts);
 			break;
 	}
 

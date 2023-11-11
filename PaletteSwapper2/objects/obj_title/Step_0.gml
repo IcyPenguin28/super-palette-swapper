@@ -51,8 +51,15 @@ switch(state)
 		}
 		else
 		{
-			audio_play_sound(mus_mainmenu, 0, true);
+			// Handle music synchronizaiton for options menu
+			menuMusic = audio_create_sync_group(true);
+			audio_play_in_sync_group(menuMusic, mus_mainmenu);
+			audio_sound_gain(mus_mainmenu, 0.5, 0);
+			audio_play_in_sync_group(menuMusic, mus_options);
+			audio_sound_gain(mus_options, 0, 0);
+			audio_start_sync_group(menuMusic);
 			menuMusicTriggered = true;
+			
 			inMenu = true;
 			obj_mainmenu.canInteract = true;
 			state = 3;

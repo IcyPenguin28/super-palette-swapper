@@ -9,6 +9,8 @@ enum ST_Player
 	
 	neutral,
 	walk,
+	rising,
+	falling,
 	
 	attack1,
 	attack2,

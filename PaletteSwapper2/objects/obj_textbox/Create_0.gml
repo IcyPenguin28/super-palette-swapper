@@ -99,3 +99,8 @@ setPortraits = function(sprL, sprR, swapL, swapR)
 		portraitR = sprR;
 	}
 }
+
+with obj_ui
+{
+	HideUI();
+}

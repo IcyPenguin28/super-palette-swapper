@@ -12,3 +12,4 @@ waitstep = 100;
 
 state = 0;
 
+menuMusic = noone;

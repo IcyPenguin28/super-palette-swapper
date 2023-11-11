@@ -13,6 +13,7 @@ if instance_exists(p)
 	{
 		// Maybe an animation where the player holds up the paint
 		stageCleared = true;
+		visible = false;
 	}
 }
 

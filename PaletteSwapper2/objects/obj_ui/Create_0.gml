@@ -14,29 +14,11 @@ if !inSpecialStage
 
 function HideUI()
 {
-	var hideSpd = 0.1;
-	with palette
-	{
-		xx = lerp(xx, -2000, hideSpd);
-	}
 	
-	with palette.cursor
-	{
-		x = lerp(x, -2000, hideSpd);
-	}
+}
+
+
+function ShowUI()
+{
 	
-	with hp_ind
-	{
-		xx = lerp(xx, 2000, hideSpd);
-	}
-	
-	with bucket_ind
-	{
-		xx = lerp(xx, -2000, hideSpd);
-	}
-	
-	with bigdrop_ind
-	{
-		x = lerp(x, -2000, hideSpd);
-	}
 }
