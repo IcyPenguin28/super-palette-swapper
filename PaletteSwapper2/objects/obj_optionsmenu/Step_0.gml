@@ -64,12 +64,12 @@ if canInteract
 		switch pos
 		{
 			case optionsmenu.audio:
-				instance_create_depth(x, y, -20, obj_audiomenu)	// Create audio menu instance
+				instance_create_depth(x, y, -20, obj_audiomenu)		// Create audio menu instance
 				instance_destroy();									// Destroy self
 				break;
 			case optionsmenu.video:
-				// Create video menu instance
-				// Destroy self
+				instance_create_depth(x, y, -20, obj_videomenu)		// Create audio menu instance
+				instance_destroy();									// Destroy self
 				break;
 		}
 	}

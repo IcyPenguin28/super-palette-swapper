@@ -3,35 +3,30 @@
 
 
 // The list of options in this menu
-enum audiomenu
+enum videomenu
 {
-	bgm,
-	sfx,
-	// voice
+	scale
 }
 
 // Used as display values when inside the menu itself.
 // Whatever these values are changed to is what is written back into the INI
 // Open options INI to read currently saved values
 ini_open(global.options_file);
-bgm_vol = ini_read_real("Audio", "BGM Volume", 0.5);
-sfx_vol = ini_read_real("Audio", "SFX Volume", 1);
+scale = ini_read_real("Video", "Scale", 2);
 ini_close();
 
 // Determines where you are in the menu
-pos = audiomenu.bgm;
+pos = videomenu.scale;
 
 // Used for wrapping
-maxpos = audiomenu.sfx;
+maxpos = videomenu.scale;
 
 // Used for GUI displaying
 hPadding = sprite_width * 2;
 vPadding = sprite_height * 3;
 
 // Display text for each choice
-optionsText[audiomenu.bgm] = "BGM Volume: "+string(bgm_vol * 100)+"%";
-optionsText[audiomenu.sfx] = "SFX Volume: "+string(sfx_vol * 100)+"%";
+optionsText[videomenu.scale] = "Scale Factor: < "+string(scale)+"x >";
 
 // Display position for each choice
-optionsY[audiomenu.bgm] = y;
-optionsY[audiomenu.sfx] = y + vPadding;
+optionsY[videomenu.scale] = y;

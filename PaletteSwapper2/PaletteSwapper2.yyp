@@ -190,6 +190,7 @@
     {"id":{"name":"snd_100_level","path":"sounds/snd_100_level/snd_100_level.yy",},},
     {"id":{"name":"obj_audiomenu","path":"objects/obj_audiomenu/obj_audiomenu.yy",},},
     {"id":{"name":"spr_breezepuff_projectile","path":"sprites/spr_breezepuff_projectile/spr_breezepuff_projectile.yy",},},
+    {"id":{"name":"obj_videomenu","path":"objects/obj_videomenu/obj_videomenu.yy",},},
     {"id":{"name":"scr_animationmap","path":"scripts/scr_animationmap/scr_animationmap.yy",},},
     {"id":{"name":"rm_sunsetstreet2","path":"rooms/rm_sunsetstreet2/rm_sunsetstreet2.yy",},},
     {"id":{"name":"obj_projectile_enemy","path":"objects/obj_projectile_enemy/obj_projectile_enemy.yy",},},

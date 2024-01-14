@@ -29,4 +29,3 @@ if (keyboard_check_pressed(192))	// 192 = Tilde "~" key
 }
 
 #endregion
-

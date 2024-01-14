@@ -147,6 +147,7 @@
     {"name":"obj_hp_indicator","order":1,"path":"objects/obj_hp_indicator/obj_hp_indicator.yy",},
     {"name":"obj_audiomenu","order":1,"path":"objects/obj_audiomenu/obj_audiomenu.yy",},
     {"name":"spr_breezepuff_projectile","order":1,"path":"sprites/spr_breezepuff_projectile/spr_breezepuff_projectile.yy",},
+    {"name":"obj_videomenu","order":2,"path":"objects/obj_videomenu/obj_videomenu.yy",},
     {"name":"scr_animationmap","order":1,"path":"scripts/scr_animationmap/scr_animationmap.yy",},
     {"name":"rm_sunsetstreet2","order":1,"path":"rooms/rm_sunsetstreet2/rm_sunsetstreet2.yy",},
     {"name":"obj_projectile_enemy","order":3,"path":"objects/obj_projectile_enemy/obj_projectile_enemy.yy",},

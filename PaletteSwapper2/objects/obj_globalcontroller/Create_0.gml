@@ -44,9 +44,13 @@ global.gp_rotateR = ini_read_real("Gamepad Controls", "rotateR", gp_shoulderr);
 // Audio Settings
 global.gain_bgm = ini_read_real("Audio", "BGM Volume", 0.5);
 global.gain_sfx = ini_read_real("Audio", "SFX Volume", 1);
+
+// Variable Video Settings
+global.video_scale = ini_read_real("Video", "Scale", 2);
+window_set_fullscreen(ini_read_real("Video", "Fullscreen", 0));
 ini_close();
 
-// Video Settings
+// Constant Video Settings
 global.h_res = 640;
 global.v_res = 360;
 display_set_gui_size(global.h_res, global.v_res);

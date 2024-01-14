@@ -14,7 +14,7 @@ enum ST_Camera
 //Constants
 wRes = 640;
 hRes = 360;
-resScale = 2;
+resScale = global.video_scale;
 panSpd = 0.1;
 
 playerCam = camera_create_view(0,0,wRes,hRes,0,obj_player);
