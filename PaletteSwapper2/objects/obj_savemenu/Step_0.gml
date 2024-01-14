@@ -3,10 +3,10 @@
 
 if global.gp_device == -1
 {
-	keyLeft = keyboard_check_pressed(vk_left);
-	keyRight = keyboard_check_pressed(vk_right);
-	keyConfirm = keyboard_check_pressed(ord("Z"));
-	keyCancel = keyboard_check_pressed(ord("X"));
+	keyLeft = keyboard_check_pressed(global.key_left);
+	keyRight = keyboard_check_pressed(global.key_right);
+	keyConfirm = keyboard_check_pressed(global.key_confirm);
+	keyCancel = keyboard_check_pressed(global.key_cancel);
 }
 else
 {
@@ -29,7 +29,7 @@ if canInteract
 {
 	if keyLeft
 	{
-		audio_play_sound(snd_cursormove, 0, false);
+		audio_play_sound(snd_cursormove, 0, false, global.gain_sfx);
 		if pos == 0
 		{
 			pos = maxpos;
@@ -42,7 +42,7 @@ if canInteract
 	
 	if keyRight
 	{
-		audio_play_sound(snd_cursormove, 0, false);
+		audio_play_sound(snd_cursormove, 0, false, global.gain_sfx);
 		if pos == maxpos
 		{
 			pos = 0;
@@ -67,7 +67,7 @@ if canInteract
 		{
 			with ( canvasinst[pos] )
 			{
-				audio_play_sound(snd_menuselection, 0, false);
+				audio_play_sound(snd_menuselection, 0, false, global.gain_sfx);
 				chosen = true;
 			}
 		}
@@ -77,7 +77,7 @@ if canInteract
 			{
 				if file_exists(myFile)
 				{
-					audio_play_sound(snd_menuselection, 0, false);
+					audio_play_sound(snd_menuselection, 0, false, global.gain_sfx);
 					chosen = true;
 				}
 			}

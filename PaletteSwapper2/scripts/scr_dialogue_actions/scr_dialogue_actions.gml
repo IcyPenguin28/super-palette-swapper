@@ -38,7 +38,7 @@ function MusicAction(_stop, _start = noone) : DialogueAction() constructor
 	
 	if _start != noone
 	{
-		audio_play_sound(_start, 0, true);	
+		audio_play_sound(_start, 0, true, global.gain_bgm);	
 	}
 	
 	act = function(textbox)

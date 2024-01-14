@@ -65,7 +65,7 @@ shootstep = 0;
 shootTime = 5;
 bombTime = 20;
 paintstep = 0;
-paintTime = room_speed;
+paintTime = game_get_speed(gamespeed_fps);
 
 //Boolean states
 isAttackingGround = false;	// Attack animation is in progress

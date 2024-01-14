@@ -47,13 +47,24 @@ function Update(ts)
 			if (p) {image_xscale = obj_player.x > x ? 1 : -1;}
 			
 			audio_stop_all();
-			audio_play_sound(fightMusic, 0, true);
+			audio_play_sound(fightMusic, 0, true, global.gain_bgm);
 			displayHP = true;
 			
 			// Activate wall
 			if ( instance_exists(inst_introstage_solid_boss0) )
 			{
 				inst_introstage_solid_boss0.active = true;
+			}
+			
+			// Set Discord Status
+			// TODO: Maybe get a boss icon template and change the large image to that?
+			with (obj_discord)
+			{
+				var smimgtxt = "playing_as_andy"	// "SMall IMaGe TeXT"
+				// When Claudia is added, add conditional statements.
+				// Note that instances get loaded after room creation code. Worry about this later. Fuck you, future Scott :)
+	
+				np_setpresence("Memory Lane", "Fighting Vince", "memory_lane", smimgtxt);
 			}
 			
 			SetState(ST_Boss_Vince.idle);

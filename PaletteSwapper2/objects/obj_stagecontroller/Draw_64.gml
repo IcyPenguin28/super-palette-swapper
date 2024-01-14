@@ -29,7 +29,7 @@ if activeBonusObj != -1
 		{
 			if !soundplayed
 			{
-				audio_play_sound(snd_key, 0, false);
+				audio_play_sound(snd_key, 0, false, global.gain_sfx);
 				soundplayed = true;
 			}
 			

@@ -13,7 +13,6 @@ if instance_exists(p)
 	{
 		// Maybe an animation where the player holds up the paint
 		stageCleared = true;
-		visible = false;
 	}
 }
 
@@ -22,7 +21,7 @@ if stageCleared && !stepFlag
 {
 		// Goal celebration and results screen
 		audio_stop_all();	// Stop music
-		audio_play_sound(snd_victory_boss, 0, false); // Play fanfare
+		audio_play_sound(snd_victory_boss, 0, false, global.gain_bgm); // Play fanfare
 		p.canMove = false;
 		p.canJump = false;
 		p.canAttack = false;
@@ -41,5 +40,5 @@ if stageCleared && !stepFlag
 
 if !audio_is_playing(snd_victory_boss) && !audio_is_playing(mus_results) && stepFlag
 {
-	audio_play_sound(mus_results, 0, true);	// Play results music
+	audio_play_sound(mus_results, 0, true, global.gain_bgm);	// Play results music
 }

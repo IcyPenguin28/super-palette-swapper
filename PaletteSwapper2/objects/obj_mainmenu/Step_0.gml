@@ -5,9 +5,9 @@ var gp = global.gp_device;
 
 if gp == -1
 {
-	keyLeft = keyboard_check_pressed(vk_left);
-	keyRight = keyboard_check_pressed(vk_right);
-	confirmButton = keyboard_check_pressed(ord("Z"));
+	keyLeft = keyboard_check_pressed(global.key_left);
+	keyRight = keyboard_check_pressed(global.key_right);
+	confirmButton = keyboard_check_pressed(global.key_confirm);
 }
 else
 {
@@ -47,7 +47,7 @@ if canInteract
 {
 	if keyLeft
 	{
-		audio_play_sound(snd_cursormove, 0, false);
+		audio_play_sound(snd_cursormove, 0, false, global.gain_sfx);
 		if menuPos == 0
 		{
 			menuPos = maxMenuPos - 1;
@@ -60,7 +60,7 @@ if canInteract
 
 	if keyRight
 	{
-		audio_play_sound(snd_cursormove, 0, false);
+		audio_play_sound(snd_cursormove, 0, false, global.gain_sfx);
 		if menuPos == maxMenuPos - 1
 		{
 			menuPos = 0;
@@ -73,7 +73,7 @@ if canInteract
 
 	if confirmButton
 	{
-		audio_play_sound(snd_menuselection, 0, false);
+		audio_play_sound(snd_menuselection, 0, false, global.gain_sfx);
 		
 		switch (menuPos)
 		{
@@ -92,9 +92,10 @@ if canInteract
 				obj_camera.FollowTarget(inst_titlemenu_focus2);
 				break;
 			case mainmenu.options:
+				obj_optionsmenu.canInteract = true;
 				self.canInteract = false;
 				audio_sound_gain(mus_mainmenu, 0, 0.5);
-				audio_sound_gain(mus_options, 0.5, 0.5);
+				audio_sound_gain(mus_options, global.gain_bgm, 0.5);
 				
 				obj_camera.FollowTarget(inst_titlemenu_focus3);
 				break;

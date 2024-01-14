@@ -5,5 +5,5 @@ var drops = obj_player.collectedBigDrops;
 if drops[0] && drops[1] && drops[2]
 {
 	star2Filled = true;
-	audio_play_sound(snd_star, 0, false);
+	audio_play_sound(snd_star, 0, false, global.gain_sfx);
 }

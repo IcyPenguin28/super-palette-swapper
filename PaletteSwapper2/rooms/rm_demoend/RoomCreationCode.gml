@@ -1,1 +1,1 @@
-audio_play_sound(mus_maintheme, 0, true);
+audio_play_sound(mus_maintheme, 0, true, global.gain_bgm);

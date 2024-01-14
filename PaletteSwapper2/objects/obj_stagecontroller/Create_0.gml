@@ -31,10 +31,10 @@ else
 
 enum bonusObjectives
 {
-	allStars,
-	allPaintDrops,
-	goldEnemy,
-	noDashing,
-	reverseBigDrops,
-	noHitBoss,
+	allStars,			// Get all 3 stars for the level
+	allPaintDrops,		// Collect all the paint drops in the level
+	goldEnemy,			// Defeat the golden enemy
+	noDashing,			// Don't dash
+	reverseBigDrops,	// Collect the big drops in reverse order
+	noHitBoss,			// Don't get hit when fighting the boss
 }

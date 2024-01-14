@@ -17,7 +17,7 @@ if stageCleared && !stepFlag
 		// Goal celebration and results screen
 		image_index = 1;	// Switch to filled in canvas image
 		audio_stop_all();	// Stop music
-		audio_play_sound(snd_victory, 0, false); // Play stage clear music
+		audio_play_sound(snd_victory, 0, false, global.gain_bgm); // Play stage clear music
 		obj_player.canMove = false;
 		obj_player.canJump = false;
 		obj_player.canAttack = false;
@@ -30,5 +30,5 @@ if stageCleared && !stepFlag
 
 if !audio_is_playing(snd_victory) && !audio_is_playing(mus_results) && stepFlag
 {
-	audio_play_sound(mus_results, 0, true);	// Play results music
+	audio_play_sound(mus_results, 0, true, global.gain_bgm);	// Play results music
 }

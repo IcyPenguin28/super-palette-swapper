@@ -20,7 +20,7 @@ switch(state)
 	case(0):
 		if (confirmButton)
 		{
-			audio_play_sound(snd_menuselection_final, 0, false);
+			audio_play_sound(snd_menuselection_final, 0, false, global.gain_sfx);
 			soundplayed = true;
 			image_speed = 0.4;
 			
@@ -54,7 +54,7 @@ switch(state)
 			// Handle music synchronizaiton for options menu
 			menuMusic = audio_create_sync_group(true);
 			audio_play_in_sync_group(menuMusic, mus_mainmenu);
-			audio_sound_gain(mus_mainmenu, 0.5, 0);
+			audio_sound_gain(mus_mainmenu, global.gain_bgm, 0);
 			audio_play_in_sync_group(menuMusic, mus_options);
 			audio_sound_gain(mus_options, 0, 0);
 			audio_start_sync_group(menuMusic);

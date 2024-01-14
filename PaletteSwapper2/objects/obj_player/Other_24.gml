@@ -117,7 +117,6 @@ function ProcessMovement(_hspeed, _vspeed)
 	}
 	
 	// Timer for when the paintdrop pickup pitch resets
-	// TODO: This does not appear to work
 	if paintstep > 0
 	{
 		// show_debug_message(paintstep);
@@ -127,7 +126,7 @@ function ProcessMovement(_hspeed, _vspeed)
 	if paintstep == 0
 	{
 		// show_debug_message("Back to one");
-		paintdropPitch = 1;
+		paintDropPitch = 1;
 	}
 
 	// Variable Jump Height

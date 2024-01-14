@@ -41,16 +41,18 @@ global.gp_action = ini_read_real("Gamepad Controls", "action", gp_face2);
 global.gp_rotateL = ini_read_real("Gamepad Controls", "rotateL", gp_shoulderl);
 global.gp_rotateR = ini_read_real("Gamepad Controls", "rotateR", gp_shoulderr);
 
+// Audio Settings
+global.gain_bgm = ini_read_real("Audio", "BGM Volume", 0.5);
+global.gain_sfx = ini_read_real("Audio", "SFX Volume", 1);
+ini_close();
+
 // Video Settings
 global.h_res = 640;
 global.v_res = 360;
+display_set_gui_size(global.h_res, global.v_res);
 
 // Save File
 global.active_savefile = "save1.ini"
-
-display_set_gui_size(global.h_res, global.v_res);
-
-
 
 // Debug
 #macro DEBUG global.g_debug

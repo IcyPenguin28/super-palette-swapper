@@ -8,6 +8,16 @@ function Update(ts=1)
 	camW = camera_get_view_width(cam);
 	camH = camera_get_view_height(cam);
 	
+	// Parallaxing shit
+	if (room != rm_titlemenu)
+	{
+		layer_x("Background", camX);
+		layer_y("Background", camY);
+		layer_x("Backgrounds_1", camX * 0.5);
+		layer_x("Backgrounds_2", camX * 0.25);
+	}
+	
+	
 	// Determine target
 	onTarget = false;
 
