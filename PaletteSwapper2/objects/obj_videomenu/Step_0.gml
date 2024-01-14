@@ -71,6 +71,14 @@ if keyRight || keyLeft
 	{
 		window_set_fullscreen(false);
 		scale = 4;
+		global.video_scale = scale;
+		with (obj_camera)
+		{
+			resScale = global.video_scale;
+			window_set_size(wRes*resScale,hRes*resScale);
+			surface_resize(application_surface,wRes*resScale,hRes*resScale);
+			display_set_gui_size(wRes,hRes);
+		}
 	}
 	else
 	{
