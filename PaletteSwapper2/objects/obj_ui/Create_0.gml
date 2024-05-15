@@ -14,11 +14,16 @@ if !inSpecialStage
 
 function HideUI()
 {
-	
+	bigdrop_ind.onScreen = false;
+	hp_ind.onScreen = false;
+	bucket_ind.onScreen = false;
 }
 
 
 function ShowUI()
 {
+	bigdrop_ind.onScreen = true;
+	hp_ind.onScreen = true;
+	bucket_ind.onScreen = true;
 	
 }

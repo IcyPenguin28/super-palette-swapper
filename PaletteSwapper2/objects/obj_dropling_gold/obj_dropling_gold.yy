@@ -1,19 +1,20 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_paintbucket",
+  "name": "obj_dropling_gold",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Progression",
-    "path": "folders/Objects/Gameplay Objects/Entities/Level Progression.yy",
+    "name": "Enemies",
+    "path": "folders/Objects/Gameplay Objects/Entities/Enemies.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_dropling",
+    "path": "objects/obj_dropling/obj_dropling.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -30,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_paintbucket",
-    "path": "sprites/spr_paintbucket/spr_paintbucket.yy",
+    "name": "spr_dropling_gold",
+    "path": "sprites/spr_dropling_gold/spr_dropling_gold.yy",
   },
   "spriteMaskId": null,
   "visible": true,

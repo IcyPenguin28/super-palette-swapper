@@ -1,6 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if onScreen
+{
+	xx = lerp(xx, originalXX, slideSpd);
+}
+else
+{
+	xx = lerp(xx, display_get_gui_width() + 128, slideSpd);
+}
+
 if instance_exists(obj_player)
 {
 	var _hp = obj_player.hp;

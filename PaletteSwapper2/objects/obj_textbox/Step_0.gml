@@ -53,8 +53,8 @@ else
 {
 	if swappingL
 	{
-		portraitLX = lerp(portraitLX, -sprite_get_width(portraitLQueued) * portraitScale, stretchSpeed);
-		if round(portraitLX) == -sprite_get_width(portraitLQueued) * portraitScale
+		portraitLX = lerp(portraitLX, -sprite_get_width(portraitLQueued) * portraitScale * 2, stretchSpeed);
+		if round(portraitLX) == -sprite_get_width(portraitLQueued) * portraitScale * 2
 		{
 			portraitL = portraitLQueued
 			swappingL = false;
@@ -67,8 +67,8 @@ else
 	
 	if swappingR
 	{
-		portraitRX = lerp(portraitRX, -sprite_get_width(portraitRQueued) * portraitScale, stretchSpeed);
-		if round(portraitRX) == -sprite_get_width(portraitRQueued) * portraitScale
+		portraitRX = lerp(portraitRX, -sprite_get_width(portraitRQueued) * portraitScale * 2, stretchSpeed);
+		if round(portraitRX) == -sprite_get_width(portraitRQueued) * portraitScale * 2
 		{
 			portraitR = portraitRQueued
 			swappingR = false;

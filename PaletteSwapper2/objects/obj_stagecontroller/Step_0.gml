@@ -34,10 +34,10 @@ if !inSpecialStage
 			break;
 		case bonusObjectives.goldEnemy:
 			criteriaString = "Defeat the elusive golden enemy";
-			// if !instance_exists(obj_enemy_gold)
-			// {
-			//		bonusObjFulfilled = true;
-			// }
+			if !instance_exists(obj_dropling_gold)
+			{
+				bonusObjFulfilled = true;
+			}
 			break;
 		case bonusObjectives.noDashing:
 			criteriaString = "Clear the level without dashing";

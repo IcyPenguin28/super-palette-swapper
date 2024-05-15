@@ -2,6 +2,8 @@
 // You can write your code in this editor
 x = 0;
 y = 128;
+slideSpd = 0.1;
+onScreen = true;
 
 dropcount = 3;
 

@@ -12,6 +12,15 @@ else
 	var drops = [false, false, false];
 }
 
+if onScreen
+{
+	x = lerp(x, 0, slideSpd);
+}
+else
+{
+	x = lerp(x, -192, slideSpd);
+}
+
 // Draw paint bk. 9 slice allows drawing of any width
 draw_sprite_stretched(spr_ui_bigpaint_bk, 0, x, y, 144, sprite_height);
 

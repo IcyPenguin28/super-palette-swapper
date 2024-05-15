@@ -2,7 +2,8 @@
 // You can write your code in this editor
 
 
-with obj_ui
-{
-	ShowUI();
-}
+
+// Inherit the parent event
+event_inherited();
+
+walkspeed = 1;

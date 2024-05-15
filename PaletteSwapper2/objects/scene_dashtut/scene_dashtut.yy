@@ -1,17 +1,15 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_paintbucket",
+  "name": "scene_dashtut",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Progression",
-    "path": "folders/Objects/Gameplay Objects/Entities/Level Progression.yy",
+    "name": "Events",
+    "path": "folders/Objects/Events.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -29,10 +27,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "spr_paintbucket",
-    "path": "sprites/spr_paintbucket/spr_paintbucket.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }
