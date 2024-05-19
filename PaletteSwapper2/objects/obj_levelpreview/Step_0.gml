@@ -19,7 +19,11 @@ if (round(yy) == display_get_gui_height() / 2) && obj_player_worldmap.keyConfirm
 {
 	audio_stop_all();
 	audio_play_sound(snd_menuselection, 0, false, global.gain_sfx);
-	room_goto(node.myStage);
+	//room_goto(node.myStage);
+	with (instance_create_layer(0, 0, "Instances", obj_transition))
+	{
+		target_room = other.node.myStage;
+	}
 }
 
 with node

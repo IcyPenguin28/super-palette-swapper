@@ -22,3 +22,4 @@ function SetNode(_node)
 	color = node.previewCol;
 }
 
+depth = 2;

@@ -29,7 +29,12 @@ if chosen
 	if !file_exists(myFile)
 	{
 		global.active_savefile = myFile;
-		room_goto(rm_introstage);
+		// room_goto(rm_introstage);
+		obj_savemenu.canInteract = false;
+		with (instance_create_layer(0, 0, "Instances", obj_transition))
+		{
+			target_room = rm_introstage;
+		}
 	}
 	else
 	{
@@ -37,12 +42,22 @@ if chosen
 		{
 			file_delete(myFile);
 			global.active_savefile = myFile;
-			room_goto(rm_introstage);
+			// room_goto(rm_introstage);
+			obj_savemenu.canInteract = false;
+			with (instance_create_layer(0, 0, "Instances", obj_transition))
+			{
+				target_room = rm_introstage;
+			}
 		}
 		else
 		{
 			global.active_savefile = myFile;
-			room_goto(rm_worldmap);
+			// room_goto(rm_worldmap);
+			obj_savemenu.canInteract = false;
+			with (instance_create_layer(0, 0, "Instances", obj_transition))
+			{
+				target_room = rm_worldmap;
+			}
 		}
 	}
 }
