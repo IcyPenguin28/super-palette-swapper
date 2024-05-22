@@ -9,7 +9,7 @@ function Update(ts=1)
 	camH = camera_get_view_height(cam);
 	
 	// Parallaxing shit
-	if (room != rm_titlemenu)
+	if (room != rm_titlemenu && room != rm_introstage)
 	{
 		layer_x("Background", camX);
 		layer_y("Background", camY);
