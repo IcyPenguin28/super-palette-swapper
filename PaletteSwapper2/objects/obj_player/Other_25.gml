@@ -10,6 +10,11 @@ function Start()
 // Called every frame
 function Update(ts)
 {
+	if recoiling
+	{
+		show_debug_message("balls")
+	}
+	
 	#region CONTROLS
 	var gp = global.gp_device;
 	if gp != -1
@@ -135,7 +140,7 @@ function Update(ts)
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
 			ProcessCollision();	
-			if (vsp > 0) SetState(ST_Player.falling);
+			if (vsp >= 0) SetState(ST_Player.falling);
 			
 			// Combat
 			if (canAttack && keyBrush)
@@ -144,6 +149,11 @@ function Update(ts)
 				isAttackingGround = true;
 			
 				SetState(ST_Player.attack1);
+			}
+			
+			if (keyAction && myCol != PlayerPaintColors.red)
+			{
+				SetState(ST_Player.action);
 			}
 			break;
 		
@@ -156,7 +166,11 @@ function Update(ts)
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
 			ProcessCollision();
-			if (onGround) SetState(ST_Player.neutral);
+			if (onGround)
+			{
+				recoiling = false;
+				SetState(ST_Player.neutral);
+			}
 			
 			// Combat
 			if (canAttack && keyBrush)
@@ -165,6 +179,11 @@ function Update(ts)
 				isAttackingGround = true;
 			
 				SetState(ST_Player.attack1);
+			}
+			
+			if (keyAction && myCol != PlayerPaintColors.red)
+			{
+				SetState(ST_Player.action);
 			}
 			break;
 			
@@ -216,6 +235,31 @@ function Update(ts)
 			else if ( state != ST_Player.attack3 && spriteanimator.Layer(0).FrameElapsed(10) && changeAttackState )
 			{
 				SetState(state+1);
+			}
+			break;
+		
+		// Character Action (Andy: Slam) ===============================
+		case (-ST_Player.action):
+			spriteanimator.SetAnimationKey("slam");
+			beginSlam = true;
+			break;
+		
+		case (ST_Player.action):
+			spriteanimator.UpdateAnimation(ts);
+			ProcessPowers();
+			ProcessMovement(movSpd, 0);
+			ProcessCollision();
+			
+			if (beginSlam)
+			{
+				vsp = jumpSpd * 2;
+				if (onGround) beginSlam = false;
+			}
+			else
+			{
+				recoiling = true;
+				vsp = -jumpSpd * 1.25;
+				SetState(ST_Player.neutral);
 			}
 			break;
 		
@@ -390,6 +434,7 @@ function OnAttack()
 				image_xscale = other.image_xscale;
 				image_blend = obj_palette.colorDrawColor[other.myCol];
 			}
+			audio_play_sound(snd_swipe, 0, false, global.gain_sfx);
 			break;
 		case(PlayerPaintColors.orange):
 			instance_create_layer(x + sprite_width, y, "Instances", obj_paintbullet);

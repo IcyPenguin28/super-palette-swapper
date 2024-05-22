@@ -21,6 +21,7 @@ enum ST_Player
 	attackAir3,
 	
 	dash,
+	action
 }
 
 //Constants
@@ -30,6 +31,8 @@ grav = 0.25; // The higher this value, the faster the player falls. Neg vals mea
 movSpd = spd; // This is used to return to the base movement speed after something changes the player's speed.
 atkMovSpd = spd / 2; // This is the speed at which the player moves while in the attacking state.
 dashSpd = spd * 2; // This is the speed at which the player moves while dashing
+slamSpd = jumpSpd * 2;	// This is the speed at which the player slams into the ground while slamming
+slamRecoilSpd = jumpSpd * 1.25;	// This is the speed at which the player will bounce up from the ground after slamming
 coyoteTimeMax = 6; // This is the number of frames coyote time lasts for
 jumpFramesMax = 5; // This is the number of frames jump input buffering lasts for
 maxPaintBullets = 3; // This is the number of orange bullets that can be on the screen at once
@@ -40,6 +43,7 @@ maxIFrames = room_speed * 1; // Changing the int literal changes the number of s
 hitStopFactor = 10; // The higher this number, the slower hitstop will last for
 depth = -1;
 airAttackDescent = 0.5; // Multiplied to gravity and vertical speed when attacking in the air
+slamStretchFactor = 1.2;	// Becomes the image_yscale of the slam sprite when initiating the slam
 
 //Mutables
 hsp = 0; // This is the player's instantaneous horizontal velocity
@@ -81,7 +85,11 @@ canAttack = true;
 canJump = true;
 canShoot = true;
 hitStop = false;
+
 isDashing = false;
+
+beginSlam = false;
+recoiling = false;	// Used to tell VJH to chill tf out
 
 //Animations
 idleSprite = spr_andy_idle;

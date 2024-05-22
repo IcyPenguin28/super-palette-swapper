@@ -49,6 +49,8 @@ swappingR = false;
 portraitLQueued = noone;
 portraitRQueued = noone;
 
+soundplayed = false;
+
 populateActions = function(actionArray)
 {
 	actions = actionArray;
@@ -59,6 +61,7 @@ populateActions = function(actionArray)
 
 next = function()
 {
+	soundplayed = false;
 	currentAction ++;
 	if (currentAction >= array_length(actions))
 	{

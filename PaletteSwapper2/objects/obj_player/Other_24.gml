@@ -68,7 +68,7 @@ function ProcessMovement(_hspeed, _vspeed)
 			_gravw *= airAttackDescent;
 		}
 	
-		if (!isDashing)
+		if (!isDashing && !beginSlam)
 		{
 			vsp += _gravw; //add gravity to player's vertical speed
 		}
@@ -130,18 +130,21 @@ function ProcessMovement(_hspeed, _vspeed)
 	}
 
 	// Variable Jump Height
-	if sign(grav) == 1
+	if (!recoiling)
 	{
-		if (vsp < 0 && !keyJumpHeld)
+		if sign(grav) == 1
 		{
-			vsp = max(vsp, -jumpSpd/3);
+			if (vsp < 0 && !keyJumpHeld)
+			{
+				vsp = max(vsp, -jumpSpd/3);
+			}
 		}
-	}
-	else
-	{
-		if (vsp > 0 && !keyJumpHeld)
+		else
 		{
-			vsp = min(vsp, jumpSpd/3);
+			if (vsp > 0 && !keyJumpHeld)
+			{
+				vsp = min(vsp, jumpSpd/3);
+			}
 		}
 	}
 	

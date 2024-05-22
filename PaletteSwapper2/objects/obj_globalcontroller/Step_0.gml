@@ -27,5 +27,20 @@ if (keyboard_check_pressed(192))	// 192 = Tilde "~" key
 	with (obj_trigger) {visible = DEBUG > 0;}
 	with (obj_scenetrigger) {visible = DEBUG > 0;}
 }
+#endregion
 
+/*
+TODO: Fix fucking pausing, holy shit, I cannot deal with this and final exams at the same time
+Pausing will have to wait for Demo D at least
+
+#region PAUSING
+if (keyboard_check_pressed(global.key_pause) ||
+	gamepad_button_check_pressed(global.gp_device, global.gp_pause))
+{
+	if (global.can_pause && !instance_exists(obj_pausemenu))
+	{
+		audio_play_sound(snd_pause, 0, false, global.gain_sfx);
+		instance_create_depth(global.h_res / 2 - 64, global.v_res / 2 - 64, -20, obj_pausemenu);
+	}
+}
 #endregion

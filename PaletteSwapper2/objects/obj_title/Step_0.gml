@@ -21,6 +21,7 @@ switch(state)
 		if (confirmButton)
 		{
 			audio_play_sound(snd_menuselection_final, 0, false, global.gain_sfx);
+			audio_stop_sound(snd_wind);
 			soundplayed = true;
 			image_speed = 0.4;
 			

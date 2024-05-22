@@ -12,11 +12,7 @@ draw_set_valign(fa_middle);
 if stageCleared
 {
 	// Display stage clear text
+	depth = -99;
 	draw_text_color(xx, yy + offset, "STAGE CLEAR!", c_black, c_black, c_black, c_black, 1);
 	draw_text_color(xx, yy, "STAGE CLEAR!", c_red, c_yellow, c_green, c_aqua, 1);
-	// Hide Rest of GUI
-	with obj_ui
-	{
-		HideUI();
-	}
 }

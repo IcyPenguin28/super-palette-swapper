@@ -19,6 +19,7 @@ global.key_brush = ini_read_real("Keyboard Controls", "brush",ord("X"));
 global.key_action = ini_read_real("Keyboard Controls", "action", ord("C"));
 global.key_rotateL = ini_read_real("Keyboard Controls", "rotateL", ord("A"));
 global.key_rotateR = ini_read_real("Keyboard Controls", "rotateR", ord("S"));
+global.key_pause = ini_read_real("Keyboard Controls", "pause", vk_escape);
 global.key_w = ini_read_real("Keyboard Controls", "white", ord("D"));
 global.key_r = ini_read_real("Keyboard Controls", "red", ord("1"));
 global.key_o = ini_read_real("Keyboard Controls", "orange", ord("2"));
@@ -40,6 +41,7 @@ global.gp_brush = ini_read_real("Gamepad Controls", "brush", gp_face3);
 global.gp_action = ini_read_real("Gamepad Controls", "action", gp_face2);
 global.gp_rotateL = ini_read_real("Gamepad Controls", "rotateL", gp_shoulderl);
 global.gp_rotateR = ini_read_real("Gamepad Controls", "rotateR", gp_shoulderr);
+global.gp_pause = ini_read_real("Keyboard Controls", "pause", gp_start);
 
 // Audio Settings
 global.gain_bgm = ini_read_real("Audio", "BGM Volume", 0.5);
@@ -61,5 +63,9 @@ global.active_savefile = "save1.ini"
 // Debug
 #macro DEBUG global.g_debug
 DEBUG = 0;	// Toggle with tilde "`" key
+
+// Pausing
+global.can_pause = false;
+global.paused = false;
 
 timestepLevel = 1;

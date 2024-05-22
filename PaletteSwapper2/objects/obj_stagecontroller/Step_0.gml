@@ -64,6 +64,16 @@ if !inSpecialStage
 	}
 }
 
+// Allow pausing when not viewing results
+if (!instance_exists(obj_results))
+{
+	global.can_pause = true;
+}
+else
+{
+	global.can_pause = false;	
+}
+
 
 if inSpecialStage
 {

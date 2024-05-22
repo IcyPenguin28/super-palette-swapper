@@ -30,11 +30,21 @@ if canInteract
 {
 	if keyCancel
 	{
-		canInteract = false;
-		obj_camera.FollowTarget(inst_titlemenu_focus1)
-		obj_mainmenu.canInteract = true;
-		audio_sound_gain(mus_mainmenu, global.gain_bgm, 0.5);
-		audio_sound_gain(mus_options, 0, 0.5);
+		if (global.paused)
+		{
+			// Pause menu version
+			instance_create_depth(x, y, -20, obj_pausemenu)		// Create pause menu instance
+			instance_destroy();									// Destroy self
+		}
+		else
+		{
+			// Title screen version
+			canInteract = false;
+			obj_camera.FollowTarget(inst_titlemenu_focus1)
+			obj_mainmenu.canInteract = true;
+			audio_sound_gain(mus_mainmenu, global.gain_bgm, 0.5);
+			audio_sound_gain(mus_options, 0, 0.5);
+		}
 	}
 	
 	if keyDown

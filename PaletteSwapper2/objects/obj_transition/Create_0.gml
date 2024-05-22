@@ -8,5 +8,5 @@ rad = max(width, height);
 spd = 8;
 
 target_room = room;
-
+depth = -10000;
 transition_surface = surface_create(width, height);

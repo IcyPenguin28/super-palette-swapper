@@ -43,9 +43,10 @@ function type(x, y, text, progress, width){
 		else
 		{
 			// Draw the letter
-			draw_text_color(x + drawX, y + drawY + offset, char, c_black, c_black, c_black, c_black, 1);
-			draw_text_color(x + drawX, y + drawY, char, c_white, c_white, c_white, c_white, 1);
+			// Dropshadow: draw_text_color(x + drawX, y + drawY + offset, char, c_gray, c_gray, c_gray, c_gray, 1);
+			draw_text_color(x + drawX, y + drawY, char, c_black, c_black, c_black, c_black, 1);
 			drawX += string_width(char);
 		}
 	}
+	
 }

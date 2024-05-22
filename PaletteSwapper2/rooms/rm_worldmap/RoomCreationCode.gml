@@ -1,6 +1,9 @@
 audio_stop_sound(mus_results);
 audio_stop_sound(mus_worldmap);
+audio_stop_sound(mus_sunsetstreet);
 audio_play_sound(mus_worldmap, 0, true, global.gain_bgm);
+
+global.can_pause = true;
 
 ini_open(global.active_savefile);
 

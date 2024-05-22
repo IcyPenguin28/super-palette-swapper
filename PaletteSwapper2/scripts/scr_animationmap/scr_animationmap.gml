@@ -34,6 +34,14 @@ SPRITEANIMMAP = /*ANIMMAPSTART*/ {
 			[infinity,  spr_andy_jump, 1, 0, 0, 0],
 		],
 		
+		slam : [
+			[3, spr_andy_slam, 0, 0, 0, 0],
+			[3, spr_andy_slam, 1, 0, 0, 0],
+			[3, spr_andy_slam, 2, 0, 0, 0],
+			[3, spr_andy_slam, 3, 0, 0, 0],
+			[3, spr_andy_slam, 4, 0, 0, 0],
+		],
+		
 		// Ground Swipe 1
 		attack1a : [	// Startup frames
 			[2, spr_andy_attack_ground_0, 0, 0, 0, 0],

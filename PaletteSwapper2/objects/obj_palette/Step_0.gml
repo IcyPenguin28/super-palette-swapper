@@ -183,4 +183,4 @@ if instance_exists(obj_player)
 painttheta = (activeSlot - PlayerPaintColors.white + 1) * paintthetasep;
 paintthetadraw = approach_value(paintthetadraw, painttheta, 3);
 
-show_debug_message(colorList[activeSlot]);
+// show_debug_message(colorList[activeSlot]);

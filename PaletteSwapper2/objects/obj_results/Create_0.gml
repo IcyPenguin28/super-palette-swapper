@@ -35,3 +35,9 @@ ini_close();
 canContinue = false;
 
 image_speed = 0.2;
+
+// Hide Rest of GUI
+with obj_ui
+{
+	HideUI();
+}

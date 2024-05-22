@@ -79,28 +79,29 @@ else
 		portraitRX = lerp(portraitRX, portraitRXMax, stretchSpeed);
 	}
 	
-	if global.gp_device == -1
-	{
-		keyConfirm = keyboard_check_pressed(ord("Z"));
-	}
-	else
-	{
-		keyConfirm = keyboard_check_pressed(ord("Z")) ||
-			gamepad_button_check_pressed(global.gp_device, gp_face1) ||
-			gamepad_button_check_pressed(global.gp_device, gp_face2);
-	}
+	keyConfirm = keyboard_check_pressed(global.key_confirm) || gamepad_button_check_pressed(global.gp_device, global.gp_confirm)
 
 	textProgress = min(textProgress + textSpeed, textLength);
 
 	if (textProgress == textLength)
 	{
+		if !(soundplayed)
+		{
+			audio_play_sound(snd_dialogue_finish, 0, false, global.gain_sfx);
+			soundplayed = true;
+		}
+		
 		if keyConfirm
 		{
 			next();
 		}
 	}
-	else if keyConfirm
+	else
 	{
-		textProgress = textLength;
+		audio_play_sound(snd_dialogue_blip, 0, false, global.gain_sfx);
+		if keyConfirm
+		{
+			textProgress = textLength;
+		}
 	}
 }
