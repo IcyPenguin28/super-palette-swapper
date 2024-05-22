@@ -1,21 +1,19 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_paintdrop",
+  "name": "obj_collectible",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Level Progression",
-    "path": "folders/Objects/Gameplay Objects/Entities/Level Progression.yy",
+    "name": "Parents (DO NOT PLACE)",
+    "path": "folders/Objects/Gameplay Objects/Parents (DO NOT PLACE).yy",
   },
-  "parentObjectId": {
-    "name": "obj_collectible",
-    "path": "objects/obj_collectible/obj_collectible.yy",
-  },
+  "parentObjectId": null,
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -31,10 +29,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "spr_paintdrop",
-    "path": "sprites/spr_paintdrop/spr_paintdrop.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

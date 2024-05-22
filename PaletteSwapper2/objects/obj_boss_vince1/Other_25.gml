@@ -61,7 +61,6 @@ function Update(ts)
 			with (obj_discord)
 			{
 				var smimgtxt = "playing_as_andy"	// "SMall IMaGe TeXT"
-				// When Claudia is added, add conditional statements.
 				// Note that instances get loaded after room creation code. Worry about this later. Fuck you, future Scott :)
 	
 				np_setpresence("Memory Lane", "Fighting Vince", "memory_lane", smimgtxt);

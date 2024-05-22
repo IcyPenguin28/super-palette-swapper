@@ -1,5 +1,7 @@
 /// @Enable Palette Swapping
 // You can write your code in this editor
+event_inherited();
+
 draw_self();
 
 if instance_exists(obj_player)

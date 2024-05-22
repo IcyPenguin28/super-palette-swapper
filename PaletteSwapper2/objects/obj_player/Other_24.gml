@@ -44,7 +44,7 @@ function ProcessMovement(_hspeed, _vspeed)
 	}
 	
 	dir = keyRight - keyLeft;
-	if ( !isDashing )
+	if ( !isDashing && !dashSlamming)
 	{
 		hsp = lerp(hsp, dir * _hspeed, gAccel);
 	}
@@ -95,7 +95,7 @@ function ProcessMovement(_hspeed, _vspeed)
 	//Jump input buffering
 	if (keyJump && canJump)
 	{
-	    jumpFrames = 0;
+		jumpFrames = 0;
 	}
 
 	if (jumpFrames < jumpFramesMax)
@@ -177,6 +177,8 @@ function ProcessMovement(_hspeed, _vspeed)
 		if room_speed != targetRmSpd
 		{
 			room_speed *= hitStopFactor;
+			obj_camera.shakeTime = 1;
+			obj_camera.shakeMagTheta = 3;
 		}
 	}
 	

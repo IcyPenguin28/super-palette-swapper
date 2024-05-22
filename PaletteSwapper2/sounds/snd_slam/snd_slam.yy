@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSound",
   "resourceVersion": "1.0",
-  "name": "snd_key",
+  "name": "snd_slam",
   "audioGroupId": {
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.45068,
+  "duration": 0.450317,
   "parent": {
     "name": "SFX",
     "path": "folders/Sounds/SFX.yy",
   },
   "preload": false,
   "sampleRate": 44100,
-  "soundFile": "snd_key.wav",
+  "soundFile": "snd_slam.wav",
   "type": 0,
   "volume": 0.5,
 }

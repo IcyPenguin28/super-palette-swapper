@@ -171,7 +171,7 @@ if (CalcNumColors() > 1) // Player has colors they can rotate through
 	#endregion
 	
 	//Move cursor to location of active color
-	move_palette_cursor(colorCoords[activeSlot][0], colorCoords[activeSlot][1]);
+	// move_palette_cursor(colorCoords[activeSlot][0], colorCoords[activeSlot][1]);
 }
 
 // Set player's color to the one highlighted by the palette

@@ -22,6 +22,8 @@ paintorder = [
 	
 ];
 
+image_speed = (2/15);
+
 // Populate palette with unlocked colors by reading save file
 
 array_set(colorList, 0, PlayerPaintColors.white);
@@ -73,8 +75,8 @@ ini_close();
 // Create cursor
 xx = 48;
 yy = 64;
-padding = 18;
-cursor = instance_create_depth(xx, yy, -10000, obj_palette_cursor);
+padding = 20;
+// cursor = instance_create_depth(xx, yy, -5, obj_palette_cursor);
 
 colorCount = 9;
 

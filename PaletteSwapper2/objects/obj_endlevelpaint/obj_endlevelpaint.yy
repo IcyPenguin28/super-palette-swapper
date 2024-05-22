@@ -14,7 +14,10 @@
     "name": "Level Progression",
     "path": "folders/Objects/Gameplay Objects/Entities/Level Progression.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_collectible",
+    "path": "objects/obj_collectible/obj_collectible.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -31,8 +34,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_paintglob_red",
-    "path": "sprites/spr_paintglob_red/spr_paintglob_red.yy",
+    "name": "spr_magicpaint",
+    "path": "sprites/spr_magicpaint/spr_magicpaint.yy",
   },
   "spriteMaskId": null,
   "visible": true,

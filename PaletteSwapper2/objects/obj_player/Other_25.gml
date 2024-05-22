@@ -147,7 +147,7 @@ function Update(ts)
 				SetState(ST_Player.attack1);
 			}
 			
-			if (keyAction && myCol != PlayerPaintColors.red)
+			if (keyDown && keyJump) //&& myCol != PlayerPaintColors.red)
 			{
 				SetState(ST_Player.action);
 			}
@@ -165,6 +165,7 @@ function Update(ts)
 			if (onGround)
 			{
 				recoiling = false;
+				dashSlamming = false;
 				SetState(ST_Player.neutral);
 			}
 			
@@ -177,7 +178,7 @@ function Update(ts)
 				SetState(ST_Player.attack1);
 			}
 			
-			if (keyAction && myCol != PlayerPaintColors.red)
+			if (keyDown && keyJump) //&& myCol != PlayerPaintColors.red)
 			{
 				SetState(ST_Player.action);
 			}
@@ -253,10 +254,13 @@ function Update(ts)
 			}
 			else
 			{
+				// TODO: Find a way to maintain dash speed if you dash before a slam
 				recoiling = true;
-				vsp = -jumpSpd * 1.25;
+				canDash = true;
+				vsp = -jumpSpd * 1.3;
 				obj_camera.shakeMagY = 10;
 				obj_camera.shakeTime = 1;
+				audio_play_sound(snd_slam, 0, false, global.gain_sfx);
 				SetState(ST_Player.neutral);
 			}
 			break;
@@ -297,6 +301,12 @@ function Update(ts)
 				}
 			}
 			spriteanimator.UpdateAnimation(ts);
+			
+			if (keyDown && keyJump) //&& myCol != PlayerPaintColors.red)
+			{
+				dashSlamming = true;
+				SetState(ST_Player.action);
+			}
 			break;
 	}
 

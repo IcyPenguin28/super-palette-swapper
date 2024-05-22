@@ -90,6 +90,7 @@ isDashing = false;
 
 beginSlam = false;
 recoiling = false;	// Used to tell VJH to chill tf out
+dashSlamming = false;	 // Triggered when going into a slam from a dash. Maintains dash speed until recoiling = false.
 
 //Animations
 idleSprite = spr_andy_idle;

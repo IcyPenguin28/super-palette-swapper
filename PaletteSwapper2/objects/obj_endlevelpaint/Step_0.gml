@@ -1,10 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-// TODO: Fancy victory shit
+// TODO: Fancy victory shit (like, the grand star thing in SMG, like THAT kinda fancy shit)
 
-/// @description Insert description here
-// You can write your code in this editor
+event_inherited();
+
 var p = obj_player;
 
 if instance_exists(p)
@@ -28,6 +28,8 @@ if stageCleared && !stepFlag
 		p.canDash = false;
 		p.canShoot = false;
 		p.canBomb = false;
+		
+		instance_create_layer(x, y, "Instances", obj_ef_paintcollect);
 		
 		// Add new color to palette
 		ini_open(global.active_savefile);	

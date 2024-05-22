@@ -8,7 +8,9 @@ pal_swap_reset();
 
 //Palette variables
 draw_set_circle_precision(32);
-draw_circle_color(xx, yy, 32, c_white, c_white, false);
+draw_circle_color(xx, yy, 46, c_black, c_black, false);
+draw_circle_color(xx, yy, 45, c_white, colorDrawColor[activeSlot + 1], false);
+
 
 //Paint variables
 var rad = 6;
@@ -23,14 +25,44 @@ for (var i = 0; i < colorCount; i++)
 	
 	if ( array_has_value(colorList, _colorindex) )	// i + first used index
 	{
-		draw_circle_color(
+		/*draw_circle_color(
 			xx + padding * ((i  %  3)-1),
 			yy + padding * ((i div 3)-1),
 			rad,
 			colorDrawColor[_colorindex],
 			colorDrawColor[_colorindex],
 			false
-			)
+			)*/
+		
+		// TODO: Make it so that the image scale smoothly transitions upon selection
+		if (activeSlot + 1 == _colorindex)
+		{
+			draw_sprite_ext(
+				spr_magicpaint,
+				image_index,
+				xx + padding * ((i % 3) - 1),
+				yy + padding * ((i div 3) - 1),
+				1.5,
+				1.5,
+				0,
+				colorDrawColor[_colorindex],
+				1
+			);
+		}
+		else
+		{
+			draw_sprite_ext(
+				spr_magicpaint,
+				0,
+				xx + padding * ((i % 3) - 1),
+				yy + padding * ((i div 3) - 1),
+				1,
+				1,
+				0,
+				colorDrawColor[_colorindex],
+				1
+			);
+		}
 	}
 }
 

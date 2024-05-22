@@ -2,4 +2,4 @@
 // You can write your code in this editor
 
 
-hoverTimer = 0;
+hoverTimer = irandom_range(0, 255);
