@@ -90,6 +90,27 @@ function Update(ts=1)
 	
 	xcenter = camX + wRes/2;
 	ycenter = camY + hRes/2;
+	
+	// Apply shake
+	var shake_x = power(shakeTime, 2) * shakeMagX;
+	var shake_y = power(shakeTime, 2) * shakeMagY;
+	var shake_theta = power(shakeTime, 2) * shakeMagTheta;
+	camX += random_range(-shake_x, shake_x);
+	camY += random_range(-shake_y, shake_y);
+	camera_set_view_angle(cam, random_range(-shake_theta, shake_theta))
+	if (shakeTime > 0)
+	{
+		shakeTime -= shakeDecay * ts;
+	}
+	
+	if (shakeTime == 0)
+	{
+		// Reset magnitudes
+		shakeMagX = 0;
+		shakeMagY = 0;
+		shakeMagTheta = 0;
+	}
+	
 
 	camera_set_view_pos(cam,camX,camY);
 

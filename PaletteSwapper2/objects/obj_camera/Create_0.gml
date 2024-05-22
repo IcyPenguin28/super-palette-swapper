@@ -36,6 +36,13 @@ state = ST_Camera.free;
 cameratarget = noone;
 onTarget = false;	// True when location matches target
 
+// Shake BS
+shakeTime = 0;
+shakeDecay = 0.1;
+shakeMagX = 0;
+shakeMagY = 0;
+shakeMagTheta = 0;
+
 //Create camera
 view_enabled = true;
 view_visible[0] = true;

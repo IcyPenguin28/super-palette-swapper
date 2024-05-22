@@ -10,10 +10,6 @@ function Start()
 // Called every frame
 function Update(ts)
 {
-	if recoiling
-	{
-		show_debug_message("balls")
-	}
 	
 	#region CONTROLS
 	var gp = global.gp_device;
@@ -259,6 +255,8 @@ function Update(ts)
 			{
 				recoiling = true;
 				vsp = -jumpSpd * 1.25;
+				obj_camera.shakeMagY = 10;
+				obj_camera.shakeTime = 1;
 				SetState(ST_Player.neutral);
 			}
 			break;
