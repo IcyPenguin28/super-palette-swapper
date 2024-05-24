@@ -103,172 +103,183 @@ function TryStart()
 	return false;
 }
 
-// Handles physics with the world. Call after ProcessMovement().
-// Returns bitfield representing collisions
-function ProcessCollision(update_speeds=true)
+/*
+	Handles physics with the world. Call after ProcessMovement().
+	Returns bitfield representing collisions. Compare using bitwise AND with:
+		FL_COLLISION_R, FL_COLLISION_U, FL_COLLISION_L, FL_COLLISION_D
+*/
+function ProcessCollision(update_speeds=true, steps=0)
 {
-	var _outbits = 0;
+	/*
+		Pseudo Code:
+			For each direction (left, right, down, up)...
+				Find list of collisions using a line from center to center+direction
+				For each (active) collision...
+					Set position to intersection minus distance of origin and direction:
+					x = intersection - (bbox_edge-x)
+					y = intersection - (bbox_edge-y)
+		
+		The collision check lines are NOT represented as a box, but rather a hashtag shape #:
+			  U     U
+			..^.....^..
+		L	<-+--0--+->	R
+			..|.....|..
+			..0..0..0..
+			..|.....|..
+		L	<-+--0--+->	R
+			..v.....v..
+			  D     D
+		
+		
+	*/
 	
-	var xx = lerp(bbox_left, bbox_right, 0.5);
-	var yy = lerp(bbox_top, bbox_bottom, 0.5);
+	var _outbits = 0;	// Bitfield to return. Faster than creating array[4] every call
+	
+	var xx = lerp(bbox_left, bbox_right, 0.5);	// X Center of bbox
+	var yy = lerp(bbox_top, bbox_bottom, 0.5);	// Y Center of bbox
 	
 	var c;
 	var n;
-	var _hsep = (bbox_bottom-bbox_top) / 3;	// Space between horizontal collision lines
-	var _colllist = ds_list_create();
+	var _colllist = ds_list_create();	// Collision list
 	
-	// Vertical --------------------------------------------
+	// Value added to perpendicular axis to test corners.
+	// Offsets that result in corner position are buggy. Reduce by a few pixels.
+	var _perp_offset = [0,0,0];	
 	
-	// Up
-	ds_list_clear(_colllist);
-	n = collision_line_list(xx, yy, xx, bbox_top, obj_solid, 0, 1, _colllist, 0);
+	// Prioritize which direction to check first by comparing speeds
+	var _check_right_first = hsp > 0;
+	var _check_down_first = vsp > 0;
+	var _check_horizontal_first = abs(hsp) > abs(vsp);	// Check vertical first if moving vertically faster
 	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			y = c.bbox_bottom + (y-bbox_top);
-			yy = lerp(bbox_top, bbox_bottom, 0.5);
+	repeat(2) {
+		// Horizontal ----------------------------------------------
+		if (_check_horizontal_first) {
+			_perp_offset  = [(bbox_bottom-y) * 0.3, (bbox_top-y) * 0.3];
+	
+			repeat(2) {
+				// Moving Right
+				if (_check_right_first) {
+					for (var o = 0; o < 2; o++) 
+					{
+						ds_list_clear(_colllist);
+						n = collision_line_list(
+							xx, yy+_perp_offset[o], bbox_right, yy+_perp_offset[o], obj_solid, 0, 1, _colllist, 0
+						);
+	
+						for (var i = 0; i < n; i++)
+						{
+							c = _colllist[| i];
+							if (c && c.active) 
+							{
+								x = c.bbox_left - (bbox_right-x);	// Update real position to outside of wall
+								xx = lerp(bbox_left, bbox_right, 0.5);	// Update center position
 			
-			if (update_speeds)
-			{
-				vsp = max(vsp, 0);
-			}
+								if (update_speeds)
+								{
+									hsp = min(hsp, 0);	// Stop moving rightward on collision
+								}
 		
-			_outbits |= FL_COLLISION_U;
-		}
-	}
+								_outbits |= FL_COLLISION_R;	// Set bit representing right collision to active
+							}
+						}
+					}
+				}
+				// Moving Left
+				else {
+					for (var o = 0; o < 2; o++) 
+					{
+						ds_list_clear(_colllist);
+						n = collision_line_list(
+							bbox_left, yy+_perp_offset[o], xx, yy+_perp_offset[o], obj_solid, 0, 1, _colllist, 0
+						);
 	
-	// Down
-	ds_list_clear(_colllist);
-	n = collision_line_list(xx, yy, xx, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
-	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			y = c.bbox_top - (bbox_bottom-y);
-			yy = lerp(bbox_top, bbox_bottom, 0.5);
+						for (var i = 0; i < n; i++)
+						{
+							c = _colllist[| i];
+							if (c && c.active) 
+							{
+								x = c.bbox_right - (bbox_left-x);	// Update real position to outside of wall
+								xx = lerp(bbox_left, bbox_right, 0.5);	// Update center position
+								
+								if (update_speeds)
+								{
+									hsp = max(hsp, 0);	// Stop moving leftward on collision (note MAX instead of MIN)
+								}
+								
+								_outbits |= FL_COLLISION_L;	// Set bit representing left collision to active
+							}
+						}
+					}
+				}
+				_check_right_first = !_check_right_first;	// Check other
+			}
 			
-			if (update_speeds) 
-			{
-				vsp = min(vsp, 0);
-			}
-		
-			_outbits |= FL_COLLISION_D;
 		}
-	}
-	
-	// Down Right
-	ds_list_clear(_colllist);
-	n = collision_line_list(bbox_right, yy, bbox_right, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
-	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			_outbits |= FL_COLLISION_RD;
-		}
-	}
-	
-	// Down Left
-	ds_list_clear(_colllist);
-	n = collision_line_list(bbox_left, yy, bbox_left, bbox_bottom, obj_solid, 0, 1, _colllist, 0);
-	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			_outbits |= FL_COLLISION_LD;
-		}
-	}
-	
-	// Horizontal ----------------------------------------------
-	
-	// Moving Right
-	ds_list_clear(_colllist);
-	n = collision_line_list(xx, yy-_hsep, bbox_right, yy-_hsep, obj_solid, 0, 1, _colllist, 0);
-	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			x = c.bbox_left - (bbox_right-x);
-			xx = lerp(bbox_left, bbox_right, 0.5);
+		// Vertical -----------------------------------------------------------
+		else {
+			_perp_offset = [(bbox_right-x) * 0.3, (bbox_left-x) * 0.3];
 			
-			if (update_speeds)
-			{
-				hsp = min(hsp, 0);
-			}
-		
-			_outbits |= FL_COLLISION_R;
-		}
-	}
+			repeat(2) {
+				// Down
+				if (_check_down_first) {
+					for (var o = 0; o < 2; o++) 
+					{
+						ds_list_clear(_colllist);
+						n = collision_line_list(
+							xx, yy, xx, bbox_bottom, obj_solid, 0, 1, _colllist, 0
+						);
 	
-	ds_list_clear(_colllist);
-	n = collision_line_list(xx, yy+_hsep, bbox_right, yy+_hsep, obj_solid, 0, 1, _colllist, 0);
-	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			x = c.bbox_left - (bbox_right-x);
-			xx = lerp(bbox_left, bbox_right, 0.5);
+						for (var i = 0; i < n; i++)
+						{
+							c = _colllist[| i];
+							if (c && c.active) 
+							{
+								y = c.bbox_top - (bbox_bottom-y);	// Update real position to outside of wall
+								yy = lerp(bbox_bottom, bbox_top, 0.5);	// Update center position
 			
-			if (update_speeds)
-			{
-				hsp = min(hsp, 0);
-			}
+								if (update_speeds)
+								{
+									vsp = min(vsp, 0);	// Stop moving downward on collision
+								}
 		
-			_outbits |= FL_COLLISION_R;
-		}
-	}
+								_outbits |= FL_COLLISION_D;	// Set bit representing down collision to active
+							}
+						}
+					}
+				}
+				// Up
+				else {
+					for (var o = 0; o < 2; o++) 
+					{
+						ds_list_clear(_colllist);
+						n = collision_line_list(
+							xx, yy, xx, bbox_top-1, obj_solid, 0, 1, _colllist, 0
+						);
 	
-	// Left
-	ds_list_clear(_colllist);
-	n = collision_line_list(xx, yy-_hsep, bbox_left, yy-_hsep, obj_solid, 0, 1, _colllist, 0);
-	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			x = c.bbox_right - (bbox_left-x);
-			xx = lerp(bbox_left, bbox_right, 0.5);
+						for (var i = 0; i < n; i++)
+						{
+							c = _colllist[| i];
+							if (c && c.active) 
+							{
+								y = c.bbox_bottom - (bbox_top-y);	// Update real position to outside of wall
+								yy = lerp(bbox_bottom, bbox_top, 0.5);	// Update center position
 			
-			if (update_speeds)
-			{
-				hsp = max(hsp, 0);
-			}
+								if (update_speeds)
+								{
+									vsp = max(vsp, 0);	// Stop moving upward on collision
+								}
 		
-			_outbits |= FL_COLLISION_L;
-		}
-	}
-	
-	ds_list_clear(_colllist);
-	n = collision_line_list(xx, yy+_hsep, bbox_left, yy+_hsep, obj_solid, 0, 1, _colllist, 0);
-	
-	for (var i = 0; i < n; i++)
-	{
-		c = _colllist[| i];
-		if (c && c.active)
-		{
-			x = c.bbox_right - (bbox_left-x);
-			xx = lerp(bbox_left, bbox_right, 0.5);
+								_outbits |= FL_COLLISION_U;	// Set bit representing up collision to active
+							}
+						}
+					}
+				}
+				_check_down_first = !_check_down_first;	// Check other
+			}
 			
-			if (update_speeds)
-			{
-				hsp = max(hsp, 0);
-			}
-		
-			_outbits |= FL_COLLISION_L;
 		}
+		
+		_check_horizontal_first = !_check_horizontal_first;	// Check other
 	}
 	
 	ds_list_destroy(_colllist);

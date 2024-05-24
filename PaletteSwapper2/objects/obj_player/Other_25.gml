@@ -335,14 +335,24 @@ function Draw()
 	// Collision Debugging
 	if (DEBUG)
 	{
-		draw_line_color(x, y-8, bbox_left, y-8, c_orange, c_orange);
-		draw_line_color(x, y-8, bbox_right, y-8, c_orange, c_orange);
-	
-		draw_line_color(x, y+8, bbox_left, y+8, c_orange, c_orange);
-		draw_line_color(x, y+8, bbox_right, y+8, c_orange, c_orange);
-	
-		draw_line_color(x, y, x, bbox_top, c_olive, c_olive);
-		draw_line_color(x, y, x, bbox_bottom, c_olive, c_olive);
+		shader_reset();
+		var xx = lerp(bbox_left, bbox_right, 0.5);
+		var yy = lerp(bbox_bottom, bbox_top, 0.5);
+		var _perp_offset;
+		
+		_perp_offset  = [(bbox_bottom-y) * 0.3, (bbox_top-y) * 0.3];
+		for (var p = 0; p < 2; p++) {
+			draw_line_color(xx, yy+_perp_offset[p], bbox_left, yy+_perp_offset[p], c_orange, c_orange);
+			draw_line_color(xx, yy+_perp_offset[p], bbox_right, yy+_perp_offset[p], c_red, c_red);
+		}
+		
+		_perp_offset = [(bbox_right-x) * 0.3, (bbox_left-x) * 0.3];
+		for (var p = 0; p < 2; p++) {
+			draw_line_color(xx+_perp_offset[p], yy, xx+_perp_offset[p], bbox_top, c_olive, c_olive);
+			draw_line_color(xx+_perp_offset[p], yy, xx+_perp_offset[p], bbox_bottom, c_green, c_green);
+		}
+		
+		draw_circle_color(xx, yy, 4, c_white, c_white, 1);
 	}
 }
 
