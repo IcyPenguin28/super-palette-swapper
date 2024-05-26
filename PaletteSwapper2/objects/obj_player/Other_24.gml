@@ -6,7 +6,7 @@ event_inherited();
 function ProcessMovement(_hspeed, _vspeed)
 {
 	// UPDATING STATES  
-	var coll = collision_line(x, y, x, bbox_bottom, obj_solid, 0, 1);
+	var coll = collision_line(x, y, x, bbox_bottom, [obj_solid, obj_crate, obj_semisolid], 0, 1);
 	onGround = (coll && sign(grav) == 1 ||
 				place_meeting(x,y-1,obj_solid) && sign(grav) == -1);
 	inWater = place_meeting(x,y,obj_water);
