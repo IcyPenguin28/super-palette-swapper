@@ -9,6 +9,15 @@ function OnDefeat()
 	return 1;	// Prevent destroy
 }
 
+function OnDamage()
+{
+	if (state != ST_Boss_Vince.defeat)
+	{
+		flashTime = 10;
+		audio_play_sound(snd_hit, 0, false, global.gain_sfx);
+	}
+}
+
 function Update(ts)
 {
 	/*
@@ -327,20 +336,20 @@ function Draw()
 {
 	var _shader = shader_current();
 	
-	if (self.flashTime > 0)
+	if (flashTime > 0)
 	{
 		shader_set(shd_flash);
 	}
 	spriteanimator.DrawLayers(x, y, c_white, image_alpha, image_xscale, image_yscale, 0);
 	
-	if (self.flashTime > 0)
+	if (flashTime > 0)
 	{
-		self.flashTime --;
+		flashTime --;
 	}
 	else
 	{
-		self.flashTime = 0;
-		shader_set(_shader);
+		flashTime = 0;
 	}
+	shader_set(_shader);
 }
 

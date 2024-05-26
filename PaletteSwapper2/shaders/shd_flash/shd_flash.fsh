@@ -10,6 +10,6 @@ void main()
 	
 	if (Color.a != 0.0)
 	{
-		gl_FragColor = vec4(255, 255, 255, 0.75);
+		gl_FragColor = vec4(255, 255, 255, 1.0);
 	}
 }

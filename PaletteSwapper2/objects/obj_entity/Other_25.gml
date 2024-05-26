@@ -48,11 +48,11 @@ function Draw()
 	var _y = y;
 	
 	var _xhitstop = 2 * (((hitstopstep div 2) % 2)? 1:-1) * sqrt(abs(hitstopstep));
+	
 	var _shader = shader_current();
 	
-	if (self.flashTime > 0)
+	if (flashTime > 0)
 	{
-		
 		shader_set(shd_flash);
 	}
 	
@@ -68,15 +68,16 @@ function Draw()
 		image_alpha
 		);
 	
-	if (self.flashTime > 0)
+	if (flashTime > 0)
 	{
-		self.flashTime --;
+		flashTime --;
 	}
 	else
 	{
-		self.flashTime = 0;
-		shader_set(_shader);
+		flashTime = 0;
+		shader_reset();
 	}
+	shader_set(_shader);
 
 	if (hpDisplayStep > 0)
 	{
@@ -207,7 +208,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							bbox_left, yy+_perp_offset[o], xx, yy+_perp_offset[o], obj_solid, 0, 1, _colllist, 0
+							bbox_left, yy+_perp_offset[o], xx, yy+_perp_offset[o], [obj_solid, obj_crate], 0, 1, _colllist, 0
 						);
 	
 						for (var i = 0; i < n; i++)
@@ -243,7 +244,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							xx, yy, xx, bbox_bottom, obj_solid, 0, 1, _colllist, 0
+							xx, yy, xx, bbox_bottom, [obj_solid, obj_crate], 0, 1, _colllist, 0
 						);
 	
 						for (var i = 0; i < n; i++)
@@ -270,7 +271,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							xx, yy, xx, bbox_top-1, obj_solid, 0, 1, _colllist, 0
+							xx, yy, xx, bbox_top-1, [obj_solid, obj_crate], 0, 1, _colllist, 0
 						);
 	
 						for (var i = 0; i < n; i++)

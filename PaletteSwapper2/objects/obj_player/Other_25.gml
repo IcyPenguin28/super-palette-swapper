@@ -328,9 +328,9 @@ function Update(ts)
 
 function Draw()
 {
+	pal_swap_set(spr_andy_palette,myCol - 1,false);
 	spriteanimator.DrawLayers(x, y, c_white, image_alpha, image_xscale, image_yscale, 0);
 	//draw_self();
-	pal_swap_set(spr_andy_palette,myCol - 1,false);
 
 	// Collision Debugging
 	if (DEBUG)
