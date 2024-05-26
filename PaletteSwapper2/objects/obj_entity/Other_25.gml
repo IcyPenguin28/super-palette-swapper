@@ -48,7 +48,14 @@ function Draw()
 	var _y = y;
 	
 	var _xhitstop = 2 * (((hitstopstep div 2) % 2)? 1:-1) * sqrt(abs(hitstopstep));
-
+	var _shader = shader_current();
+	
+	if (self.flashTime > 0)
+	{
+		
+		shader_set(shd_flash);
+	}
+	
 	draw_sprite_ext(
 		sprite_index, 
 		image_index,
@@ -60,6 +67,16 @@ function Draw()
 		image_blend,
 		image_alpha
 		);
+	
+	if (self.flashTime > 0)
+	{
+		self.flashTime --;
+	}
+	else
+	{
+		self.flashTime = 0;
+		shader_set(_shader);
+	}
 
 	if (hpDisplayStep > 0)
 	{
@@ -163,7 +180,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							xx, yy+_perp_offset[o], bbox_right, yy+_perp_offset[o], obj_solid, 0, 1, _colllist, 0
+							xx, yy+_perp_offset[o], bbox_right, yy+_perp_offset[o], [obj_solid, obj_crate], 0, 1, _colllist, 0
 						);
 	
 						for (var i = 0; i < n; i++)

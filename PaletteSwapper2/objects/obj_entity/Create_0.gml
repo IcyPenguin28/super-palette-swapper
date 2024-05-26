@@ -9,6 +9,7 @@ state = 0;
 trystart = false;
 
 hitstopstep = 0;
+flashTime = 0;
 
 // Stats
 hpMax = 0;

@@ -325,6 +325,22 @@ function Update(ts)
 
 function Draw()
 {
+	var _shader = shader_current();
+	
+	if (self.flashTime > 0)
+	{
+		shader_set(shd_flash);
+	}
 	spriteanimator.DrawLayers(x, y, c_white, image_alpha, image_xscale, image_yscale, 0);
+	
+	if (self.flashTime > 0)
+	{
+		self.flashTime --;
+	}
+	else
+	{
+		self.flashTime = 0;
+		shader_set(_shader);
+	}
 }
 

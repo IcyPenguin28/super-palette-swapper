@@ -1,7 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if (other != obj_crate)
-{
-	TakeDamage(other.atk, other);
-}
+
+myScene = myScene;

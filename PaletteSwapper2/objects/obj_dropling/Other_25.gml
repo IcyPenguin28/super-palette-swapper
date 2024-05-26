@@ -164,7 +164,9 @@ function Update(ts)
 function OnDamage()
 {
 	hitstopstep = 7;
+	self.flashTime = 10;
 	hpDisplayStep = hpDisplayTime;
 	SetState(ST_EN_Dropling.hurt);
+	audio_play_sound(snd_hit, 0, false, global.gain_sfx);
 }
 
