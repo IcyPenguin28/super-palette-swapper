@@ -22,16 +22,18 @@ else
 }
 
 // Draw paint bk. 9 slice allows drawing of any width
-draw_sprite_stretched(spr_ui_bigpaint_bk, 0, x, y, 144, sprite_height);
+draw_sprite_stretched(spr_ui_bigpaint_bk, 0, x, y, 144, sprite_get_height(spr_ui_bigpaint_bk));
 
 // Draw drops
+pal_swap_set(spr_andy_palette, obj_palette.activeSlot, false);
 for (var i = 0; i < dropcount; i++)
 {
 	draw_sprite(spr_ui_bigpaint_drop, drops[i], 
 		x + dropdrawX + dropdrawSep * i,
-		y + dropdrawY,
+		y + dropdrawY
 		);
 }
+shader_reset();
 
 /*
 var subimg = 0;

@@ -140,6 +140,10 @@ function Update(ts)
 			{
 				x += hsp * ts;
 				statestep -= ts;
+				if (alarm[0] == -1)
+				{
+					alarm[0] = dustTimer * ts;
+				}
 			}
 			else
 			{
@@ -270,7 +274,7 @@ function Update(ts)
 					
 					var _inst = instance_create_depth(x+image_xscale*10, y, depth-10, obj_vince_can);
 					_inst.hsp = image_xscale;
-					_inst.vsp = 6 * polarize(irandom(1) > 0);
+					_inst.vsp = 9 * polarize(irandom(1) > 0);
 				}
 			}
 			else

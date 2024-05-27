@@ -6,6 +6,8 @@ event_inherited();
 kbres = 10;
 walkSpd = 1;
 
+dustTimer = 8;
+
 spriteanimator = new SpriteAnimator();
 //spriteanimator.Layer(0).SetCallback(OnAnimationEnd);
 spriteanimator.CopyAnimations_Struct(SPRITEANIMMAP[$ "vince"]);

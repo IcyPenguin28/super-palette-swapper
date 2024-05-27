@@ -33,6 +33,7 @@ atkMovSpd = spd / 2; // This is the speed at which the player moves while in the
 dashSpd = spd * 2; // This is the speed at which the player moves while dashing
 slamSpd = jumpSpd * 2;	// This is the speed at which the player slams into the ground while slamming
 slamRecoilSpd = jumpSpd * 1.25;	// This is the speed at which the player will bounce up from the ground after slamming
+slamPower = 6;	// This is the attack strength of using slam as an attack
 coyoteTimeMax = 6; // This is the number of frames coyote time lasts for
 jumpFramesMax = 5; // This is the number of frames jump input buffering lasts for
 maxPaintBullets = 3; // This is the number of orange bullets that can be on the screen at once
@@ -44,6 +45,7 @@ hitStopFactor = 10; // The higher this number, the slower hitstop will last for
 depth = -1;
 airAttackDescent = 0.5; // Multiplied to gravity and vertical speed when attacking in the air
 slamStretchFactor = 1.2;	// Becomes the image_yscale of the slam sprite when initiating the slam
+dustTimer = 8;	// This is the number of frames to wait between walk particle spawns
 
 //Mutables
 hsp = 0; // This is the player's instantaneous horizontal velocity

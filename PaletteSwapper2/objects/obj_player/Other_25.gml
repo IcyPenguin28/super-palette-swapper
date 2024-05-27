@@ -117,6 +117,11 @@ function Update(ts)
 				else SetState(ST_Player.rising);
 			}
 			
+			if (alarm[0] == -1)
+			{
+				alarm[0] = dustTimer;
+			}
+			
 			// Ground Combat
 			if (canAttack && keyBrush)
 			{
@@ -254,7 +259,6 @@ function Update(ts)
 			}
 			else
 			{
-				// TODO: Find a way to maintain dash speed if you dash before a slam
 				recoiling = true;
 				canDash = true;
 				vsp = -jumpSpd * 1.3;
@@ -271,6 +275,7 @@ function Update(ts)
 			lockdir = true;
 			canDash = false;
 			isDashing = true;
+			dashSlamming = false;
 			dashstep = dashTime;
 			
 			if (dir != 0)

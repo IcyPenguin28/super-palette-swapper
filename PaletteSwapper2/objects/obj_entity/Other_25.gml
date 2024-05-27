@@ -195,6 +195,11 @@ function ProcessCollision(update_speeds=true, steps=0)
 								if (update_speeds)
 								{
 									hsp = min(hsp, 0);	// Stop moving rightward on collision
+									if (self.object_index == obj_player)
+									{
+										// If the player collides with a wall, end the dash slam
+										dashSlamming = false;
+									}
 								}
 		
 								_outbits |= FL_COLLISION_R;	// Set bit representing right collision to active
@@ -222,6 +227,11 @@ function ProcessCollision(update_speeds=true, steps=0)
 								if (update_speeds)
 								{
 									hsp = max(hsp, 0);	// Stop moving leftward on collision (note MAX instead of MIN)
+									if (self.object_index == obj_player)
+									{
+										// If the player collides with a wall, end the dash slam
+										dashSlamming = false;
+									}
 								}
 								
 								_outbits |= FL_COLLISION_L;	// Set bit representing left collision to active
@@ -258,6 +268,14 @@ function ProcessCollision(update_speeds=true, steps=0)
 								if (update_speeds)
 								{
 									vsp = min(vsp, 0);	// Stop moving downward on collision
+									if (self.object_index == obj_player && c.object_index == obj_crate)
+									{
+										// If the player collides with a crate when slamming, destroy the crate
+										if (state == ST_Player.action)
+										{
+											instance_destroy(c);
+										}
+									}
 								}
 		
 								_outbits |= FL_COLLISION_D;	// Set bit representing down collision to active
