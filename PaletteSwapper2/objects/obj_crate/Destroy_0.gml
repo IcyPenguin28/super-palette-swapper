@@ -9,3 +9,11 @@ event_inherited();
 audio_play_sound(snd_crate_break, 0, false, global.gain_sfx);
 var _ps = part_system_create(pt_crate_shrapnel);
 part_system_position(_ps, x, y);
+
+if (heldItem != noone)
+{
+	repeat(numHeld)
+	{
+		instance_create_layer(x,y, layer, heldItem);
+	}
+}

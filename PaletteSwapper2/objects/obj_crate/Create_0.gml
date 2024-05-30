@@ -8,3 +8,6 @@ event_inherited();
 
 atk = 0;
 active = true;
+
+heldItem = heldItem;
+numHeld = numHeld;
