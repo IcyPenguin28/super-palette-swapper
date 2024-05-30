@@ -3,87 +3,26 @@
 
 #region GAMEPAD SETUP
 var gp = global.gp_device;
-if gp != -1
-{
-	keyRotateL = keyboard_check_pressed(ord("A")) ||
-		gamepad_button_check_pressed(gp, gp_shoulderl);
-	keyRotateR = keyboard_check_pressed(ord("S")) ||
-		gamepad_button_check_pressed(gp, gp_shoulderr);
+keyRotateL = keyboard_check_pressed(global.key_rotateL) ||
+	gamepad_button_check_pressed(gp, global.gp_rotateL);
+keyRotateR = keyboard_check_pressed(global.key_rotateR) ||
+	gamepad_button_check_pressed(gp, global.gp_rotateR);
 		
-	//Shortcut Keys
-	keyW = keyboard_check_pressed(vk_numpad5) ||
-		keyboard_check_pressed(ord("D")) ||
-		gamepad_button_check_pressed(gp, gp_stickr);
+//Shortcut Keys
+keyW = keyboard_check_pressed(global.key_w) ||
+	gamepad_button_check_pressed(gp, global.gp_w);
 		
-	keyR = keyboard_check_pressed(vk_numpad8) ||
-		keyboard_check_pressed(ord("1")) ||
-		abs(min(0,gamepad_axis_value(gp, gp_axisrv)));
-			
-	keyO = keyboard_check_pressed(vk_numpad9) ||
-		keyboard_check_pressed(ord("2")) ||
-		(abs(min(0,gamepad_axis_value(gp, gp_axisrv))) &&
-		max(0,gamepad_axis_value(gp, gp_axisrh)));
+keyR = keyboard_check_pressed(global.key_r) ||
+	gamepad_button_check_pressed(gp, global.gp_r);
 		
-	keyY = keyboard_check_pressed(vk_numpad6) ||
-		keyboard_check_pressed(ord("3")) ||
-		max(0,gamepad_axis_value(gp, gp_axisrh));
+keyY = keyboard_check_pressed(global.key_y) ||
+	gamepad_button_check_pressed(gp, global.gp_y);
 		
-	keyG = keyboard_check_pressed(vk_numpad3) ||
-		keyboard_check_pressed(ord("4")) ||
-		(max(0,gamepad_axis_value(gp, gp_axisrh)) &&
-		max(0,gamepad_axis_value(gp, gp_axisrv)));
+keyG = keyboard_check_pressed(global.key_g) ||
+	gamepad_button_check_pressed(gp, global.gp_g);
 		
-	keyC = keyboard_check_pressed(vk_numpad2) ||
-		keyboard_check_pressed(ord("5")) ||
-		max(0,gamepad_axis_value(gp, gp_axisrv));
-		
-	keyB = keyboard_check_pressed(vk_numpad1) ||
-		keyboard_check_pressed(ord("6")) ||
-		(abs(min(0,gamepad_axis_value(gp, gp_axisrh))) &&
-		max(0,gamepad_axis_value(gp, gp_axisrv)));
-		
-	keyI = keyboard_check_pressed(vk_numpad4) ||
-		keyboard_check_pressed(ord("7")) ||
-		abs(min(0,gamepad_axis_value(gp, gp_axisrh)));
-		
-	keyP = keyboard_check_pressed(vk_numpad7) ||
-		keyboard_check_pressed(ord("8")) ||
-		(abs(min(0,gamepad_axis_value(gp, gp_axisrh))) &&
-		abs(min(0,gamepad_axis_value(gp, gp_axisrv))));
-}
-else
-{
-	keyRotateL = keyboard_check_pressed(ord("A"));
-	keyRotateR = keyboard_check_pressed(ord("S"));
-	
-	//Shortcut Keys
-	keyW = keyboard_check_pressed(vk_numpad5) ||
-		keyboard_check_pressed(ord("D"));
-		
-	keyR = keyboard_check_pressed(vk_numpad8) ||
-		keyboard_check_pressed(ord("1"));
-			
-	keyO = keyboard_check_pressed(vk_numpad9) ||
-		keyboard_check_pressed(ord("2"));
-	
-	keyY = keyboard_check_pressed(vk_numpad6) ||
-		keyboard_check_pressed(ord("3"));
-		
-	keyG = keyboard_check_pressed(vk_numpad3) ||
-		keyboard_check_pressed(ord("4"));
-		
-	keyC = keyboard_check_pressed(vk_numpad2) ||
-		keyboard_check_pressed(ord("5"));
-		
-	keyB = keyboard_check_pressed(vk_numpad1) ||
-		keyboard_check_pressed(ord("6"));
-		
-	keyI = keyboard_check_pressed(vk_numpad4) ||
-		keyboard_check_pressed(ord("7"));
-		
-	keyP = keyboard_check_pressed(vk_numpad7) ||
-		keyboard_check_pressed(ord("8"));
-}
+keyB = keyboard_check_pressed(global.key_b) ||
+	gamepad_button_check_pressed(gp, global.gp_b);
 #endregion
 
 
@@ -95,39 +34,19 @@ if (CalcNumColors() > 1) // Player has colors they can rotate through
 		activeSlot = 1;
 	}
 
-	if (array_has_value(colorList, PlayerPaintColors.orange) && keyO)
+	if (array_has_value(colorList, PlayerPaintColors.yellow) && keyY)
 	{
 		activeSlot = 2;
 	}
 
-	if (array_has_value(colorList, PlayerPaintColors.yellow) && keyY)
+	if (array_has_value(colorList, PlayerPaintColors.green) && keyG)
 	{
 		activeSlot = 3;
 	}
 
-	if (array_has_value(colorList, PlayerPaintColors.green) && keyG)
-	{
-		activeSlot = 4;
-	}
-
-	if (array_has_value(colorList, PlayerPaintColors.cyan) && keyC)
-	{
-		activeSlot = 5;
-	}
-
 	if (array_has_value(colorList, PlayerPaintColors.blue) && keyB)
 	{
-		activeSlot = 6;
-	}
-
-	if (array_has_value(colorList, PlayerPaintColors.indigo) && keyI)
-	{
-		activeSlot = 7;
-	}
-
-	if (array_has_value(colorList, PlayerPaintColors.purple) && keyP)
-	{
-		activeSlot = 8;
+		activeSlot = 4;
 	}
 
 	if (array_has_value(colorList, PlayerPaintColors.white) && keyW)

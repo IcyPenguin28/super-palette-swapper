@@ -12,12 +12,8 @@ else
 		ini_open(myFile);
 		 image_index += ini_read_real("rm_introstage", "cleared", 0);
 		// image_index += ini_read_real("rm_sunsetstreet_boss", "cleared", 0);
-		// image_index += ini_read_real("rm_autumntrails_boss", "cleared", 0);
 		// image_index += ini_read_real("rm_cobaltbayharbor_boss", "cleared", 0);
 		// image_index += ini_read_real("rm_overgrowntowers_boss", "cleared", 0);
-		// image_index += ini_read_real("rm_midnightmountains_boss", "cleared", 0);
-		// image_index += ini_read_real("rm_snowcapsquare_boss", "cleared", 0);
-		// image_index += ini_read_real("rm_galevalleyfarms_boss", "cleared", 0);
 		ini_close();	
 		alteredImage = true;
 	}

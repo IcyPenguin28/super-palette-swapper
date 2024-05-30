@@ -17,18 +17,14 @@ global.key_cancel = ini_read_real("Keyboard Controls", "cancel", ord("X"));
 global.key_jump = ini_read_real("Keyboard Controls", "jump", ord("Z"));
 global.key_brush = ini_read_real("Keyboard Controls", "brush",ord("X"));
 global.key_action = ini_read_real("Keyboard Controls", "action", ord("C"));
-global.key_rotateL = ini_read_real("Keyboard Controls", "rotateL", ord("A"));
-global.key_rotateR = ini_read_real("Keyboard Controls", "rotateR", ord("S"));
+global.key_rotateL = ini_read_real("Keyboard Controls", "rotateL", ord("Q"));
+global.key_rotateR = ini_read_real("Keyboard Controls", "rotateR", ord("E"));
 global.key_pause = ini_read_real("Keyboard Controls", "pause", vk_escape);
-global.key_w = ini_read_real("Keyboard Controls", "white", ord("D"));
-global.key_r = ini_read_real("Keyboard Controls", "red", ord("1"));
-global.key_o = ini_read_real("Keyboard Controls", "orange", ord("2"));
-global.key_y = ini_read_real("Keyboard Controls", "yellow", ord("3"));
-global.key_c = ini_read_real("Keyboard Controls", "cyan", ord("4"));
-global.key_g = ini_read_real("Keyboard Controls", "green", ord("5"));
-global.key_b = ini_read_real("Keyboard Controls", "blue", ord("6"));
-global.key_i = ini_read_real("Keyboard Controls", "indigo", ord("7"));
-global.key_p = ini_read_real("Keyboard Controls", "purple", ord("8"));
+global.key_w = ini_read_real("Keyboard Controls", "white", ord("F"));
+global.key_r = ini_read_real("Keyboard Controls", "red", ord("W"));
+global.key_y = ini_read_real("Keyboard Controls", "yellow", ord("D"));
+global.key_g = ini_read_real("Keyboard Controls", "green", ord("S"));
+global.key_b = ini_read_real("Keyboard Controls", "blue", ord("A"));
 
 global.gp_left = ini_read_real("Gamepad Controls", "left", gp_padl);
 global.gp_right = ini_read_real("Gamepad Controls", "right", gp_padr);
@@ -41,7 +37,13 @@ global.gp_brush = ini_read_real("Gamepad Controls", "brush", gp_face3);
 global.gp_action = ini_read_real("Gamepad Controls", "action", gp_face2);
 global.gp_rotateL = ini_read_real("Gamepad Controls", "rotateL", gp_shoulderl);
 global.gp_rotateR = ini_read_real("Gamepad Controls", "rotateR", gp_shoulderr);
-global.gp_pause = ini_read_real("Keyboard Controls", "pause", gp_start);
+global.gp_pause = ini_read_real("Gamepad Controls", "pause", gp_start);
+global.gp_w = ini_read_real("Gamepad Controls", "white", gp_stickr);
+global.gp_r = ini_read_real("Gamepad Controls", "red", gp_padu);
+global.gp_y = ini_read_real("Gamepad Controls", "yellow", gp_padr);
+global.gp_g = ini_read_real("Gamepad Controls", "green", gp_padd);
+global.gp_b = ini_read_real("Gamepad Controls", "blue", gp_padl);
+
 
 // Audio Settings
 global.gain_bgm = ini_read_real("Audio", "BGM Volume", 0.5);

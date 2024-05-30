@@ -21,7 +21,8 @@ enum ST_Player
 	attackAir3,
 	
 	dash,
-	action
+	action,
+	wallSlide,
 }
 
 //Constants
@@ -47,6 +48,8 @@ depth = -1;
 airAttackDescent = 0.5; // Multiplied to gravity and vertical speed when attacking in the air
 slamStretchFactor = 1.2;	// Becomes the image_yscale of the slam sprite when initiating the slam
 dustTimer = 8;	// This is the number of frames to wait between walk particle spawns
+wallSlideFriction = 0.5;	// This is a factor multiplied by the gravity to determine how slow the player slides down walls.
+wallJumpHsp = 2* jumpSpd;	// This determines how far the player will be sent after executing a wall jump
 
 //Mutables
 hsp = 0; // This is the player's instantaneous horizontal velocity

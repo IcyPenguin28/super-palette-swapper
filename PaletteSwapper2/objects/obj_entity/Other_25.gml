@@ -199,6 +199,14 @@ function ProcessCollision(update_speeds=true, steps=0)
 									{
 										// If the player collides with a wall, end the dash slam
 										dashSlamming = false;
+										// If they are airborne and not slamming and are not yet doing so, activate wallSlide.
+										if (!onGround && state != ST_Player.action && state != ST_Player.wallSlide) SetState(ST_Player.wallSlide);
+										
+										if (state == ST_Player.wallSlide && (keyLeft || dir == 0))
+										{
+											// Detatch from wall
+											SetState(ST_Player.neutral);
+										}
 									}
 								}
 		
@@ -231,6 +239,14 @@ function ProcessCollision(update_speeds=true, steps=0)
 									{
 										// If the player collides with a wall, end the dash slam
 										dashSlamming = false;
+										// If they are airborne and not slamming and are not yet doing so, activate wallSlide.
+										if (!onGround && state != ST_Player.action && state != ST_Player.wallSlide) SetState(ST_Player.wallSlide);
+										
+										if (state == ST_Player.wallSlide && (keyRight || dir == 0))
+										{
+											// Detatch from wall
+											SetState(ST_Player.neutral);
+										}
 									}
 								}
 								

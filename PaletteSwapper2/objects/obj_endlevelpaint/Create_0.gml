@@ -10,11 +10,7 @@ stepFlag = false; // Is set to true (and never goes back to false) when all even
 
 displayColor = array_create(8);
 displayColor[PlayerPaintColors.red] = c_red;
-displayColor[PlayerPaintColors.orange] = c_orange;
 displayColor[PlayerPaintColors.yellow] = c_yellow;
 displayColor[PlayerPaintColors.green] = c_green;
-displayColor[PlayerPaintColors.cyan] = c_aqua;
 displayColor[PlayerPaintColors.blue] = c_blue;
-displayColor[PlayerPaintColors.indigo] = $8F00FF;
-displayColor[PlayerPaintColors.purple] = c_purple;
 displayColor[PlayerPaintColors.white] = c_white;

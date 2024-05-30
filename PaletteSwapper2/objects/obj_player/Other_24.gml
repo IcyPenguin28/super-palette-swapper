@@ -36,6 +36,7 @@ function ProcessMovement(_hspeed, _vspeed)
 		canMove = true;
 		canJump = true;
 		canAttack = true;
+		canDash = true;
 	}
 
 	// MOVEMENT ----------------------------------------------------- 
@@ -75,9 +76,15 @@ function ProcessMovement(_hspeed, _vspeed)
 			_gravw *= airAttackDescent;
 		}
 	
-		if (!isDashing && !beginSlam)
+		if (!isDashing && !beginSlam && abs(state) != ST_Player.wallSlide)
 		{
 			vsp += _gravw; //add gravity to player's vertical speed
+		}
+		
+		// Wall sliding gravity
+		if (abs(state) == ST_Player.wallSlide)
+		{
+			vsp += _gravw * wallSlideFriction;
 		}
 	
 		// Aerial Combat
@@ -189,6 +196,12 @@ function ProcessMovement(_hspeed, _vspeed)
 		}
 	}
 	
+	// Allow dash for all colors
+	if (canDash && keyAction && array_has_value(obj_palette.colorList, PlayerPaintColors.red))
+	{
+		SetState(ST_Player.dash);
+	}
+	
 	// Vertical
 	var _vspw = vsp;	// Working Speed
 
@@ -226,68 +239,15 @@ function ProcessPowers()
 	{
 		// RED
 		case PlayerPaintColors.red:
-			if (canDash && keyAction)
-			{
-				SetState(ST_Player.dash);
-			}
-			break;
-		// ORANGE
-		case PlayerPaintColors.orange:
-			/*if (canShoot && keyBrush)
-			{
-				shootstep = shootTime;
-				with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbullet)
-				{
-					dir = sign(other.image_xscale);
-					grav = sign(other.grav) * grav;
-				}
-			}*/
 			break;
 		// YELLOW
 		case PlayerPaintColors.yellow:
-		if (canShoot && keyBrush)
-			{
-				shootstep = shootTime;
-				with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintglob_yellow)
-				{
-					dir = sign(other.image_xscale);
-					grav = sign(other.grav) * grav;
-				}
-			}
 			break;
 		// GREEN
 		case PlayerPaintColors.green:
 			break;
-		// CYAN
-		case PlayerPaintColors.cyan:
-			break;
 		// BLUE
 		case PlayerPaintColors.blue:
-			if (canBomb & keyBrush && !keyDown) //Place
-			{
-				shootstep = bombTime;
-				with instance_create_layer(x + sign(image_xscale), y, "Instances", obj_paintbomb)
-				{
-					dir = sign(other.image_xscale);
-					grav = sign(other.grav) * grav;
-				}
-			}
-			if (keyDown && keyBrush) //Detonate
-				{
-					if instance_exists(obj_paintbomb)
-					{
-						with (obj_paintbomb)
-						{
-							instance_destroy();
-						}
-					}
-				}
-			break;
-		// INDIGO
-		case PlayerPaintColors.indigo:
-			break;
-		// PURPLE
-		case PlayerPaintColors.purple:
 			break;
 	}
 }

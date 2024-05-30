@@ -326,6 +326,29 @@ function Update(ts)
 				SetState(ST_Player.action);
 			}
 			break;
+		// Wall Jumping ======================================
+		case (-ST_Player.wallSlide):
+			// TODO: Get wall sliding animation key
+			break;
+		case (ST_Player.wallSlide):
+			ProcessPowers();
+			ProcessMovement(hsp, vsp);
+			ProcessCollision();
+			
+			if (keyJump)
+			{
+				vsp = -jumpSpd;
+				hsp = wallJumpHsp * -sign(dir);
+				SetState(ST_Player.neutral);
+			}
+			
+			if onGround
+			{
+				SetState(ST_Player.neutral);
+			}
+			break;
+			
+			
 	}
 
 	// Defeat
@@ -472,7 +495,7 @@ function OnAttack()
 			}
 			audio_play_sound(snd_swipe, 0, false, global.gain_sfx);
 			break;
-		case(PlayerPaintColors.orange):
+		case(PlayerPaintColors.yellow):
 			instance_create_layer(x + sprite_width, y, "Instances", obj_paintbullet);
 			break;
 	}
