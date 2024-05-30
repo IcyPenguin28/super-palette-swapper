@@ -33,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "spr_paintglob_orange",
-    "path": "sprites/spr_paintglob_orange/spr_paintglob_orange.yy",
+    "name": "spr_paintglob_yellow",
+    "path": "sprites/spr_paintglob_yellow/spr_paintglob_yellow.yy",
   },
   "spriteMaskId": null,
   "visible": true,
