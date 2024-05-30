@@ -28,11 +28,14 @@ function ProcessMovement(_hspeed, _vspeed)
 		canBomb = false;
 		canMove = false;
 		canJump = false;
+		canAttack = false;
+		hsp = 0;
 	}
 	else
 	{
 		canMove = true;
 		canJump = true;
+		canAttack = true;
 	}
 
 	// MOVEMENT ----------------------------------------------------- 
@@ -47,6 +50,10 @@ function ProcessMovement(_hspeed, _vspeed)
 	if ( !isDashing && !dashSlamming)
 	{
 		hsp = lerp(hsp, dir * _hspeed, gAccel);
+	}
+	else if (dashSlamming)
+	{
+		hsp = lerp(hsp, dir * dashSpd, dsAccel);
 	}
 	
 	// Context dependent movement options

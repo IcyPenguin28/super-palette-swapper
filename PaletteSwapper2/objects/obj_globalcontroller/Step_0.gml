@@ -18,6 +18,13 @@ if (keySuperReset)
 	game_restart();
 }
 
+var keyScreencap = keyboard_check_pressed(vk_f12);
+if (keyScreencap)
+{
+	screen_save("Super_Palette_Swapper_"+string(ind)+".png");
+	ind++;
+}
+
 
 if (keyboard_check_pressed(192))	// 192 = Tilde "~" key
 {

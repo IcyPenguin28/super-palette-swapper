@@ -29,7 +29,7 @@
   "origin": 0,
   "parent": {
     "name": "Particles",
-    "path": "folders/Sprites/Particles.yy",
+    "path": "folders/Sprites/GFX/Particles.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

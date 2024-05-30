@@ -8,15 +8,6 @@ function Update(ts=1)
 	camW = camera_get_view_width(cam);
 	camH = camera_get_view_height(cam);
 	
-	// Parallaxing shit
-	if (room != rm_titlemenu && room != rm_introstage)
-	{
-		layer_x("Background", camX);
-		layer_y("Background", camY);
-		layer_x("Backgrounds_1", camX * 0.5);
-		layer_x("Backgrounds_2", camX * 0.25);
-	}
-	
 	
 	// Determine target
 	onTarget = false;
@@ -90,6 +81,15 @@ function Update(ts=1)
 	
 	xcenter = camX + wRes/2;
 	ycenter = camY + hRes/2;
+	
+	// Parallaxing shit
+	if (room != rm_titlemenu && room != rm_introstage)
+	{
+		layer_x("Background", camX);
+		layer_y("Background", camY);
+		layer_x("Backgrounds_1", camX * 0.5);
+		layer_x("Backgrounds_2", camX * 0.25);
+	}
 	
 	// Apply shake
 	var shake_x = power(shakeTime, 2) * shakeMagX;

@@ -4,7 +4,7 @@
 // Re-initialize vars that could have changed in creation code
 myStageStr = room_get_name(myStage);
 
-show_debug_message(global.active_savefile);
+// show_debug_message(global.active_savefile);
 
 if file_exists(global.active_savefile)
 {
@@ -27,8 +27,6 @@ if clearStatus == 1
 		{
 			if array_has_value(unlocks, node.myStage)
 			{
-				// Code never reaches here for some reason
-				show_debug_message(node);
 				node.unlocked = true;
 			}
 		}

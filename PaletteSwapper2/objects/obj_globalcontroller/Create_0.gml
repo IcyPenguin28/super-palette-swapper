@@ -64,6 +64,9 @@ global.active_savefile = "save1.ini"
 #macro DEBUG global.g_debug
 DEBUG = 0;	// Toggle with tilde "`" key
 
+// Screencapping
+ind = 0;
+
 // Pausing
 global.can_pause = false;
 global.paused = false;

@@ -159,6 +159,7 @@ function Update(ts)
 			statestep = 0;	// Count UP from here
 			jumpstartpos = [x, y];
 			jumptargetpos = jumpPoints[irandom(array_length(jumpPoints)-1)];
+			instance_create_layer(x, y, "Instances", obj_ef_slam);
 			break;
 			
 		case(ST_Boss_Vince.jump):

@@ -3,8 +3,9 @@
 
 inSpecialStage = (room == rm_sunsetstreet_special);
 initPaintDropCount = instance_number(obj_paintdrop);
+getStartTime = true;	// Flag will be set to false when start time is set. Prevents resetting it over and over in Draw GUI.
 startTime = 0;	// The snapshot of time to make sure the bonus objective fulfillment stays on screen for the designated amount of time
-fulfillmentDuration = 1; // The number of seconds to keep the fulfillment on screen
+fulfillmentDuration = 2; // The number of seconds to keep the fulfillment on screen
 endTime = startTime + fulfillmentDuration;
 soundplayed = false;	// Determines if the key sound has played yet
 ini_open(global.active_savefile);

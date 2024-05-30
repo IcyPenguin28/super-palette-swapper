@@ -69,24 +69,29 @@ if canContinue && contKey
 	ini_open(global.active_savefile);
 	ini_write_real(room_get_name(room), "cleared", 1);
 	
+	// Set star to be acquired and add to the totals.
 	if (ini_read_real(room_get_name(room), "star1", 0) == 0)
 	{
 		ini_write_real(room_get_name(room), "star1", star1Filled);
+		ini_write_real("Totals", "Stars", ini_read_real("Totals", "Stars", 0) + star1Filled);
 	}
 	
 	if (ini_read_real(room_get_name(room), "star2", 0) == 0)
 	{
 		ini_write_real(room_get_name(room), "star2", star2Filled);
+		ini_write_real("Totals", "Stars", ini_read_real("Totals", "Stars", 0) + star2Filled);
 	}
 	
 	if (ini_read_real(room_get_name(room), "star3", 0) == 0)
 	{
 		ini_write_real(room_get_name(room), "star3", star3Filled);
+		ini_write_real("Totals", "Stars", ini_read_real("Totals", "Stars", 0) + star3Filled);
 	}
 	
 	if (ini_read_real(room_get_name(room), "key", 0) == 0)
 	{
 		ini_write_real(room_get_name(room), "key", keyFilled);
+		ini_write_real("Totals", "Keys", ini_read_real("Totals", "Keys", 0) + keyFilled);
 	}
 	
 	ini_close();

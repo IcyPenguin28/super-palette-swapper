@@ -22,10 +22,14 @@ if activeBonusObj != -1
 	}
 	else if !alreadyGotKey
 	{
-		startTime = time;
+		if (getStartTime)
+		{
+			startTime = time;
+			getStartTime = false;
+		}
 		endTime = startTime + fulfillmentDuration;
 		
-		if time < endTime && !instance_exists(obj_results)
+		if time < endTime && !instance_exists(obj_results) && !instance_exists(obj_textbox)
 		{
 			if !soundplayed
 			{

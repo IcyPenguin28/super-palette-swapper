@@ -87,7 +87,11 @@ function Update(ts)
 			if (!onGround)
 			{
 				if (vsp >= 0) SetState(ST_Player.falling)
-				else SetState(ST_Player.rising);
+				else
+				{
+					instance_create_layer(x, y, "Instances", obj_ef_slam);
+					SetState(ST_Player.rising);
+				}
 			}
 			
 			ProcessPowers();
@@ -114,7 +118,11 @@ function Update(ts)
 			if (!onGround)
 			{
 				if (vsp >= 0) SetState(ST_Player.falling)
-				else SetState(ST_Player.rising);
+				else
+				{
+					instance_create_layer(x, y, "Instances", obj_ef_slam);
+					SetState(ST_Player.rising);
+				}
 			}
 			
 			if (alarm[0] == -1)
@@ -217,6 +225,7 @@ function Update(ts)
 		case(ST_Player.attack1):
 		case(ST_Player.attack2):
 		case(ST_Player.attack3):
+			dashSlamming = false;
 			ProcessMovement(atkMovSpd, 0);
 		
 			isAttackingAir = !onGround;
@@ -256,9 +265,13 @@ function Update(ts)
 			{
 				vsp = jumpSpd * 2;
 				if (onGround) beginSlam = false;
+				var _trail = part_system_create(ps_slamtrail);
+				part_system_position(_trail, x, y);
+				// part_system_destroy(_trail);
 			}
 			else
 			{
+				// instance_create_layer(x, y - 16, "Instances", obj_ef_slam);
 				recoiling = true;
 				canDash = true;
 				vsp = -jumpSpd * 1.3;

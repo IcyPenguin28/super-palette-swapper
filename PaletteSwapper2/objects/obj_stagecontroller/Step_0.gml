@@ -3,7 +3,7 @@
 
 if !instance_exists(obj_results) && !inSpecialStage
 {
-	if (alarm[0] == -1) alarm[0] = room_speed;
+	if (alarm[0] == -1) alarm[0] = 60;
 }
 
 

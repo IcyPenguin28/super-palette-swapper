@@ -149,7 +149,7 @@ if (keyConfirm) && destNode.unlocked && !instance_exists(obj_textbox)
 	canMove = false;
 }
 
-if instance_exists(obj_textbox)
+if instance_exists(obj_textbox) || instance_exists(obj_levelpreview)
 {
 	canMove = false;
 }

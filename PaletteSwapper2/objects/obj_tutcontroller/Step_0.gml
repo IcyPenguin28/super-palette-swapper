@@ -42,7 +42,7 @@ if (instance_exists(obj_player))
 	}
 	
 	// Increment timer to prompt player to attack, else never show prompt
-	show_debug_message(abs(point_distance(p.x, p.y, 3488, 544)));
+	// show_debug_message(abs(point_distance(p.x, p.y, 3488, 544)));
 	if (abs(point_distance(p.x, p.y, 3488, 544)) <= 80)
 	{
 		slamstep ++;
