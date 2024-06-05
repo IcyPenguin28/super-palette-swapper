@@ -79,7 +79,7 @@ function __input_player_tick_sources(_player)
                                 switch(_binding.type)
                                 {
                                     case __INPUT_BINDING_KEY:
-                                        if (input_check(_binding.value))
+                                        if (keyboard_check(_binding.value))
                                         {
                                             _value        = 1.0;
                                             _raw          = 1.0;
@@ -90,7 +90,7 @@ function __input_player_tick_sources(_player)
                                         //If we're on Android then check the alternate keyboard key as well
                                         if (__INPUT_ON_ANDROID)
                                         {
-                                            if ((_binding.__android_lowercase != undefined) && input_check(_binding.__android_lowercase))
+                                            if ((_binding.__android_lowercase != undefined) && keyboard_check(_binding.__android_lowercase))
                                             {
                                                 _value        = 1.0;
                                                 _raw          = 1.0;

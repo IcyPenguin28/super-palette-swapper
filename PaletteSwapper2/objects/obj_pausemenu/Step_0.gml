@@ -2,31 +2,10 @@
 // You can write your code in this editor
 
 // Set Controls
-var gp = global.gp_device;
-
-if gp == -1
-{
-	keyUp = input_check_pressed(global.key_up);
-	keyDown = input_check_pressed(global.key_down);
-	keyConfirm = input_check_pressed(global.key_confirm);
-	keyCancel = input_check_pressed(global.key_cancel) ||
-		input_check_pressed(global.key_pause);
-}
-else
-{
-	keyUp = input_check_pressed(global.key_up) ||
-		//abs(min(0,gamepad_axis_value(gp, gp_axislv))) ||
-		gamepad_button_check_pressed(gp, global.gp_up);
-	keyDown = input_check_pressed(global.key_down) ||
-		//max(0,gamepad_axis_value(gp, gp_axislv)) ||
-		gamepad_button_check_pressed(gp, global.gp_down);
-	keyConfirm = input_check_pressed(global.key_confirm) ||
-		gamepad_button_check_pressed(gp, global.gp_confirm);
-	keyCancel = input_check_pressed(global.key_cancel) ||
-		gamepad_button_check_pressed(gp, global.gp_cancel) ||
-		input_check_pressed(global.key_pause) ||
-		gamepad_button_check_pressed(gp, global.gp_pause);
-}
+keyUp = input_check_pressed("up");
+keyDown = input_check_pressed("down");
+keyConfirm = input_check_pressed("confirm");
+keyCancel = input_check_pressed("cancel");
 
 // Set up navigation
 if keyCancel

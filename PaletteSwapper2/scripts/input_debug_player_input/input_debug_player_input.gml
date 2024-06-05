@@ -74,7 +74,7 @@ function input_debug_player_input(_player_index = 0)
                                 var _keyboard_key = _j;
                             }
                             
-                            if (input_check(_keyboard_key)
+                            if (keyboard_check(_keyboard_key)
                             && (_keyboard_key >= __INPUT_KEYCODE_MIN) && (_keyboard_key <= __INPUT_KEYCODE_MAX)
                             && !__input_key_is_ignored(_keyboard_key)
                             && _filter_func(_keyboard_key, _ignore_struct, _allow_struct))

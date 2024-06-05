@@ -15,7 +15,7 @@ else
 	}
 }
 
-if (round(yy) == display_get_gui_height() / 2) && obj_player_worldmap.keyConfirm
+if /*(round(yy) == display_get_gui_height() / 2) &&*/ obj_player_worldmap.keyConfirm
 {
 	audio_stop_all();
 	audio_play_sound(snd_menuselection, 0, false, global.gain_sfx);

@@ -79,7 +79,7 @@ else
 		portraitRX = lerp(portraitRX, portraitRXMax, stretchSpeed);
 	}
 	
-	keyConfirm = input_check_pressed(global.key_confirm) || gamepad_button_check_pressed(global.gp_device, global.gp_confirm)
+	keyConfirm = input_check_pressed("confirm");
 
 	textProgress = min(textProgress + textSpeed, textLength);
 

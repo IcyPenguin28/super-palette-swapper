@@ -1,35 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-var gp = global.gp_device;
-
-if gp == -1
-{
-	keyLeft = input_check_pressed(global.key_left);
-	keyRight = input_check_pressed(global.key_right);
-	confirmButton = input_check_pressed(global.key_confirm);
-}
-else
-{
-	keyLeft = input_check_pressed(vk_left) ||
-		//abs(min(0,gamepad_axis_value(gp, gp_axislh))) ||
-		gamepad_button_check_pressed(gp, gp_padl);
-	keyRight = input_check_pressed(vk_right) ||
-		//max(0,gamepad_axis_value(gp, gp_axislh)) ||
-		gamepad_button_check_pressed(gp, gp_padr);
-	if (global.gp_desc == "Nintendo Switch Pro Controller")
-	{
-		confirmButton = input_check_pressed(ord("Z")) ||
-		gamepad_button_check_pressed(gp, gp_start) ||
-		gamepad_button_check_pressed(gp, gp_face2);
-	}
-	else
-	{
-		confirmButton = input_check_pressed(ord("Z")) ||
-		gamepad_button_check_pressed(gp, gp_start) ||
-		gamepad_button_check_pressed(gp, gp_face1);
-	}
-}
+keyLeft = input_check_pressed("left");
+keyRight = input_check_pressed("right");
+confirmButton = input_check_pressed("confirm");
 
 var _ytarget = 900;	// Final position of obj_mainmenu
 var _interacttarget = _ytarget + 100;	// Position where player can interact, just before stopping.

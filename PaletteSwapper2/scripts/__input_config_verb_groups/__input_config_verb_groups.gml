@@ -15,7 +15,7 @@ function __input_config_verb_groups()
 {
     return {
         //Fill me up!
-		gameplay : [up, down, left, right, jump, brush, weapon, dash, eye, rotateL, rotateR, pause, white, red, yellow, green, blue],
-		menu : [confirm, cancel],
+		"gameplay" : ["up", "down", "left", "right", "jump", "brush", "weapon", "dash", "eye", "rotateL", "rotateR", "pause", "white", "red", "yellow", "green", "blue"],
+		"menu" : ["confirm", "cancel"],
     };
 }

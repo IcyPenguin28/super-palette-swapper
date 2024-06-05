@@ -13,14 +13,15 @@ function Update(ts)
 	
 	#region CONTROLS
 	var gp = global.gp_device;
-	keyLeft = input_check(global.key_left);
-	keyRight = input_check(global.key_right);
-	keyUp = input_check(global.key_up);
-	keyDown = input_check(global.key_down);
-	keyJump = input_check_pressed(global.key_jump);
-	keyJumpHeld = input_check(global.key_jump);
-	keyBrush = input_check_pressed(global.key_brush);
-	keyAction = input_check_pressed(global.key_action);
+	keyUp = input_check("up");
+	keyDown = input_check("down");
+	keyLeft = input_check("left");
+	keyRight = input_check("right");
+	keyJump = input_check_pressed("jump");
+	keyJumpHeld = input_check("jump");
+	keyBrush = input_check_pressed("brush");
+	keyWeapon = input_check_pressed("weapon");
+	keyAction = input_check_pressed("dash");
 	keyReset = keyboard_check_pressed(ord("R"));
 	#endregion
 
@@ -454,22 +455,12 @@ function OnAnimationEnd()
 // Called when swipe attack occurs
 function OnAttack()
 {
-	switch( myCol )
+	with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
 	{
-		// White/Red Paint - Simple swipe
-		case(PlayerPaintColors.white):
-		case(PlayerPaintColors.red):
-			with (instance_create_layer(x + sprite_width, y, "Instances", obj_attacktrail))
-			{
-				image_xscale = other.image_xscale;
-				image_blend = obj_palette.colorDrawColor[other.myCol];
-			}
-			audio_play_sound(snd_swipe, 0, false, global.gain_sfx);
-			break;
-		case(PlayerPaintColors.yellow):
-			instance_create_layer(x + sprite_width, y, "Instances", obj_paintbullet);
-			break;
+		image_xscale = other.image_xscale;
+		image_blend = obj_palette.colorDrawColor[other.myCol];
 	}
+	audio_play_sound(snd_swipe, 0, false, global.gain_sfx);
 }
 
 function OnDamage()

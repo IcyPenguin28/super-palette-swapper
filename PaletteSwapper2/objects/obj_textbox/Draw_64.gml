@@ -29,5 +29,5 @@ if !opening && !closing
 	draw_set_color(textColor);
 	draw_set_font(textFont);
 	draw_set_alpha(1);
-	type(x + textX, y + textY, text, textProgress, textWidth);
+	scr_type(x + textX, y + textY, text, textProgress, textWidth);
 }

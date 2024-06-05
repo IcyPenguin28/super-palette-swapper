@@ -1,18 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-var gp = global.gp_device;
-if gp == -1
-{
-	confirmButton = input_check_pressed(ord("Z")) || input_check_pressed(vk_space);
-}
-else
-{
-	confirmButton = input_check_pressed(ord("Z")) ||
-					input_check_pressed(vk_space) ||
-					gamepad_button_check_pressed(gp, gp_face1) ||
-					gamepad_button_check_pressed(gp, gp_face2) ||
-					gamepad_button_check_pressed(gp, gp_start);
-}
+confirmButton = input_check_pressed("confirm");
 
 switch(state)
 {

@@ -2,33 +2,12 @@
 // You can write your code in this editor
 
 // Set Controls
-var gp = global.gp_device;
-
-if gp == -1
-{
-	keyUp = input_check_pressed(global.key_up);
-	keyDown = input_check_pressed(global.key_down);
-	keyLeft = input_check_pressed(global.key_left);
-	keyRight = input_check_pressed(global.key_right);
-	keyCancel = input_check_pressed(global.key_cancel);
-}
-else
-{
-	keyUp = input_check_pressed(global.key_up) ||
-		//abs(min(0,gamepad_axis_value(gp, gp_axislv))) ||
-		gamepad_button_check_pressed(gp, global.gp_up);
-	keyDown = input_check_pressed(global.key_down) ||
-		//max(0,gamepad_axis_value(gp, gp_axislv)) ||
-		gamepad_button_check_pressed(gp, global.gp_down);
-	keyLeft = input_check_pressed(global.key_left) ||
-		//max(0,gamepad_axis_value(gp, gp_axisl)) ||
-		gamepad_button_check_pressed(gp, global.gp_left);
-	keyRight = input_check_pressed(global.key_right) ||
-		//max(0,gamepad_axis_value(gp, gp_axisl)) ||
-		gamepad_button_check_pressed(gp, global.gp_right);
-	keyCancel = input_check_pressed(global.key_cancel) ||
-		gamepad_button_check_pressed(gp, global.gp_cancel);
-}
+keyUp = input_check_pressed("up");
+keyDown = input_check_pressed("down");
+keyLeft = input_check_pressed("left");
+keyRight = input_check_pressed("right");
+keyConfirm = input_check_pressed("confirm");
+keyCancel = input_check_pressed("cancel");
 
 // Set up navigation
 if keyCancel

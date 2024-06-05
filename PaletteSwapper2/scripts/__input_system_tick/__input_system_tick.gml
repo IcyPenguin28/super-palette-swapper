@@ -379,7 +379,7 @@ function __input_system_tick()
     #region Keyboard
     
     //Unstick
-    if (_global.__keyboard_allowed && input_check(vk_anykey))
+    if (_global.__keyboard_allowed && keyboard_check(vk_anykey))
     {
         var _platform = os_type;
         if (INPUT_ON_WEB && __INPUT_ON_APPLE) _platform = "apple_web";
@@ -387,7 +387,7 @@ function __input_system_tick()
         switch(_platform)
         {
             case os_windows:
-                if (input_check(vk_alt) && input_check_pressed(vk_space))
+                if (keyboard_check(vk_alt) && keyboard_check_pressed(vk_space))
                 {
                     //Unstick Alt Space
                     keyboard_key_release(vk_alt);
@@ -396,14 +396,14 @@ function __input_system_tick()
                     keyboard_key_release(vk_ralt);
                 }
 
-                if (input_check(0xE6) && !input_check_pressed(0xE6))
+                if (keyboard_check(0xE6) && !keyboard_check_pressed(0xE6))
                 {
                     //Unstick OEM key (Power button on Steam Deck)
                     keyboard_key_release(0x0E6);
                 }
             break;            
             case "apple_web": //This case applies on iOS, tvOS, and MacOS
-                if (input_check_released(vk_lmeta) || input_check_released(vk_rmeta))
+                if (keyboard_check_released(vk_lmeta) || keyboard_check_released(vk_rmeta))
                 {
                     //Meta release sticks every key pressed during hold
                     //This is "the nuclear option", but the problem is severe
@@ -418,30 +418,30 @@ function __input_system_tick()
             break;                
             case os_macosx:
                 //Unstick doubled-up control keys
-                if (input_check_released(vk_control))
+                if (keyboard_check_released(vk_control))
                 {
                     keyboard_key_release(vk_lcontrol);
                     keyboard_key_release(vk_rcontrol);
                 }
             
-                if (input_check_released(vk_shift))
+                if (keyboard_check_released(vk_shift))
                 {
                     keyboard_key_release(vk_lshift);
                     keyboard_key_release(vk_rshift);
                 }
             
-                if (input_check_released(vk_alt))
+                if (keyboard_check_released(vk_alt))
                 {
                     keyboard_key_release(vk_lalt);
                     keyboard_key_release(vk_ralt);
                 }
             
                 //Unstick Meta
-                if (input_check_released(vk_lmeta))
+                if (keyboard_check_released(vk_lmeta))
                 {
                     keyboard_key_release(vk_rmeta);
                 }
-                else if (input_check_released(vk_rmeta) && input_check(vk_lmeta))
+                else if (keyboard_check_released(vk_rmeta) && keyboard_check(vk_lmeta))
                 {
                     keyboard_key_release(vk_lmeta);
                 }

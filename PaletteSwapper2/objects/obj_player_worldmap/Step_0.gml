@@ -1,35 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 #region CONTROLS
-var gp = global.gp_device;
-
-if gp == -1
-{
-	keyLeft = input_check_pressed(vk_left)  || gamepad_button_check_pressed(global.gp_device, gp_padl);
-	keyRight = input_check_pressed(vk_right)  || gamepad_button_check_pressed(global.gp_device, gp_padr);
-	keyUp = input_check_pressed(vk_up)  || gamepad_button_check_pressed(global.gp_device, gp_padu);
-	keyDown = input_check_pressed(vk_down)  || gamepad_button_check_pressed(global.gp_device, gp_padd);
-	keyConfirm = input_check_pressed(ord("Z"))  || gamepad_button_check_pressed(global.gp_device, gp_face1);
-	keyCancel = input_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face2);
-}
-else
-{
-	keyLeft = input_check_pressed(vk_left) ||
-		//abs(min(0,gamepad_axis_value(gp, gp_axislh))) ||
-		gamepad_button_check_pressed(gp, gp_padl);
-	keyRight = input_check_pressed(vk_right) ||
-		//max(0,gamepad_axis_value(gp, gp_axislh)) ||
-		gamepad_button_check_pressed(gp, gp_padr);
-	keyUp = input_check_pressed(vk_up) ||
-		gamepad_button_check_pressed(gp, gp_padu);
-	keyDown = input_check_pressed(vk_down) ||
-		gamepad_button_check_pressed(gp, gp_padd);
-	keyConfirm = input_check_pressed(ord("Z")) ||
-		gamepad_button_check_pressed(gp, gp_start) ||
-		gamepad_button_check_pressed(gp, gp_face1);
-	keyCancel = input_check_pressed(ord("X")) ||
-		gamepad_button_check_pressed(gp, gp_face2);
-}
+keyUp = input_check_pressed("up");
+keyDown = input_check_pressed("down");
+keyLeft = input_check_pressed("left");
+keyRight = input_check_pressed("right");
+keyConfirm = input_check_pressed("confirm");
+keyCancel = input_check_pressed("cancel");
 #endregion
 
 // Find node that navigator has been placed on

@@ -235,20 +235,23 @@ function ProcessMovement(_hspeed, _vspeed)
 
 function ProcessPowers()
 {
-	switch (myCol)
+	if keyWeapon
 	{
-		// RED
-		case PlayerPaintColors.red:
-			break;
-		// YELLOW
-		case PlayerPaintColors.yellow:
-			break;
-		// GREEN
-		case PlayerPaintColors.green:
-			break;
-		// BLUE
-		case PlayerPaintColors.blue:
-			break;
+		switch (myCol)
+		{
+			// RED
+			case PlayerPaintColors.red:
+				break;
+			// YELLOW
+			case PlayerPaintColors.yellow:
+				break;
+			// GREEN
+			case PlayerPaintColors.green:
+				break;
+			// BLUE
+			case PlayerPaintColors.blue:
+				break;
+		}
 	}
 }
 

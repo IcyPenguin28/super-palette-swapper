@@ -26,22 +26,22 @@ array_set(colorList, 0, PlayerPaintColors.white);
 
 ini_open(global.active_savefile);
 
-if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.red), 0)) || true
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.red), 0)) //|| true
 {
 	array_set(colorList, 1, PlayerPaintColors.red);	
 }
 
-if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.yellow), 0)) || true
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.yellow), 0)) //|| true
 {
 	array_set(colorList, 2, PlayerPaintColors.yellow);	
 }
 
-if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.green), 0)) || true
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.green), 0)) //|| true
 {
 	array_set(colorList, 3, PlayerPaintColors.green);	
 }
 
-if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.blue), 0)) || true
+if (ini_read_real("Unlocked Colors", string(PlayerPaintColors.blue), 0)) //|| true
 {
 	array_set(colorList, 4, PlayerPaintColors.blue);	
 }

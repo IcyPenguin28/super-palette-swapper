@@ -1,6 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function type(x, y, text, progress, width){
+function scr_type(x, y, text, progress, width){
 	var drawX = 0;
 	var drawY = 0;
 	

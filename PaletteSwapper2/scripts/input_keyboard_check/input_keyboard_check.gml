@@ -3,7 +3,7 @@
 /// @desc    Checks if the given key is currently activated. Uses GameMaker's native key constants (int)
 /// @param   binding
 
-function input_input_check(_binding)
+function input_keyboard_check(_binding)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
@@ -12,5 +12,5 @@ function input_input_check(_binding)
         return false;
     }
     
-    return input_check(_binding);
+    return keyboard_check(_binding);
 }

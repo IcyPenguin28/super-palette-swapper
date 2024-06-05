@@ -36,7 +36,7 @@ function input_source_detect_input(_source, _available_only = true)
         case __INPUT_SOURCE.KEYBOARD:
             if (_global.__keyboard_allowed && _global.__any_keyboard_binding_defined
             &&  (!_available_only || input_source_is_available(_source))
-            &&  input_check_pressed(vk_anykey)
+            &&  keyboard_check_pressed(vk_anykey)
             &&  !__input_key_is_ignored(__input_keyboard_key())) //Ensure that this key isn't one we're trying to ignore
             {
                 return true;

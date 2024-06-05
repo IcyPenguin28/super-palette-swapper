@@ -2,7 +2,7 @@
 /// @desc    Checks if the given key is newly activated this frame.
 /// @param   binding
 
-function input_input_check_pressed(_binding)
+function input_keyboard_check_pressed(_binding)
 {
     __INPUT_GLOBAL_STATIC_LOCAL  //Set static _global
     
@@ -11,5 +11,5 @@ function input_input_check_pressed(_binding)
         return false;
     }
     
-    return input_check_pressed(_binding);
+    return keyboard_check_pressed(_binding);
 }

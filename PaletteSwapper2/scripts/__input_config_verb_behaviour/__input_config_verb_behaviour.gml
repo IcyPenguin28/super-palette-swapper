@@ -17,15 +17,15 @@
 //bindings in this situation - but the option is there if you need it
 #macro INPUT_FLEXIBLE_ALTERNATE_BINDING_IMPORT  false
 
-//Default time before input_check_repeat() returns <true>
+//Default time before keyboard_check_repeat() returns <true>
 //(Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS)
 #macro INPUT_REPEAT_DEFAULT_DELAY  10
 
-//Default time between a verb being activated and the first time input_check_repeat() returns <true>
+//Default time between a verb being activated and the first time keyboard_check_repeat() returns <true>
 //(Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS)
 #macro INPUT_REPEAT_DEFAULT_PREDELAY  30
 
-//Time before input_check_long() returns <true>
+//Time before keyboard_check_long() returns <true>
 //(Whether this is in frames or milliseconds is controlled by INPUT_TIMER_MILLISECONDS)
 #macro INPUT_LONG_DELAY  10
 
