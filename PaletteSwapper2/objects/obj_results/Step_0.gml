@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-contKey = keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face1);
+contKey = input_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face1);
 
 if a < 1
 {

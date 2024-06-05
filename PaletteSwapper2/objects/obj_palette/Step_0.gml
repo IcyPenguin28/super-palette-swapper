@@ -3,25 +3,25 @@
 
 #region GAMEPAD SETUP
 var gp = global.gp_device;
-keyRotateL = keyboard_check_pressed(global.key_rotateL) ||
+keyRotateL = input_check_pressed(global.key_rotateL) ||
 	gamepad_button_check_pressed(gp, global.gp_rotateL);
-keyRotateR = keyboard_check_pressed(global.key_rotateR) ||
+keyRotateR = input_check_pressed(global.key_rotateR) ||
 	gamepad_button_check_pressed(gp, global.gp_rotateR);
 		
 //Shortcut Keys
-keyW = keyboard_check_pressed(global.key_w) ||
+keyW = input_check_pressed(global.key_w) ||
 	gamepad_button_check_pressed(gp, global.gp_w);
 		
-keyR = keyboard_check_pressed(global.key_r) ||
+keyR = input_check_pressed(global.key_r) ||
 	gamepad_button_check_pressed(gp, global.gp_r);
 		
-keyY = keyboard_check_pressed(global.key_y) ||
+keyY = input_check_pressed(global.key_y) ||
 	gamepad_button_check_pressed(gp, global.gp_y);
 		
-keyG = keyboard_check_pressed(global.key_g) ||
+keyG = input_check_pressed(global.key_g) ||
 	gamepad_button_check_pressed(gp, global.gp_g);
 		
-keyB = keyboard_check_pressed(global.key_b) ||
+keyB = input_check_pressed(global.key_b) ||
 	gamepad_button_check_pressed(gp, global.gp_b);
 #endregion
 

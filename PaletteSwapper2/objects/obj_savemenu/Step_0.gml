@@ -3,25 +3,25 @@
 
 if global.gp_device == -1
 {
-	keyLeft = keyboard_check_pressed(global.key_left);
-	keyRight = keyboard_check_pressed(global.key_right);
-	keyConfirm = keyboard_check_pressed(global.key_confirm);
-	keyCancel = keyboard_check_pressed(global.key_cancel);
+	keyLeft = input_check_pressed(global.key_left);
+	keyRight = input_check_pressed(global.key_right);
+	keyConfirm = input_check_pressed(global.key_confirm);
+	keyCancel = input_check_pressed(global.key_cancel);
 }
 else
 {
 	if global.gp_desc == "Nintendo Switch Pro Controller"
 	{
-		keyConfirm = keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face2);
-		keyCancel = keyboard_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face1);
+		keyConfirm = input_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face2);
+		keyCancel = input_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face1);
 	}
 	else
 	{
-		keyConfirm = keyboard_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face1);
-		keyCancel = keyboard_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face2);
+		keyConfirm = input_check_pressed(ord("Z")) || gamepad_button_check_pressed(global.gp_device, gp_face1);
+		keyCancel = input_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face2);
 	}
-	keyLeft = keyboard_check_pressed(vk_left)  || gamepad_button_check_pressed(global.gp_device, gp_padl);
-	keyRight = keyboard_check_pressed(vk_right) || gamepad_button_check_pressed(global.gp_device, gp_padr);
+	keyLeft = input_check_pressed(vk_left)  || gamepad_button_check_pressed(global.gp_device, gp_padl);
+	keyRight = input_check_pressed(vk_right) || gamepad_button_check_pressed(global.gp_device, gp_padr);
 }
 
 

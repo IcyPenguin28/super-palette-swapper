@@ -68,5 +68,5 @@ draw_text(xx - 128, yy + 148, node.criteriaString);
 
 
 // Draw Buttons
-draw_sprite_ext(spr_button_okay, keyboard_check(ord("Z")), xx - 2*sprite_get_width(spr_button_okay), yy + 70, starScale, starScale, 0, c_white, 1);
-draw_sprite_ext(spr_button_cancel, keyboard_check(ord("X")), xx + 2*sprite_get_width(spr_button_cancel), yy + 70, starScale, starScale, 0, c_white, 1);
+draw_sprite_ext(spr_button_okay, input_check(ord("Z")), xx - 2*sprite_get_width(spr_button_okay), yy + 70, starScale, starScale, 0, c_white, 1);
+draw_sprite_ext(spr_button_cancel, input_check(ord("X")), xx + 2*sprite_get_width(spr_button_cancel), yy + 70, starScale, starScale, 0, c_white, 1);

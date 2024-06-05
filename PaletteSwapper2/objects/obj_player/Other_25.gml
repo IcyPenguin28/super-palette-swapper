@@ -13,44 +13,15 @@ function Update(ts)
 	
 	#region CONTROLS
 	var gp = global.gp_device;
-	if gp != -1
-	{
-		keyLeft = keyboard_check(global.key_left) ||
-			gamepad_button_check(gp, global.gp_left) ||
-			abs(min(0,gamepad_axis_value(gp, gp_axislh)));
-		keyRight = keyboard_check(global.key_right) ||
-			gamepad_button_check(gp, global.gp_right) ||
-			max(0,gamepad_axis_value(gp, gp_axislh));
-		keyUp = keyboard_check(global.key_up) ||
-			gamepad_button_check(gp, global.gp_up) ||
-			abs(min(0,gamepad_axis_value(gp, gp_axislv)));
-		keyDown = keyboard_check(global.key_down) ||
-			gamepad_button_check(gp, global.gp_down) ||
-			max(0,gamepad_axis_value(gp, gp_axislv));
-		keyJump = keyboard_check_pressed(global.key_jump) ||
-			gamepad_button_check_pressed(gp, global.gp_jump);
-		keyJumpHeld = keyboard_check(global.key_jump) ||
-			gamepad_button_check(gp, global.gp_jump);
-		keyBrush = keyboard_check_pressed(global.key_brush) ||
-			gamepad_button_check_pressed(gp, global.gp_brush);
-		keyAction = keyboard_check_pressed(global.key_action) ||
-			gamepad_button_check_pressed(gp, global.gp_action);
-	
-		keyReset = keyboard_check_pressed(ord("R"));
-	}
-	else
-	{
-		keyLeft = keyboard_check(global.key_left);
-		keyRight = keyboard_check(global.key_right);
-		keyUp = keyboard_check(global.key_up);
-		keyDown = keyboard_check(global.key_down);
-		keyJump = keyboard_check_pressed(global.key_jump);
-		keyJumpHeld = keyboard_check(global.key_jump);
-		keyBrush = keyboard_check_pressed(global.key_brush);
-		keyAction = keyboard_check_pressed(global.key_action);
-	
-		keyReset = keyboard_check_pressed(ord("R"));
-	}
+	keyLeft = input_check(global.key_left);
+	keyRight = input_check(global.key_right);
+	keyUp = input_check(global.key_up);
+	keyDown = input_check(global.key_down);
+	keyJump = input_check_pressed(global.key_jump);
+	keyJumpHeld = input_check(global.key_jump);
+	keyBrush = input_check_pressed(global.key_brush);
+	keyAction = input_check_pressed(global.key_action);
+	keyReset = keyboard_check_pressed(ord("R"));
 	#endregion
 
 	switch(state)

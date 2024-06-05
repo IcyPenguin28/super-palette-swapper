@@ -5,27 +5,27 @@ var gp = global.gp_device;
 
 if gp == -1
 {
-	keyLeft = keyboard_check_pressed(global.key_left);
-	keyRight = keyboard_check_pressed(global.key_right);
-	confirmButton = keyboard_check_pressed(global.key_confirm);
+	keyLeft = input_check_pressed(global.key_left);
+	keyRight = input_check_pressed(global.key_right);
+	confirmButton = input_check_pressed(global.key_confirm);
 }
 else
 {
-	keyLeft = keyboard_check_pressed(vk_left) ||
+	keyLeft = input_check_pressed(vk_left) ||
 		//abs(min(0,gamepad_axis_value(gp, gp_axislh))) ||
 		gamepad_button_check_pressed(gp, gp_padl);
-	keyRight = keyboard_check_pressed(vk_right) ||
+	keyRight = input_check_pressed(vk_right) ||
 		//max(0,gamepad_axis_value(gp, gp_axislh)) ||
 		gamepad_button_check_pressed(gp, gp_padr);
 	if (global.gp_desc == "Nintendo Switch Pro Controller")
 	{
-		confirmButton = keyboard_check_pressed(ord("Z")) ||
+		confirmButton = input_check_pressed(ord("Z")) ||
 		gamepad_button_check_pressed(gp, gp_start) ||
 		gamepad_button_check_pressed(gp, gp_face2);
 	}
 	else
 	{
-		confirmButton = keyboard_check_pressed(ord("Z")) ||
+		confirmButton = input_check_pressed(ord("Z")) ||
 		gamepad_button_check_pressed(gp, gp_start) ||
 		gamepad_button_check_pressed(gp, gp_face1);
 	}

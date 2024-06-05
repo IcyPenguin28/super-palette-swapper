@@ -6,25 +6,25 @@ var gp = global.gp_device;
 
 if gp == -1
 {
-	keyUp = keyboard_check_pressed(global.key_up);
-	keyDown = keyboard_check_pressed(global.key_down);
-	keyConfirm = keyboard_check_pressed(global.key_confirm);
-	keyCancel = keyboard_check_pressed(global.key_cancel) ||
-		keyboard_check_pressed(global.key_pause);
+	keyUp = input_check_pressed(global.key_up);
+	keyDown = input_check_pressed(global.key_down);
+	keyConfirm = input_check_pressed(global.key_confirm);
+	keyCancel = input_check_pressed(global.key_cancel) ||
+		input_check_pressed(global.key_pause);
 }
 else
 {
-	keyUp = keyboard_check_pressed(global.key_up) ||
+	keyUp = input_check_pressed(global.key_up) ||
 		//abs(min(0,gamepad_axis_value(gp, gp_axislv))) ||
 		gamepad_button_check_pressed(gp, global.gp_up);
-	keyDown = keyboard_check_pressed(global.key_down) ||
+	keyDown = input_check_pressed(global.key_down) ||
 		//max(0,gamepad_axis_value(gp, gp_axislv)) ||
 		gamepad_button_check_pressed(gp, global.gp_down);
-	keyConfirm = keyboard_check_pressed(global.key_confirm) ||
+	keyConfirm = input_check_pressed(global.key_confirm) ||
 		gamepad_button_check_pressed(gp, global.gp_confirm);
-	keyCancel = keyboard_check_pressed(global.key_cancel) ||
+	keyCancel = input_check_pressed(global.key_cancel) ||
 		gamepad_button_check_pressed(gp, global.gp_cancel) ||
-		keyboard_check_pressed(global.key_pause) ||
+		input_check_pressed(global.key_pause) ||
 		gamepad_button_check_pressed(gp, global.gp_pause);
 }
 

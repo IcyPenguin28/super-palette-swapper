@@ -3,12 +3,12 @@
 var gp = global.gp_device;
 if gp == -1
 {
-	confirmButton = keyboard_check_pressed(ord("Z")) || keyboard_check_pressed(vk_space);
+	confirmButton = input_check_pressed(ord("Z")) || input_check_pressed(vk_space);
 }
 else
 {
-	confirmButton = keyboard_check_pressed(ord("Z")) ||
-					keyboard_check_pressed(vk_space) ||
+	confirmButton = input_check_pressed(ord("Z")) ||
+					input_check_pressed(vk_space) ||
 					gamepad_button_check_pressed(gp, gp_face1) ||
 					gamepad_button_check_pressed(gp, gp_face2) ||
 					gamepad_button_check_pressed(gp, gp_start);

@@ -5,29 +5,29 @@ var gp = global.gp_device;
 
 if gp == -1
 {
-	keyLeft = keyboard_check_pressed(vk_left)  || gamepad_button_check_pressed(global.gp_device, gp_padl);
-	keyRight = keyboard_check_pressed(vk_right)  || gamepad_button_check_pressed(global.gp_device, gp_padr);
-	keyUp = keyboard_check_pressed(vk_up)  || gamepad_button_check_pressed(global.gp_device, gp_padu);
-	keyDown = keyboard_check_pressed(vk_down)  || gamepad_button_check_pressed(global.gp_device, gp_padd);
-	keyConfirm = keyboard_check_pressed(ord("Z"))  || gamepad_button_check_pressed(global.gp_device, gp_face1);
-	keyCancel = keyboard_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face2);
+	keyLeft = input_check_pressed(vk_left)  || gamepad_button_check_pressed(global.gp_device, gp_padl);
+	keyRight = input_check_pressed(vk_right)  || gamepad_button_check_pressed(global.gp_device, gp_padr);
+	keyUp = input_check_pressed(vk_up)  || gamepad_button_check_pressed(global.gp_device, gp_padu);
+	keyDown = input_check_pressed(vk_down)  || gamepad_button_check_pressed(global.gp_device, gp_padd);
+	keyConfirm = input_check_pressed(ord("Z"))  || gamepad_button_check_pressed(global.gp_device, gp_face1);
+	keyCancel = input_check_pressed(ord("X"))  || gamepad_button_check_pressed(global.gp_device, gp_face2);
 }
 else
 {
-	keyLeft = keyboard_check_pressed(vk_left) ||
+	keyLeft = input_check_pressed(vk_left) ||
 		//abs(min(0,gamepad_axis_value(gp, gp_axislh))) ||
 		gamepad_button_check_pressed(gp, gp_padl);
-	keyRight = keyboard_check_pressed(vk_right) ||
+	keyRight = input_check_pressed(vk_right) ||
 		//max(0,gamepad_axis_value(gp, gp_axislh)) ||
 		gamepad_button_check_pressed(gp, gp_padr);
-	keyUp = keyboard_check_pressed(vk_up) ||
+	keyUp = input_check_pressed(vk_up) ||
 		gamepad_button_check_pressed(gp, gp_padu);
-	keyDown = keyboard_check_pressed(vk_down) ||
+	keyDown = input_check_pressed(vk_down) ||
 		gamepad_button_check_pressed(gp, gp_padd);
-	keyConfirm = keyboard_check_pressed(ord("Z")) ||
+	keyConfirm = input_check_pressed(ord("Z")) ||
 		gamepad_button_check_pressed(gp, gp_start) ||
 		gamepad_button_check_pressed(gp, gp_face1);
-	keyCancel = keyboard_check_pressed(ord("X")) ||
+	keyCancel = input_check_pressed(ord("X")) ||
 		gamepad_button_check_pressed(gp, gp_face2);
 }
 #endregion
