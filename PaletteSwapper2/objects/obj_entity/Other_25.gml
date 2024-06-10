@@ -339,6 +339,70 @@ function ProcessCollision(update_speeds=true, steps=0)
 	return _outbits;
 }
 
+// Returns bitfield representing collisions with a border of 1 pixel around sprite mask
+function TestCollision(border_px=1) {
+	var _result = 0;
+	
+	var xx = lerp(bbox_left, bbox_right, 0.5);	// X Center of bbox
+	var yy = lerp(bbox_top, bbox_bottom, 0.5);	// Y Center of bbox
+	
+	var _colllist = ds_list_create();
+	var n;
+	var c;
+	
+	var _wallobjects = [obj_solid, obj_crate];
+	
+	// Right
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, bbox_right+border_px, yy, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_R;
+			break;
+		}
+	}
+	
+	// Left
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, bbox_left-border_px, yy, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_L;
+			break;
+		}
+	}
+	
+	// Up
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, xx, bbox_top-border_px, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_U;
+			break;
+		}
+	}
+	
+	// Down
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, xx, bbox_bottom+border_px, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_D;
+			break;
+		}
+	}
+	
+	ds_list_destroy(_colllist);
+	return _result;
+}
 
 // ANIMATION ===================================================
 function InitAnimator(_animationsetkey)

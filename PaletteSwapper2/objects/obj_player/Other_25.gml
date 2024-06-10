@@ -346,6 +346,12 @@ function Update(ts)
 			{
 				SetState(ST_Player.neutral);
 			}
+			
+			// Stop sliding if there's no right or left collision
+			var _collisiontestresult = TestCollision(1);
+			if ( !(_collisiontestresult & FL_COLLISION_R) && !(_collisiontestresult & FL_COLLISION_L) ) {
+				SetState(ST_Player.neutral);
+			}
 			break;
 			
 			
