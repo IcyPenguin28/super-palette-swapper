@@ -7,6 +7,16 @@ function Start()
 	
 }
 
+// Same as Base class' SetState(), just with a state name print
+function SetState(_state) {
+	if (state != _state) {
+		show_debug_message("player.state: {0}", ST_Player_string[_state]);	
+	}
+	state = -abs(_state);
+	event_perform(ev_step, ev_step_normal);
+	state = abs(state);
+}
+
 // Called every frame
 function Update(ts)
 {
@@ -48,11 +58,11 @@ function Update(ts)
 		keyJumpHeld = keyboard_check(global.key_jump);
 		keyBrush = keyboard_check_pressed(global.key_brush);
 		keyAction = keyboard_check_pressed(global.key_action);
-	
+		
 		keyReset = keyboard_check_pressed(ord("R"));
 	}
 	#endregion
-
+	
 	switch(state)
 	{
 		default:
@@ -67,6 +77,7 @@ function Update(ts)
 			isAttackingAir = false;
 			lockdir = false;
 			isDashing = false;
+			canWallslide = false;
 			break;
 	
 		case(ST_Player.neutral):	// State Update
@@ -97,12 +108,13 @@ function Update(ts)
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
 			ProcessCollision();
-		
 			spriteanimator.UpdateAnimation(ts);
 			break;
 		
+		// ....................................................................
 		case(-ST_Player.walk):
 			spriteanimator.SetAnimationKey("walk");
+			canWallslide = true;
 			break;
 			
 		case(ST_Player.walk):
@@ -140,8 +152,10 @@ function Update(ts)
 			}
 			break;
 		
+		// ....................................................................
 		case(-ST_Player.rising):
 			spriteanimator.SetAnimationKey("rising");
+			canWallslide = false;
 			break;
 		
 		case(ST_Player.rising):
@@ -166,8 +180,10 @@ function Update(ts)
 			}
 			break;
 		
+		// ....................................................................
 		case(-ST_Player.falling):
 			spriteanimator.SetAnimationKey("falling");
+			canWallslide = true;
 			break;
 		
 		case(ST_Player.falling):
@@ -202,10 +218,12 @@ function Update(ts)
 			changeAttackState = false;
 			lockdir = true;
 			spriteanimator.SetAnimationKey("attack1a");
+			canWallslide = false;
 		
 			OnAttack();
 			break;
-	
+		
+		// ....................................................................
 		case(-ST_Player.attack2):
 			changeAttackState = false;
 			lockdir = true;
@@ -213,7 +231,8 @@ function Update(ts)
 		
 			OnAttack();
 			break;
-	
+		
+		// ....................................................................
 		case(-ST_Player.attack3):
 			changeAttackState = false;
 			lockdir = true;
@@ -253,6 +272,7 @@ function Update(ts)
 		case (-ST_Player.action):
 			spriteanimator.SetAnimationKey("slam");
 			beginSlam = true;
+			canWallslide = false;
 			break;
 		
 		case (ST_Player.action):
@@ -290,6 +310,7 @@ function Update(ts)
 			isDashing = true;
 			dashSlamming = false;
 			dashstep = dashTime;
+			canWallslide = false;
 			
 			if (dir != 0)
 			{
@@ -329,11 +350,11 @@ function Update(ts)
 		// Wall Jumping ======================================
 		case (-ST_Player.wallSlide):
 			// TODO: Get wall sliding animation key
+			canWallslide = false;
 			break;
 		case (ST_Player.wallSlide):
 			ProcessPowers();
 			ProcessMovement(hsp, vsp);
-			ProcessCollision();
 			
 			if (keyJump)
 			{
@@ -347,11 +368,32 @@ function Update(ts)
 				SetState(ST_Player.neutral);
 			}
 			
-			// Stop sliding if there's no right or left collision
 			var _collisiontestresult = TestCollision(1);
-			if ( !(_collisiontestresult & FL_COLLISION_R) && !(_collisiontestresult & FL_COLLISION_L) ) {
+			var _walldetachhspd = 0.2;
+			
+			// Detach from right wall
+			if (_collisiontestresult & FL_COLLISION_R) {
+				if (keyLeft) {
+					hsp = -_walldetachhspd;
+					vsp = -jumpSpd * 0.5;
+					SetState(ST_Player.neutral);
+				}
+			}
+			// Detach from left wall
+			else if (_collisiontestresult & FL_COLLISION_L) {
+				if (keyRight) {
+					hsp = _walldetachhspd;
+					vsp = -jumpSpd * 0.5;
+					SetState(ST_Player.neutral);
+				}
+			}
+			// Stop sliding if there's no right or left collision
+			else {
 				SetState(ST_Player.neutral);
 			}
+			
+			ProcessCollision();
+			
 			break;
 			
 			
@@ -362,6 +404,7 @@ function Update(ts)
 	{
 		hitStop = false;
 		instance_destroy();
+		return;
 	}
 
 	// Update Direction
@@ -371,6 +414,19 @@ function Update(ts)
 	}
 
 	image_yscale = sign(grav);
+	
+	// Move to wall slide state
+	if (canWallslide && abs(state) != ST_Player.wallSlide) {
+		var _collisiontestresultst = TestCollision(1);
+		if ( !onGround ) {
+			if ( 
+				( (_collisiontestresultst & FL_COLLISION_L) && keyLeft && hsp <= 0 ) || 
+				( (_collisiontestresultst & FL_COLLISION_R) && keyRight && hsp >= 0 )
+			) {
+				SetState(ST_Player.wallSlide);
+			}
+		}
+	}
 }
 
 function Draw()

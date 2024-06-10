@@ -25,6 +25,13 @@ enum ST_Player
 	wallSlide,
 }
 
+ST_Player_string = [
+	"zero", "neutral", "walk", "rising", "falling", 
+	"attack1", "attack2", "attack3",
+	"attackAir1", "attackAir2", "attackAir3",
+	"dash", "action", "wallSlide",
+];
+
 //Constants
 spd = 3; // This is the player's base movement speed;
 jumpSpd = 6; // Determines the jump height of the player.
@@ -90,6 +97,7 @@ canDash = true;
 canAttack = true;
 canJump = true;
 canShoot = true;
+canWallslide = false;
 hitStop = false;
 
 isDashing = false;
