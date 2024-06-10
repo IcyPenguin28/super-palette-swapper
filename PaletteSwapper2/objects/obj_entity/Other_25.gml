@@ -75,7 +75,6 @@ function Draw()
 	else
 	{
 		flashTime = 0;
-		shader_reset();
 	}
 	shader_set(_shader);
 

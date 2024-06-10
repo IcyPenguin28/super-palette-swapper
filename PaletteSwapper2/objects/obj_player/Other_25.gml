@@ -382,7 +382,7 @@ function Draw()
 	// Collision Debugging
 	if (DEBUG)
 	{
-		shader_reset();
+		shader_reset();	// Prevents "Draw failed" error. Necessary for primitive drawing (draw_line, draw_rectangle, etc.)
 		var xx = lerp(bbox_left, bbox_right, 0.5);
 		var yy = lerp(bbox_bottom, bbox_top, 0.5);
 		var _perp_offset;
