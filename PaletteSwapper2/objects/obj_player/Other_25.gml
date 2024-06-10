@@ -373,6 +373,7 @@ function Update(ts)
 		case (-ST_Player.wallSlide):
 			// TODO: Get wall sliding animation key
 			canWallslide = false;
+			wallclingDelay = wallclingDelayTime;
 			break;
 		case (ST_Player.wallSlide):
 			ProcessPowers();
@@ -396,17 +397,29 @@ function Update(ts)
 			// Detach from right wall
 			if (_collisiontestresult & FL_COLLISION_R) {
 				if (keyLeft) {
-					hsp = -_walldetachhspd;
-					vsp = -jumpSpd * 0.5;
-					SetState(ST_Player.neutral);
+					if (wallclingDelay > 0) {
+						wallclingDelay = max(wallclingDelay-ts, 0);
+					}
+					else {
+						SetState(ST_Player.neutral);
+					}
+				}
+				else {
+					wallclingDelay = wallclingDelayTime;
 				}
 			}
 			// Detach from left wall
 			else if (_collisiontestresult & FL_COLLISION_L) {
 				if (keyRight) {
-					hsp = _walldetachhspd;
-					vsp = -jumpSpd * 0.5;
-					SetState(ST_Player.neutral);
+					if (wallclingDelay > 0) {
+						wallclingDelay = max(wallclingDelay-ts, 0);
+					}
+					else {
+						SetState(ST_Player.neutral);
+					}
+				}
+				else {
+					wallclingDelay = wallclingDelayTime;
 				}
 			}
 			// Stop sliding if there's no right or left collision
