@@ -11,8 +11,11 @@ if (DEBUG)
 	draw_set_halign(fa_right);
 	draw_set_valign(fa_bottom);
 	
+	draw_set_color(c_white);
+	
 	draw_text_block(display_get_gui_width(), display_get_gui_height(), 0.5,
-		string("State: {0}", state),
+		string("State: {0} {1}", state, ST_Player_string[abs(state)]),
+		string("onGround: {0}", onGround),
 		string("AttackState: {0}", attackState),
 		string("isAttackingGround: {0}", isAttackingGround),
 		string("isAttackingAir: {0}", isAttackingAir),
