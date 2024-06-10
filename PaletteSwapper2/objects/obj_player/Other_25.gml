@@ -279,8 +279,14 @@ function Update(ts)
 			spriteanimator.UpdateAnimation(ts);
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
-			ProcessCollision();
+			var _collisionresult = ProcessCollision();
 			
+			// If the player collides with a wall, end the dash slam
+			if ( (_collisionresult & FL_COLLISION_L) || _collisionresult & FL_COLLISION_R ) {
+				dashSlamming = false;
+			}
+			
+			// Slam start
 			if (beginSlam)
 			{
 				vsp = jumpSpd * 2;
@@ -289,8 +295,24 @@ function Update(ts)
 				part_system_position(_trail, x, y);
 				// part_system_destroy(_trail);
 			}
+			// Slam hit
 			else
 			{
+				// Check downward collisions
+				var _collisionlist = ds_list_create();
+				var n = collision_point_list((bbox_left+bbox_right)*0.5, bbox_bottom+1, [obj_crate], 0, 1, _collisionlist, 0);
+				var c = noone;
+				
+				for (var i = 0; i < n; i++) {
+					c = _collisionlist[| i];
+					if (c && c.object_index == obj_crate) {
+						// If the player collides with a crate when slamming, destroy the crate
+						if (state == ST_Player.action) {
+							instance_destroy(c);
+						}
+					}
+				}
+				
 				// instance_create_layer(x, y - 16, "Instances", obj_ef_slam);
 				recoiling = true;
 				canDash = true;

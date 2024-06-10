@@ -5,10 +5,9 @@ event_inherited();
 
 function ProcessMovement(_hspeed, _vspeed)
 {
-	// UPDATING STATES  
+	// UPDATING STATES
 	var coll = collision_line(x, y, x, bbox_bottom, [obj_solid, obj_crate, obj_semisolid], 0, 1);
-	onGround = (coll && sign(grav) == 1 ||
-				place_meeting(x,y-1,obj_solid) && sign(grav) == -1);
+	onGround = (coll && sign(grav) == 1 || coll && sign(grav) == -1);
 	inWater = place_meeting(x,y,obj_water);
 	canShoot = (instance_number(obj_paintbullet) < maxPaintBullets && shootstep == 0) && !instance_exists(obj_results) && !instance_exists(obj_textbox);
 	canBomb = (instance_number(obj_paintbomb) < maxBombs && shootstep = 0) && !instance_exists(obj_results) && !instance_exists(obj_textbox);
