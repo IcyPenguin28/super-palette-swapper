@@ -75,7 +75,6 @@ function Draw()
 	else
 	{
 		flashTime = 0;
-		shader_reset();
 	}
 	shader_set(_shader);
 
@@ -159,6 +158,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 	var c;
 	var n;
 	var _colllist = ds_list_create();	// Collision list
+	var _targetobjects = [obj_solid, obj_crate];
 	
 	// Value added to perpendicular axis to test corners.
 	// Offsets that result in corner position are buggy. Reduce by a few pixels.
@@ -181,7 +181,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							xx, yy+_perp_offset[o], bbox_right, yy+_perp_offset[o], [obj_solid, obj_crate], 0, 1, _colllist, 0
+							xx, yy+_perp_offset[o], bbox_right, yy+_perp_offset[o], _targetobjects, 0, 1, _colllist, 0
 						);
 	
 						for (var i = 0; i < n; i++)
@@ -195,19 +195,6 @@ function ProcessCollision(update_speeds=true, steps=0)
 								if (update_speeds)
 								{
 									hsp = min(hsp, 0);	// Stop moving rightward on collision
-									if (self.object_index == obj_player)
-									{
-										// If the player collides with a wall, end the dash slam
-										dashSlamming = false;
-										// If they are airborne and not slamming and are not yet doing so, activate wallSlide.
-										if (!onGround && state != ST_Player.action && state != ST_Player.wallSlide) SetState(ST_Player.wallSlide);
-										
-										if (state == ST_Player.wallSlide && (keyLeft || dir == 0))
-										{
-											// Detatch from wall
-											SetState(ST_Player.neutral);
-										}
-									}
 								}
 		
 								_outbits |= FL_COLLISION_R;	// Set bit representing right collision to active
@@ -221,7 +208,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							bbox_left, yy+_perp_offset[o], xx, yy+_perp_offset[o], [obj_solid, obj_crate], 0, 1, _colllist, 0
+							bbox_left, yy+_perp_offset[o], xx, yy+_perp_offset[o], _targetobjects, 0, 1, _colllist, 0
 						);
 	
 						for (var i = 0; i < n; i++)
@@ -235,19 +222,6 @@ function ProcessCollision(update_speeds=true, steps=0)
 								if (update_speeds)
 								{
 									hsp = max(hsp, 0);	// Stop moving leftward on collision (note MAX instead of MIN)
-									if (self.object_index == obj_player)
-									{
-										// If the player collides with a wall, end the dash slam
-										dashSlamming = false;
-										// If they are airborne and not slamming and are not yet doing so, activate wallSlide.
-										if (!onGround && state != ST_Player.action && state != ST_Player.wallSlide) SetState(ST_Player.wallSlide);
-										
-										if (state == ST_Player.wallSlide && (keyRight || dir == 0))
-										{
-											// Detatch from wall
-											SetState(ST_Player.neutral);
-										}
-									}
 								}
 								
 								_outbits |= FL_COLLISION_L;	// Set bit representing left collision to active
@@ -270,9 +244,9 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							xx, yy, xx, bbox_bottom, [obj_solid, obj_crate], 0, 1, _colllist, 0
+							xx, yy, xx, bbox_bottom, _targetobjects, 0, 1, _colllist, 0
 						);
-	
+						
 						for (var i = 0; i < n; i++)
 						{
 							c = _colllist[| i];
@@ -284,14 +258,6 @@ function ProcessCollision(update_speeds=true, steps=0)
 								if (update_speeds)
 								{
 									vsp = min(vsp, 0);	// Stop moving downward on collision
-									if (self.object_index == obj_player && c.object_index == obj_crate)
-									{
-										// If the player collides with a crate when slamming, destroy the crate
-										if (state == ST_Player.action)
-										{
-											instance_destroy(c);
-										}
-									}
 								}
 		
 								_outbits |= FL_COLLISION_D;	// Set bit representing down collision to active
@@ -305,7 +271,7 @@ function ProcessCollision(update_speeds=true, steps=0)
 					{
 						ds_list_clear(_colllist);
 						n = collision_line_list(
-							xx, yy, xx, bbox_top-1, [obj_solid, obj_crate], 0, 1, _colllist, 0
+							xx, yy, xx, bbox_top-1, _targetobjects, 0, 1, _colllist, 0
 						);
 	
 						for (var i = 0; i < n; i++)
@@ -339,6 +305,70 @@ function ProcessCollision(update_speeds=true, steps=0)
 	return _outbits;
 }
 
+// Returns bitfield representing collisions with a border of 1 pixel around sprite mask
+function TestCollision(border_px=1) {
+	var _result = 0;
+	
+	var xx = lerp(bbox_left, bbox_right, 0.5);	// X Center of bbox
+	var yy = lerp(bbox_top, bbox_bottom, 0.5);	// Y Center of bbox
+	
+	var _colllist = ds_list_create();
+	var n;
+	var c;
+	
+	var _wallobjects = [obj_solid, obj_crate];
+	
+	// Right
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, bbox_right+border_px, yy, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_R;
+			break;
+		}
+	}
+	
+	// Left
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, bbox_left-border_px, yy, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_L;
+			break;
+		}
+	}
+	
+	// Up
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, xx, bbox_top-border_px, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_U;
+			break;
+		}
+	}
+	
+	// Down
+	ds_list_clear(_colllist);
+	n = collision_line_list(xx, yy, xx, bbox_bottom+border_px, _wallobjects, 0, 1, _colllist, 0);
+	
+	for (var i = 0; i < n; i++) {
+		c = _colllist[| i];
+		if (c && c.active) {
+			_result |= FL_COLLISION_D;
+			break;
+		}
+	}
+	
+	ds_list_destroy(_colllist);
+	return _result;
+}
 
 // ANIMATION ===================================================
 function InitAnimator(_animationsetkey)

@@ -9,4 +9,6 @@ spd = 8;
 
 target_room = room;
 depth = -10000;
-transition_surface = surface_create(width, height);
+transition_surface = -1;
+
+show_debug_message("New Transition Inst: id = " + string(id));

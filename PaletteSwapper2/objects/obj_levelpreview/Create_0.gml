@@ -14,6 +14,9 @@ star2 = false;
 star3 = false;
 key = false;
 
+confirmDelay = 2;
+levelConfirmed = false;
+
 image_speed = 0.1;
 
 function SetNode(_node)

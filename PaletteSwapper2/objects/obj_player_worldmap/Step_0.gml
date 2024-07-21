@@ -9,69 +9,16 @@ keyConfirm = input_check_pressed("confirm");
 keyCancel = input_check_pressed("cancel");
 #endregion
 
+var _previewactive = false;
+var _textboxactive = false;
+
+_textboxactive = instance_exists(obj_textbox);
+_previewactive = instance_exists(obj_levelpreview)? obj_levelpreview.onScreen: false;
+
 // Find node that navigator has been placed on
 if (!destNode)
 {
 	destNode = instance_nearest(x, y, obj_worldmapnode);
-}
-
-// Node navigation
-if ( canMove && !isMoving )
-{
-	var xdist = 0, ydist = 0;
-	
-	// Set direction based on keypress
-	if ( keyRight )
-	{
-		xdist = 640;
-	}
-	else if ( keyLeft )
-	{
-		xdist = -640;
-	}
-	else if ( keyDown )
-	{
-		ydist = 360;
-	}
-	else if ( keyUp )
-	{
-		ydist -= 360
-	}
-	
-	// Scan for nodes in direction
-	if (xdist != 0 || ydist != 0)
-	{
-		numDests = collision_line_list(x, y, x + xdist, y + ydist, obj_worldmapnode, false, true, possibleDests, true);
-		
-		// Check for valid nodes in direction
-		var _nd;
-		
-		for (var i = 0; i < numDests; i++)
-		{
-			_nd = ds_list_find_value(possibleDests, i);
-			
-			// If node is unlocked and not the active node
-			if ( _nd != destNode && _nd.unlocked )
-			{
-				destNode = ds_list_find_value(possibleDests, i);
-				isMoving = true;
-				break;	// Break loop once valid node is found
-			}
-		}
-		
-		// Shake on invalid move
-		if ( !isMoving )
-		{
-			shakeTime = 20;
-			shakeDirection = darctan2(ydist, xdist);
-		}
-		else
-		{
-			shakeTime = 0;
-		}
-		
-		ds_list_clear(possibleDests);
-	}
 }
 
 // Move to active node
@@ -126,13 +73,76 @@ if (keyConfirm) && destNode.unlocked && !instance_exists(obj_textbox)
 	canMove = false;
 }
 
-if instance_exists(obj_textbox) || instance_exists(obj_levelpreview)
+canMove = !_previewactive && !_textboxactive;
+
+// Node navigation
+if ( canMove )
 {
-	canMove = false;
-}
-else
-{
-	canMove = true;
+	var xdist = 0, ydist = 0;
+	
+	// Set direction based on keypress
+	if ( keyRight )
+	{
+		xdist = 640;
+	}
+	else if ( keyLeft )
+	{
+		xdist = -640;
+	}
+	else if ( keyDown )
+	{
+		ydist = 360;
+	}
+	else if ( keyUp )
+	{
+		ydist -= 360
+	}
+	
+	// Scan for nodes in direction
+	if (xdist != 0 || ydist != 0)
+	{
+		var _lastnode = destNode;
+		
+		// Cast line from active node
+		numDests = collision_line_list(
+			destNode.x, destNode.y, destNode.x + xdist, destNode.y + ydist, 
+			obj_worldmapnode, false, true, possibleDests, true
+		);
+		
+		// Check for valid nodes in direction
+		var _nd;
+		
+		isMoving = false;
+		for (var i = 0; i < numDests; i++)
+		{
+			_nd = ds_list_find_value(possibleDests, i);
+			
+			// If node is unlocked and not the active node
+			if ( _nd != destNode && _nd.unlocked )
+			{
+				destNode = ds_list_find_value(possibleDests, i);
+				isMoving = true;
+				break;	// Break loop once valid node is found
+			}
+		}
+		
+		// Shake on invalid move
+		if ( !isMoving )
+		{
+			shakeTime = 20;
+			shakeDirection = darctan2(ydist, xdist);
+		}
+		// Move to next node
+		else
+		{
+			// Snap to starting node's position
+			x = _lastnode.x;
+			y = _lastnode.y;
+			shakeTime = 0;
+		}
+		
+		ds_list_clear(possibleDests);
+	}
 }
 
 // Close level preview
@@ -142,6 +152,4 @@ if (keyCancel) && instance_exists(obj_levelpreview) && !instance_exists(obj_text
 	{
 		onScreen = false;
 	}
-	
-	canMove = true;
 }

@@ -25,6 +25,13 @@ enum ST_Player
 	wallSlide,
 }
 
+ST_Player_string = [
+	"zero", "neutral", "walk", "rising", "falling", 
+	"attack1", "attack2", "attack3",
+	"attackAir1", "attackAir2", "attackAir3",
+	"dash", "action", "wallSlide",
+];
+
 //Constants
 spd = 3; // This is the player's base movement speed;
 jumpSpd = 6; // Determines the jump height of the player.
@@ -50,6 +57,7 @@ slamStretchFactor = 1.2;	// Becomes the image_yscale of the slam sprite when ini
 dustTimer = 8;	// This is the number of frames to wait between walk particle spawns
 wallSlideFriction = 0.5;	// This is a factor multiplied by the gravity to determine how slow the player slides down walls.
 wallJumpHsp = 2* jumpSpd;	// This determines how far the player will be sent after executing a wall jump
+wallclingDelayTime = 16;	// Frames that player must hold direction opposite of wall before detatching
 
 //Mutables
 hsp = 0; // This is the player's instantaneous horizontal velocity
@@ -76,6 +84,7 @@ shootTime = 5;
 bombTime = 20;
 paintstep = 0;
 paintTime = game_get_speed(gamespeed_fps);
+wallclingDelay = 0;	// Decrements when wall sliding and holding opposite direction
 
 //Boolean states
 isAttackingGround = false;	// Attack animation is in progress
@@ -90,6 +99,7 @@ canDash = true;
 canAttack = true;
 canJump = true;
 canShoot = true;
+canWallslide = false;
 hitStop = false;
 
 isDashing = false;

@@ -7,6 +7,16 @@ function Start()
 	
 }
 
+// Same as Base class' SetState(), just with a state name print
+function SetState(_state) {
+	if (state != _state) {
+		show_debug_message("player.state: {0}", ST_Player_string[_state]);	
+	}
+	state = -abs(_state);
+	event_perform(ev_step, ev_step_normal);
+	state = abs(state);
+}
+
 // Called every frame
 function Update(ts)
 {
@@ -24,7 +34,7 @@ function Update(ts)
 	keyAction = input_check_pressed("dash");
 	keyReset = keyboard_check_pressed(ord("R"));
 	#endregion
-
+	
 	switch(state)
 	{
 		default:
@@ -39,6 +49,7 @@ function Update(ts)
 			isAttackingAir = false;
 			lockdir = false;
 			isDashing = false;
+			canWallslide = false;
 			break;
 	
 		case(ST_Player.neutral):	// State Update
@@ -69,12 +80,13 @@ function Update(ts)
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
 			ProcessCollision();
-		
 			spriteanimator.UpdateAnimation(ts);
 			break;
 		
+		// ....................................................................
 		case(-ST_Player.walk):
 			spriteanimator.SetAnimationKey("walk");
+			canWallslide = true;
 			break;
 			
 		case(ST_Player.walk):
@@ -112,8 +124,10 @@ function Update(ts)
 			}
 			break;
 		
+		// ....................................................................
 		case(-ST_Player.rising):
 			spriteanimator.SetAnimationKey("rising");
+			canWallslide = false;
 			break;
 		
 		case(ST_Player.rising):
@@ -138,8 +152,10 @@ function Update(ts)
 			}
 			break;
 		
+		// ....................................................................
 		case(-ST_Player.falling):
 			spriteanimator.SetAnimationKey("falling");
+			canWallslide = true;
 			break;
 		
 		case(ST_Player.falling):
@@ -174,10 +190,12 @@ function Update(ts)
 			changeAttackState = false;
 			lockdir = true;
 			spriteanimator.SetAnimationKey("attack1a");
+			canWallslide = false;
 		
 			OnAttack();
 			break;
-	
+		
+		// ....................................................................
 		case(-ST_Player.attack2):
 			changeAttackState = false;
 			lockdir = true;
@@ -185,7 +203,8 @@ function Update(ts)
 		
 			OnAttack();
 			break;
-	
+		
+		// ....................................................................
 		case(-ST_Player.attack3):
 			changeAttackState = false;
 			lockdir = true;
@@ -225,14 +244,21 @@ function Update(ts)
 		case (-ST_Player.action):
 			spriteanimator.SetAnimationKey("slam");
 			beginSlam = true;
+			canWallslide = false;
 			break;
 		
 		case (ST_Player.action):
 			spriteanimator.UpdateAnimation(ts);
 			ProcessPowers();
 			ProcessMovement(movSpd, 0);
-			ProcessCollision();
+			var _collisionresult = ProcessCollision();
 			
+			// If the player collides with a wall, end the dash slam
+			if ( (_collisionresult & FL_COLLISION_L) || _collisionresult & FL_COLLISION_R ) {
+				dashSlamming = false;
+			}
+			
+			// Slam start
 			if (beginSlam)
 			{
 				vsp = jumpSpd * 2;
@@ -241,8 +267,24 @@ function Update(ts)
 				part_system_position(_trail, x, y);
 				// part_system_destroy(_trail);
 			}
+			// Slam hit
 			else
 			{
+				// Check downward collisions
+				var _collisionlist = ds_list_create();
+				var n = collision_point_list((bbox_left+bbox_right)*0.5, bbox_bottom+1, [obj_crate], 0, 1, _collisionlist, 0);
+				var c = noone;
+				
+				for (var i = 0; i < n; i++) {
+					c = _collisionlist[| i];
+					if (c && c.object_index == obj_crate) {
+						// If the player collides with a crate when slamming, destroy the crate
+						if (state == ST_Player.action) {
+							instance_destroy(c);
+						}
+					}
+				}
+				
 				// instance_create_layer(x, y - 16, "Instances", obj_ef_slam);
 				recoiling = true;
 				canDash = true;
@@ -262,6 +304,7 @@ function Update(ts)
 			isDashing = true;
 			dashSlamming = false;
 			dashstep = dashTime;
+			canWallslide = false;
 			
 			if (dir != 0)
 			{
@@ -301,11 +344,12 @@ function Update(ts)
 		// Wall Jumping ======================================
 		case (-ST_Player.wallSlide):
 			// TODO: Get wall sliding animation key
+			canWallslide = false;
+			wallclingDelay = wallclingDelayTime;
 			break;
 		case (ST_Player.wallSlide):
 			ProcessPowers();
 			ProcessMovement(hsp, vsp);
-			ProcessCollision();
 			
 			if (keyJump)
 			{
@@ -318,6 +362,45 @@ function Update(ts)
 			{
 				SetState(ST_Player.neutral);
 			}
+			
+			var _collisiontestresult = TestCollision(1);
+			var _walldetachhspd = 0.2;
+			
+			// Detach from right wall
+			if (_collisiontestresult & FL_COLLISION_R) {
+				if (keyLeft) {
+					if (wallclingDelay > 0) {
+						wallclingDelay = max(wallclingDelay-ts, 0);
+					}
+					else {
+						SetState(ST_Player.neutral);
+					}
+				}
+				else {
+					wallclingDelay = wallclingDelayTime;
+				}
+			}
+			// Detach from left wall
+			else if (_collisiontestresult & FL_COLLISION_L) {
+				if (keyRight) {
+					if (wallclingDelay > 0) {
+						wallclingDelay = max(wallclingDelay-ts, 0);
+					}
+					else {
+						SetState(ST_Player.neutral);
+					}
+				}
+				else {
+					wallclingDelay = wallclingDelayTime;
+				}
+			}
+			// Stop sliding if there's no right or left collision
+			else {
+				SetState(ST_Player.neutral);
+			}
+			
+			ProcessCollision();
+			
 			break;
 			
 			
@@ -328,6 +411,7 @@ function Update(ts)
 	{
 		hitStop = false;
 		instance_destroy();
+		return;
 	}
 
 	// Update Direction
@@ -337,6 +421,19 @@ function Update(ts)
 	}
 
 	image_yscale = sign(grav);
+	
+	// Move to wall slide state
+	if (canWallslide && abs(state) != ST_Player.wallSlide) {
+		var _collisiontestresultst = TestCollision(1);
+		if ( !onGround ) {
+			if ( 
+				( (_collisiontestresultst & FL_COLLISION_L) && keyLeft && hsp <= 0 ) || 
+				( (_collisiontestresultst & FL_COLLISION_R) && keyRight && hsp >= 0 )
+			) {
+				SetState(ST_Player.wallSlide);
+			}
+		}
+	}
 }
 
 function Draw()
@@ -348,7 +445,7 @@ function Draw()
 	// Collision Debugging
 	if (DEBUG)
 	{
-		shader_reset();
+		shader_reset();	// Prevents "Draw failed" error. Necessary for primitive drawing (draw_line, draw_rectangle, etc.)
 		var xx = lerp(bbox_left, bbox_right, 0.5);
 		var yy = lerp(bbox_bottom, bbox_top, 0.5);
 		var _perp_offset;

@@ -19,7 +19,7 @@ else
 	}
 }
 
-if chosen
+if (chosen && !movingToRoom)
 {
 	audio_stop_sound(mus_mainmenu);
 	if !file_exists(myFile)
@@ -31,6 +31,7 @@ if chosen
 		{
 			target_room = rm_introstage;
 		}
+		movingToRoom = true;
 	}
 	else
 	{
@@ -44,6 +45,7 @@ if chosen
 			{
 				target_room = rm_introstage;
 			}
+			movingToRoom = true;
 		}
 		else
 		{
@@ -54,6 +56,7 @@ if chosen
 			{
 				target_room = rm_worldmap;
 			}
+			movingToRoom = true;
 		}
 	}
 }

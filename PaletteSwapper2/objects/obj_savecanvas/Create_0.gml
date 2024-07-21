@@ -16,3 +16,5 @@ numCollected = 0;
 alteredImage = false;
 
 chosen = false;
+movingToRoom = false;
+
