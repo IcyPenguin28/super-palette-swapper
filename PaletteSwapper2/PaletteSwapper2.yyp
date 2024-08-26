@@ -175,6 +175,7 @@
     {"id":{"name":"obj_explosion","path":"objects/obj_explosion/obj_explosion.yy",},},
     {"id":{"name":"obj_fall","path":"objects/obj_fall/obj_fall.yy",},},
     {"id":{"name":"obj_fallcheckpoint","path":"objects/obj_fallcheckpoint/obj_fallcheckpoint.yy",},},
+    {"id":{"name":"obj_flamethrowerpart","path":"objects/obj_flamethrowerpart/obj_flamethrowerpart.yy",},},
     {"id":{"name":"obj_globalcontroller","path":"objects/obj_globalcontroller/obj_globalcontroller.yy",},},
     {"id":{"name":"obj_hp_indicator","path":"objects/obj_hp_indicator/obj_hp_indicator.yy",},},
     {"id":{"name":"obj_killeffect","path":"objects/obj_killeffect/obj_killeffect.yy",},},

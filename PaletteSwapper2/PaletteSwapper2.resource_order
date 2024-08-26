@@ -131,6 +131,7 @@
     {"name":"obj_explosion","order":2,"path":"objects/obj_explosion/obj_explosion.yy",},
     {"name":"obj_fall","order":2,"path":"objects/obj_fall/obj_fall.yy",},
     {"name":"obj_fallcheckpoint","order":3,"path":"objects/obj_fallcheckpoint/obj_fallcheckpoint.yy",},
+    {"name":"obj_flamethrowerpart","order":5,"path":"objects/obj_flamethrowerpart/obj_flamethrowerpart.yy",},
     {"name":"obj_globalcontroller","order":4,"path":"objects/obj_globalcontroller/obj_globalcontroller.yy",},
     {"name":"obj_hp_indicator","order":1,"path":"objects/obj_hp_indicator/obj_hp_indicator.yy",},
     {"name":"obj_killeffect","order":3,"path":"objects/obj_killeffect/obj_killeffect.yy",},

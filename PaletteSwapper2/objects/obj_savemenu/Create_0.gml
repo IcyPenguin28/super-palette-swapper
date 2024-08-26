@@ -15,4 +15,3 @@ canvasinst = [
 	inst_titlemenu_canvas1,
 	inst_titlemenu_canvas2,
 ];
-

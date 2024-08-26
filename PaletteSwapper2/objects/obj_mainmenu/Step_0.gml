@@ -52,25 +52,30 @@ if canInteract
 		switch (menuPos)
 		{
 			case mainmenu.newgame:
-				obj_savemenu.canInteract = true;
-				//obj_camera_target.x += room_width /  3;
+				// I don't know why I need this all of a sudden but okay, pop off GM.
+				if alarm[0] == -1
+				{
+					alarm[0] = 2;
+				}
 				self.canInteract = false;
-				
 				obj_camera.FollowTarget(inst_titlemenu_focus2);
 				break;
 			case mainmenu.loadgame:
-				obj_savemenu.canInteract = true;
-				//obj_camera_target.x += room_width /  3;
+				if alarm[0] == -1
+				{
+					alarm[0] = 2;
+				}
 				self.canInteract = false;
-				
 				obj_camera.FollowTarget(inst_titlemenu_focus2);
 				break;
 			case mainmenu.options:
-				obj_optionsmenu.canInteract = true;
+				if alarm[1] == -1
+				{
+					alarm[1] = 2;
+				}
 				self.canInteract = false;
 				audio_sound_gain(mus_mainmenu, 0, 0.5);
 				audio_sound_gain(mus_options, global.gain_bgm, 0.5);
-				
 				obj_camera.FollowTarget(inst_titlemenu_focus3);
 				break;
 			case mainmenu.credits:

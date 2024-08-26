@@ -1,5 +1,5 @@
 myStage = rm_sunsetstreet1;
-unlocks = [rm_sunsetstreet2];
+unlocks = [rm_demoend];
 connections = [paths.left, paths.right];
 levelDisplayName = "Sunset Street 1 - The Journey Begins!";
 previewCol = red;

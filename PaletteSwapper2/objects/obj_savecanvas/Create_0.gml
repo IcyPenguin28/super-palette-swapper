@@ -3,9 +3,9 @@
 image_speed = 0;
 myFile = "";
 
-numNormalStages = 24;
-numSpecialStages = 8;
-numBosses = 8;
+numNormalStages = 12;
+numSpecialStages = 4;
+numBosses = 4;
 numLevels = numNormalStages + numSpecialStages + numBosses + 1;
 
 numStars = (numNormalStages + numBosses) * 3;

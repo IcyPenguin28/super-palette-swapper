@@ -6,9 +6,9 @@ keyRight = input_check_pressed("right");
 keyConfirm = input_check_pressed("confirm");
 keyCancel = input_check_pressed("cancel");
 
-
 if canInteract
 {
+	
 	if keyLeft
 	{
 		audio_play_sound(snd_cursormove, 0, false, global.gain_sfx);

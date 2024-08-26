@@ -3,23 +3,23 @@
 
 if global.gp_device == -1
 {
-	msg = "All I have to do is rotate through the available colors on my palette with the A and S keys...";
-	msg2 = "...and then press the C key when I'm red and airborne!";
+	msg = "I just have to press the C key to dash!";
+	msg2 = "Yesterday's lecture said something about using the SHIFT key while I'm equipped with a paint to use it for self-defense.";
 }
 else if global.gp_desc == "Nintendo Switch Pro Controller"
 {
-	msg = "All I have to do is rotate through the available colors on my palette with L and R.";
-	msg2 = "...and then press A when I'm red and airborne!";
+	msg = "I just have to press A to dash!";
+	msg2 = "Yesterday's lecture said something about using the X button while I'm equipped with a paint to use it for self-defense.";
 }
 else if global.gp_desc == "XInput STANDARD GAMEPAD"
 {
-	msg = "All I have to do is rotate through the available colors on my palette with LB and RB.";
-	msg2 = "...and then press B when I'm red and airborne!";
+	msg = "I just have to press B to dash!";
+	msg2 = "Yesterday's lecture said something about using the Y button while I'm equipped with a paint to use it for self-defense.";
 }
 else
 {
-	msg = "All I have to do is rotate through the available colors on my palette with the shoulder bumpers.";
-	msg2 = "...and then press the action button when I'm red and airborne!";
+	msg = "I just have to press the east face button to dash!";
+	msg2 = "Yesterday's lecture said something about using the north face button while I'm equipped with a paint to use it for self-defense.";
 }
 
 commands = [
@@ -32,7 +32,9 @@ commands = [
 	PORTRAITS(spr_andy_dialogue_happy, noone, false, false),
 	TEXT("OH! I still have my Red Paint! I can just use it to dash across."),
 	TEXT(msg),
+	PORTRAITS(spr_andy_dialogue_inquisitive, noone, false, false),
 	TEXT(msg2),
+	TEXT("I wonder what the red paint gives me to use in that regard?"),
 ];
 
 StartDialogue(commands);

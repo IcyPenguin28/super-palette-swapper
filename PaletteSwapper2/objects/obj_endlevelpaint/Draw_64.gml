@@ -14,6 +14,9 @@ if stageCleared
 	// Display stage clear text
 	draw_text_color(xx, yy + offset, "PAINT GET!", c_black, c_black, c_black, c_black, 1);
 	draw_text_color(xx, yy, "PAINT GET!", c_red, c_yellow, c_green, c_aqua, 1);
+	
+	draw_set_font(fnt_levelpreview);
+	draw_text_color(xx, yy *4.5, "You can now DASH!", c_black, c_black, c_black, c_black, 1);
 	// Hide Rest of GUI
 	with obj_ui
 	{

@@ -35,7 +35,6 @@ function ProcessMovement(_hspeed, _vspeed)
 		canMove = true;
 		canJump = true;
 		canAttack = true;
-		canDash = true;
 	}
 
 	// MOVEMENT ----------------------------------------------------- 
@@ -196,7 +195,7 @@ function ProcessMovement(_hspeed, _vspeed)
 	}
 	
 	// Allow dash for all colors
-	if (canDash && keyAction && array_has_value(obj_palette.colorList, PlayerPaintColors.red))
+	if (canDash && keyAction && !beginSlam && array_has_value(obj_palette.colorList, PlayerPaintColors.red))
 	{
 		SetState(ST_Player.dash);
 	}
@@ -236,10 +235,32 @@ function ProcessPowers()
 {
 	if keyWeapon
 	{
+		// On activation
 		switch (myCol)
 		{
 			// RED
 			case PlayerPaintColors.red:
+				break;
+			// YELLOW
+			case PlayerPaintColors.yellow:
+				break;
+			// GREEN
+			case PlayerPaintColors.green:
+				break;
+			// BLUE
+			case PlayerPaintColors.blue:
+				break;
+		}
+	}
+	
+	if keyWeaponHeld
+	{
+		// While holding
+		switch (myCol)
+		{
+			// RED
+			case PlayerPaintColors.red:
+				instance_create_layer(x + 16 * sign(image_xscale), y + irandom_range(-2, 2), "Instances", obj_flamethrowerpart);
 				break;
 			// YELLOW
 			case PlayerPaintColors.yellow:

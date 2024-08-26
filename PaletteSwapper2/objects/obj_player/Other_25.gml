@@ -31,6 +31,7 @@ function Update(ts)
 	keyJumpHeld = input_check("jump");
 	keyBrush = input_check_pressed("brush");
 	keyWeapon = input_check_pressed("weapon");
+	keyWeaponHeld = input_check("weapon");
 	keyAction = input_check_pressed("dash");
 	keyReset = keyboard_check_pressed(ord("R"));
 	#endregion
@@ -245,6 +246,7 @@ function Update(ts)
 			spriteanimator.SetAnimationKey("slam");
 			beginSlam = true;
 			canWallslide = false;
+			canDash = false;
 			break;
 		
 		case (ST_Player.action):
