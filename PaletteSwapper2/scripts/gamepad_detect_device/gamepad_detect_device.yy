@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"gamepad_detect_device",
   "isCompatibility":false,
   "isDnD":false,
